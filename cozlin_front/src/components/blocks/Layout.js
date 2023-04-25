@@ -1,4 +1,4 @@
-import classes from '../../styles/UI/Layout.module.css';
+import classes from '../../styles/blocks/Layout.module.css';
 
 const Layout = (props) => {
   return <div className={classes.layoutCenter}>{props.children}</div>
