@@ -33,6 +33,8 @@
     height: calc(100vh - 57px);
     padding: 48px 16px;
     box-sizing: border-box;
+    position: absolute;
+    background-color: #fff;
 }
 
 .section {
