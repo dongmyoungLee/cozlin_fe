@@ -8,58 +8,65 @@ import Button from "../../atoms/Button";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
+  const [idInput, setIdInput] = useState('');
+  const [passInput, setPassInput] = useState('');
+  const [error, setError] = useState(false);
 
-  const onChangeHandler = (e) => {
+  const radioChangeHandler = (e) => {
     setIsLoginType(e.target.value);
   }
+  const generalIdInputHandler = (e) => {
+    setIdInput(e.target.value);
+  }
+  const generalPassInputHandler = (e) => {
+    setPassInput(e.target.value);
+  }
+  const generalOnSubmitHandler = (e) => {
+    e.preventDefault();
 
-  const generalLoginForm = <form className={classes.generalForm}>
+    // 일반회원 로그인 후 에러처리하자
 
-                            <Input label='아이디(이메일)' input={{
+  }
+
+  const companyIdInputHandler = (e) => {
+    setIdInput(e.target.value);
+  }
+  const companyPassInputHandler = (e) => {
+    setPassInput(e.target.value);
+  }
+  const companyOnSubmitHandler = (e) => {
+    e.preventDefault();
+
+    // 기업회원 로그인 후 에러처리 하자
+  }
+
+  const formClassName = isLoginType === 'general' ? classes.generalForm : classes.companyForm;
+  const labelName = isLoginType === 'general' ? '아이디(이메일)' : '기업 아이디(이메일)';
+  const signUpLink = isLoginType === 'general' ? '회원가입 하기 >' : '기업회원 신청하기 >';
+  const submitEvt = isLoginType === 'general' ? generalOnSubmitHandler : companyOnSubmitHandler;
+  const idChangeEvt = isLoginType === 'general' ? generalIdInputHandler : companyIdInputHandler;
+  const passChangeEvt = isLoginType === 'general' ? generalPassInputHandler : companyPassInputHandler;
+  const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
+
+  const loginForm = <form className={formClassName} onSubmit={submitEvt}>
+                            <Input label={labelName} onChange={idChangeEvt} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
                             }} />
-
-                            <Input label='비밀번호' input={{
+                            <Input label='비밀번호' onChange={passChangeEvt} input={{
                               type : 'password',
-                              placeholder : '********'
+                              placeholder : '********',
                             }} />
-
+                            {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
                               type : '',
                               value : '로그인'
                             }} />
-
                             <div className={classes.signUpBox}>
-                              <p>회원가입 하기 ></p>
+                              <p>{signUpLink}</p>
                               <p>비밀번호 찾기 ></p>
                             </div>
-
-                          </form>;
-
-  const companyLoginForm = <form className={classes.companyForm}>
-
-                            <Input label='기업 아이디(이메일)' input={{
-                              type : 'text',
-                              placeholder : 'example@email.com'
-                            }} />
-
-                            <Input label='비밀번호' input={{
-                              type : 'password',
-                              placeholder : '********'
-                            }} />
-
-                            <Button btn={{
-                              type : '',
-                              value : '로그인'
-                            }} />
-
-                            <div className={classes.signUpBox}>
-                              <p>기업회원 신청하기 ></p>
-                              <p>비밀번호 찾기 ></p>
-                            </div>
-
-                          </form>;
+                      </form>;
 
   return (
       <>
@@ -74,17 +81,16 @@ const Login = () => {
             <article className={classes.article}>
               <div className={classes.formWrap}>
                 <RadioGroup>
-                  <Radio name="contact" value="general" defaultChecked onChange={onChangeHandler}>
+                  <Radio name="contact" value="general" defaultChecked onChange={radioChangeHandler}>
                     <p>일반회원</p>
                   </Radio>
-                  <Radio name="contact" value="company" onChange={onChangeHandler}>
+                  <Radio name="contact" value="company" onChange={radioChangeHandler}>
                     기업회원
                   </Radio>
                 </RadioGroup>
                 <div>
                   <div className={classes.formOption}>
-                    {isLoginType === 'general' && generalLoginForm}
-                    {isLoginType === 'company' && companyLoginForm}
+                    {loginForm}
                   </div>
                 </div>
               </div>
