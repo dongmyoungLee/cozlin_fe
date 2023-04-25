@@ -65,10 +65,28 @@
     gap: 20px;
 }
 
+.mobileGeneralForm {
+    padding: 32px 24px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .companyForm {
     width: 100%;
     height: 450px;
     padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobileCompanyForm {
+    padding: 32px 24px;
+    width: 100%;
+    height: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -90,5 +108,53 @@
     cursor: pointer;
 }
 
+.mobileSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 57px);
+}
 
+.mobileAside {
+    width: 100%;
+    height: 25%;
+    padding: 48px 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.mobileCenterOption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mobileLogo {
+    height: 55px;
+    margin-bottom: 10px;
+}
+
+.mobileParamOption {
+    text-align: center;
+    color: #0062df;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.mobileArticle {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(246, 249, 250);
+    padding-top: 50px;
+}
+
+.mobileFormWrap {
+    width: 328px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 0 auto;
+}

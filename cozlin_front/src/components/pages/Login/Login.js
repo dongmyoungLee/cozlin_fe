@@ -5,6 +5,7 @@ import Radio from "../../atoms/Radio";
 import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
+import {Mobile, PC} from "../../config/Responsive";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
@@ -41,14 +42,16 @@ const Login = () => {
   }
 
   const formClassName = isLoginType === 'general' ? classes.generalForm : classes.companyForm;
+  const mobileFormClassName = isLoginType === 'general' ? classes.mobileGeneralForm : classes.mobileCompanyForm;
   const labelName = isLoginType === 'general' ? '아이디(이메일)' : '기업 아이디(이메일)';
-  const signUpLink = isLoginType === 'general' ? '회원가입 하기 >' : '기업회원 신청하기 >';
+  const signUpLink = isLoginType === 'general' ? '회원가입 하기 ＞' : '기업회원 신청하기 ＞';
   const submitEvt = isLoginType === 'general' ? generalOnSubmitHandler : companyOnSubmitHandler;
   const idChangeEvt = isLoginType === 'general' ? generalIdInputHandler : companyIdInputHandler;
   const passChangeEvt = isLoginType === 'general' ? generalPassInputHandler : companyPassInputHandler;
   const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
 
-  const loginForm = <form className={formClassName} onSubmit={submitEvt}>
+
+  const pcLoginForm = <form className={formClassName} onSubmit={submitEvt}>
                             <Input label={labelName} onChange={idChangeEvt} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
@@ -68,18 +71,66 @@ const Login = () => {
                             </div>
                       </form>;
 
+  const mobileLoginForm = <form className={mobileFormClassName} onSubmit={submitEvt}>
+                            <Input label={labelName} onChange={idChangeEvt} input={{
+                              type : 'text',
+                              placeholder : 'example@email.com'
+                            }} />
+                            <Input label='비밀번호' onChange={passChangeEvt} input={{
+                              type : 'password',
+                              placeholder : '********',
+                            }} />
+                            {error && <p className={classes.error}>{errorParam}</p>}
+                            <Button btn={{
+                              type : '',
+                              value : '로그인'
+                            }} />
+                            <div className={classes.signUpBox}>
+                              <p>{signUpLink}</p>
+                              <p>비밀번호 찾기 ></p>
+                            </div>
+                          </form>;
   return (
       <>
-        <section className={classes.section}>
-          <div className={classes.wrap}>
-            <aside className={classes.aside}>
-              <div className={classes.centerPosition}>
-                <img className={classes.logo} src={logo} alt={logo} />
-                <p className={classes.paramOption}>원하는 IT 인재 채용 플랫폼 Cozlin</p>
+        <PC>
+          <section className={classes.section}>
+            <div className={classes.wrap}>
+              <aside className={classes.aside}>
+                <div className={classes.centerPosition}>
+                  <img className={classes.logo} src={logo} alt={logo} />
+                  <p className={classes.paramOption}>원하는 IT 인재 채용 플랫폼 Cozlin</p>
+                </div>
+              </aside>
+              <article className={classes.article}>
+                <div className={classes.formWrap}>
+                  <RadioGroup>
+                    <Radio name="contact" value="general" defaultChecked onChange={radioChangeHandler}>
+                      <p>일반회원</p>
+                    </Radio>
+                    <Radio name="contact" value="company" onChange={radioChangeHandler}>
+                      기업회원
+                    </Radio>
+                  </RadioGroup>
+                  <div>
+                    <div className={classes.formOption}>
+                      {pcLoginForm}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </PC>
+        <Mobile>
+          <section className={classes.mobileSection}>
+            <aside className={classes.mobileAside}>
+              <div className={classes.mobileCenterOption}>
+                <img className={classes.mobileLogo} src={logo} alt={logo} />
+                <p className={classes.mobileParamOption}>원하는 IT 인재 채용 플랫폼 Cozlin</p>
               </div>
             </aside>
-            <article className={classes.article}>
-              <div className={classes.formWrap}>
+            <article className={classes.mobileArticle}>
+              <div className={classes.mobileFormWrap}>
                 <RadioGroup>
                   <Radio name="contact" value="general" defaultChecked onChange={radioChangeHandler}>
                     <p>일반회원</p>
@@ -90,13 +141,13 @@ const Login = () => {
                 </RadioGroup>
                 <div>
                   <div className={classes.formOption}>
-                    {loginForm}
+                    {mobileLoginForm}
                   </div>
                 </div>
               </div>
             </article>
-          </div>
-        </section>
+          </section>
+        </Mobile>
       </>
   );
 }

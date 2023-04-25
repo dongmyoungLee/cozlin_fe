@@ -4,7 +4,6 @@ import logo from '../../../asset/images/logo.png';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {pageNavigatorAction} from "../../../ducks/pageNavigator";
-import Announcement from "./Announcement";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -37,8 +36,8 @@ const Header = () => {
               </div>
               <nav>
                 <ul className={classes.flexItem}>
-                  <li><Link to='/HumanResources'>인재 채용</Link></li>
-                  <li><Link to='/Announcement'>채용 공고</Link></li>
+                  <li><Link to='/humanResources'>인재 채용</Link></li>
+                  <li><Link to='/announcement'>채용 공고</Link></li>
                 </ul>
               </nav>
             </div>

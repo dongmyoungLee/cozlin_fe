@@ -7,6 +7,15 @@
     align-items: center;
 }
 
+.mobileRadioOption {
+    font-weight: 600;
+    font-size: 16px;
+    color: #141617;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .radioSize {
     width: 20px;
     height: 20px;
@@ -14,6 +23,15 @@
     margin-right: 7px;
     cursor: pointer;
 }
+
+.mobileRadioSize {
+    width: 16px;
+    height: 16px;
+    border: 1px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
 
 .flex {
     display: flex;
