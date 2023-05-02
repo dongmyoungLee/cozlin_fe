@@ -31,6 +31,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: ./cozlin_front/package-lock.json
           
       # 모듈 설치  
       - name: Install modules
