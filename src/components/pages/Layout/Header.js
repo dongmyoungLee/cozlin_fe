@@ -42,7 +42,7 @@ const Header = () => {
               </nav>
             </div>
             <div className={classes.flexItem}>
-              <Link className={classes  .loginText} to='/login'>로그인 / 회원가입</Link>
+              <Link className={classes.loginText} to='/login'>로그인 / 회원가입</Link>
               <div className={classes.verticalSpace}></div>
               <div className={classes.categoryBoxCss} onClick={pageNavigationHandler}>
                 {userType}
