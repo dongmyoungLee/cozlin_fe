@@ -13,6 +13,7 @@ jobs:
 
   # OS 환경
   build:
+    name: hello DM ?
     runs-on: ubuntu-20.04
 
     env:
@@ -21,7 +22,7 @@ jobs:
     # Nodejs 런타임 정보 설정
     strategy:
       matrix:
-        node-version: [18.16.0]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -34,7 +35,7 @@ jobs:
           cache-dependency-path: ./cozlin_front/package-lock.json
           
       # 모듈 설치  
-      - name: Install modules
+      - name: Install dependencies
         run: npm install
         
       # testcode 실행
