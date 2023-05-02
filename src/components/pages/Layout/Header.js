@@ -36,7 +36,7 @@ const Header = () => {
               </div>
               <nav>
                 <ul className={classes.flexItem}>
-                  <li><Link to='/humanResources'>인재 채용</Link></li>
+                  <li><Link to='/humanResources'>인재 채용1111</Link></li>
                   <li><Link to='/announcement'>채용 공고</Link></li>
                 </ul>
               </nav>
