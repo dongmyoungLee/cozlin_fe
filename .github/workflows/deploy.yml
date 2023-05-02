@@ -37,7 +37,8 @@ jobs:
       # 모듈 설치  
       - name: Install dependencies
         run: npm install
-        
+
+
       # 빌드
       - name: Build project
         run: npm run build
@@ -50,6 +51,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "*"
+          source: "build/*"
           strip_components: 1
           target: "/home/ubuntu/myapp"
