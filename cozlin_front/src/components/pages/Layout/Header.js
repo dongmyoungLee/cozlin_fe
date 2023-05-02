@@ -36,13 +36,13 @@ const Header = () => {
               </div>
               <nav>
                 <ul className={classes.flexItem}>
-                  <li><Link to='/humanResources'>인재 채용</Link></li>
+                  <li><Link to='/humanResources'>인재 채용1</Link></li>
                   <li><Link to='/announcement'>채용 공고</Link></li>
                 </ul>
               </nav>
             </div>
             <div className={classes.flexItem}>
-              <Link className={classes.loginText} to='/login'>로그인 / 회원가입</Link>
+              <Link className={classes  .loginText} to='/login'>로그인 / 회원가입</Link>
               <div className={classes.verticalSpace}></div>
               <div className={classes.categoryBoxCss} onClick={pageNavigationHandler}>
                 {userType}

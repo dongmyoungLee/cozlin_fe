@@ -1,12 +1,11 @@
-import classes from '../../../styles/pages/login/login.module.css'
-import logo from '../../../asset/images/logo.png';
+import classes from '../../../styles/pages/login/login.module.css';
+import classes2 from '../../../styles/pages/login/signup.module.css';
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
-import {Link} from "react-router-dom";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
@@ -43,34 +42,37 @@ const Login = () => {
   }
 
   const labelName = isLoginType === 'general' ? '아이디(이메일)' : '기업 아이디(이메일)';
-  const signUpLink = isLoginType === 'general' ? '회원가입 하기 ＞' : '기업회원 신청하기 ＞';
   const submitEvt = isLoginType === 'general' ? generalOnSubmitHandler : companyOnSubmitHandler;
   const idChangeEvt = isLoginType === 'general' ? generalIdInputHandler : companyIdInputHandler;
   const passChangeEvt = isLoginType === 'general' ? generalPassInputHandler : companyPassInputHandler;
   const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
 
 
-  const pcLoginForm = <form className={classes.generalForm} onSubmit={submitEvt}>
-                            <Input label={labelName} onChange={idChangeEvt} input={{
-                              type : 'text',
-                              placeholder : 'example@email.com'
-                            }} />
-                            <Input label='비밀번호' onChange={passChangeEvt} input={{
-                              type : 'password',
-                              placeholder : '********',
-                            }} />
-                            {error && <p className={classes.error}>{errorParam}</p>}
-                            <Button btn={{
-                              type : '',
-                              value : '로그인'
-                            }} />
-                            <div className={classes.signUpBox}>
-                              <p><Link to='/signup'>{signUpLink}</Link></p>
-                              <p>비밀번호 찾기 ></p>
-                            </div>
+  const pcLoginForm = <form className={classes2.signupGeneralForm} onSubmit={submitEvt}>
+                        <Input label={labelName} onChange={idChangeEvt} input={{
+                          type : 'text',
+                          placeholder : 'example@email.com'
+                        }} />
+                        <Input label='비밀번호' onChange={passChangeEvt} input={{
+                          type : 'password',
+                          placeholder : '********',
+                        }} />
+                        <Input label={labelName} onChange={idChangeEvt} input={{
+                          type : 'text',
+                          placeholder : 'example@email.com'
+                        }} />
+                        <Input label={labelName} onChange={idChangeEvt} input={{
+                          type : 'text',
+                          placeholder : 'example@email.com'
+                        }} />
+                        {error && <p className={classes.error}>{errorParam}</p>}
+                        <Button btn={{
+                          type : '',
+                          value : '회원가입'
+                        }} />
                       </form>;
 
-  const mobileLoginForm = <form className={classes.mobileGeneralForm} onSubmit={submitEvt}>
+  const mobileLoginForm = <form className={classes2.mobileSignupGeneralForm} onSubmit={submitEvt}>
                             <Input label={labelName} onChange={idChangeEvt} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
@@ -82,12 +84,8 @@ const Login = () => {
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
                               type : '',
-                              value : '로그인'
+                              value : '회원가입'
                             }} />
-                            <div className={classes.signUpBox}>
-                              <p>{signUpLink}</p>
-                              <p>비밀번호 찾기 ></p>
-                            </div>
                           </form>;
   return (
       <>

@@ -4,6 +4,7 @@ import Login from "./components/pages/Login/Login";
 import Company from "./components/pages/Infomation/Company";
 import HumanResources from "./components/pages/Layout/HumanResources";
 import Announcement from "./components/pages/Layout/Announcement";
+import Signup from "./components/pages/Login/Signup";
 
 const router = createBrowserRouter([
   {
@@ -19,14 +20,17 @@ const router = createBrowserRouter([
         element: <Company />
       },
       {
-        path: 'HumanResources',
+        path: 'humanResources',
         element: <HumanResources />
       },
       {
-        path: 'Announcement',
+        path: 'announcement',
         element: <Announcement />
+      },
+      {
+        path: 'signup',
+        element: <Signup />
       }
-
     ],
   }
 ]);

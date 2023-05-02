@@ -1,4 +1,4 @@
-import classes from "../../styles/blocks/MobileMenuList.module.css";
+import classes from "../../styles/blocks/mobileMenuList.module.css";
 import {Link} from "react-router-dom";
 
 const MobileMenuList = (props) => {

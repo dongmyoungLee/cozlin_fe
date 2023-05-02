@@ -1,4 +1,4 @@
-import classes from '../../../styles/pages/layout/MobileHeader.module.css';
+import classes from '../../../styles/pages/layout/mobileHeader.module.css';
 import logo from '../../../asset/images/logo.png';
 import menu from '../../../asset/images/mobilemenu.png';
 import { useState } from "react";
