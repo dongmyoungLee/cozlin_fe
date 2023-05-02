@@ -53,4 +53,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "build/*"
           strip_components: 1
-          target: "/home/ubuntu/myapp"
+          target: "/home/ubuntu/myapp/build"
