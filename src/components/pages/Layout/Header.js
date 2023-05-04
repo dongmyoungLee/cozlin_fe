@@ -31,6 +31,9 @@ const Header = () => {
     setIsMypageShow(!isMypageShow);
   }
 
+
+
+
   const userType = isCompany ?  <p>일반 회원 바로가기</p> : <p>기업 서비스</p>;
 
   const notLoginMenu = <div className={classes.flexItem}>
@@ -41,7 +44,7 @@ const Header = () => {
                         </div>
                       </div>;
 
-  const loginedMenu = <div><img className={classes.mypageLogo} src={mypageIcon} onClick={mypageMenuShow} /></div>
+  const loginedMenu = <div><img className={classes.mypageLogo} src={mypageIcon} onClick={mypageMenuShow} alt='loginMenu' /></div>
 
   return (
       <header className={classes.header}>
@@ -63,7 +66,7 @@ const Header = () => {
             </div>
             {isLogin && loginedMenu}
             {!isLogin && notLoginMenu}
-            {isMypageShow && <MypageToolTipMenu />}
+            {isMypageShow && <MypageToolTipMenu hide={mypageMenuShow} />}
           </div>
         </Layout>
       </header>
