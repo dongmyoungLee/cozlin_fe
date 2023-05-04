@@ -3,10 +3,14 @@ import logo from '../../../asset/images/logo.png';
 import menu from '../../../asset/images/mobilemenu.png';
 import { useState } from "react";
 import MobileMenuList from "../../blocks/MobileMenuList";
+import {useDispatch, useSelector} from "react-redux";
+import {loginCheckAction} from "../../../ducks/loginCheck";
 
 
 const MobileHeader = () => {
   const [isMobileMenuPage, setIsMobileMenuPage] = useState(false);
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.loginCheck.isLogin);
 
   const mobileMenuPageHandler = () => {
     setIsMobileMenuPage(!isMobileMenuPage);
@@ -16,6 +20,10 @@ const MobileHeader = () => {
     setIsMobileMenuPage(false);
   }
 
+  const mobileLogOutHandler = () => {
+    dispatch(loginCheckAction.isLogin(false));
+    setIsMobileMenuPage(false);
+  }
 
 
   const mobilePageMenu = <main className={classes.mobileMenuWrap}>
@@ -29,6 +37,9 @@ const MobileHeader = () => {
                            <section className={classes.section}>
                               <MobileMenuList endPoint='/login' onClick={mobileMenuPageHideHandler}>로그인 / 회원가입</MobileMenuList>
                            </section>
+                           {isLogin &&<section className={classes.section}>
+                                       <MobileMenuList endPoint='/' onClick={mobileLogOutHandler}>로그아웃</MobileMenuList>
+                                     </section>}
                          </main>
 
   return (

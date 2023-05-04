@@ -6,13 +6,18 @@ import {useEffect, useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {loginCheckAction} from "../../../ducks/loginCheck";
+
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
   const [idInput, setIdInput] = useState('');
   const [passInput, setPassInput] = useState('');
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const radioChangeHandler = (e) => {
     setIsLoginType(e.target.value);
@@ -27,7 +32,8 @@ const Login = () => {
     e.preventDefault();
 
     // 일반회원 로그인 후 에러처리하자
-
+    dispatch(loginCheckAction.isLogin(true));
+    navigate('/');
   }
 
   const companyIdInputHandler = (e) => {
