@@ -3,23 +3,21 @@ import MypageList from "./MypageList";
 import {mypageTooltipMenu} from "../../common/Menus";
 import {loginCheckAction} from "../../ducks/loginCheck";
 import {useDispatch} from "react-redux";
+import logout from '../../asset/images/logout.png';
 
 const MypageToolTipMenu = (props) => {
   const dispatch = useDispatch();
 
   const clickMethods = (flag) => {
 
-    switch (flag) {
-      case 'logout' :
-        dispatch(loginCheckAction.isLogin(false));
-      break;
-
-      default :
-      break;
-    }
 
     props.hide();
 
+  }
+
+  const logoutHandler =  () => {
+    dispatch(loginCheckAction.isLogin(false));
+    props.hide();
   }
 
 
@@ -31,6 +29,7 @@ const MypageToolTipMenu = (props) => {
             {mypageTooltipMenu.map((item, idx) => (
                 <MypageList key={item.menuName} menuTitle={item.menuName} imgPath={item.imgPath} onClick={() => {clickMethods(item.clickFlag)}} />
             ))}
+            <MypageList menuTitle='로그아웃' imgPath={logout} onClick={() => {logoutHandler()}} />
           </ul>
         </div>
         <div className={classes.space2}></div>

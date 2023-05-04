@@ -3,7 +3,7 @@ import follow_img from '../asset/images/follow.png';
 import myHistory from '../asset/images/myhistory.png';
 import myProfile from '../asset/images/myprofile.png';
 import myAccount from '../asset/images/myaccount.png';
-import logout from '../asset/images/logout.png';
+
 
 const headerMenuList = [
     {
@@ -16,37 +16,38 @@ const headerMenuList = [
     },
 ];
 
+
 const mypageMenuList = [
     {
       menuName : '북마크 모아보기',
       imgPath : bookmark_img,
       clickFlag : 'bookmark',
+      path : '/bookmark',
     },
     {
       menuName : '팔로우 모아보기',
       imgPath : follow_img,
       clickFlag : 'follow',
+      path : '/follow',
     },
     {
       menuName : '지원 현황',
       imgPath : myHistory,
       clickFlag : 'myHistory',
+      path : '/myHistory',
     },
     {
       menuName : '프로필 관리',
       imgPath : myProfile,
       clickFlag: 'myProfile',
+      path : '/myProfile',
     },
     {
       menuName : '계정 정보',
       imgPath : myAccount,
       clickFlag: 'myAccount',
+      path : '/myAccount',
     },
-  {
-    menuName : '로그아웃',
-    imgPath : logout,
-    clickFlag: 'logout',
-  },
 ];
 
 
