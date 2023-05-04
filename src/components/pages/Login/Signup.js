@@ -67,6 +67,22 @@ const Login = () => {
                               type : 'password',
                               placeholder : '********',
                             }} />
+                            <Input label='비밀번호 확인' input={{
+                              type : 'password',
+                              placeholder : '********',
+                            }} />
+                            <Input label='생년월일' input={{
+                              type : 'text',
+                              placeholder : '1999-01-01',
+                            }} />
+                            <Input label='연락처' input={{
+                              type : 'text',
+                              placeholder : '010-1234-1234'
+                            }} />
+                            <Input label='주소' input={{
+                              type : 'text',
+                              placeholder : '서울특별시 논현로'
+                            }} />
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
                               type : '',

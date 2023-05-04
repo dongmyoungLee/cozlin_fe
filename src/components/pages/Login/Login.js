@@ -91,7 +91,7 @@ const Login = () => {
                               value : '로그인'
                             }} />
                             <div className={classes.signUpBox}>
-                              <p>{signUpLink}</p>
+                              {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
                               <p>비밀번호 찾기 ></p>
                             </div>
                           </form>;
