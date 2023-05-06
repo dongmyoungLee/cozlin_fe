@@ -5,7 +5,8 @@ import { useState } from "react";
 import MobileMenuList from "../../blocks/MobileMenuList";
 import {useDispatch, useSelector} from "react-redux";
 import {loginCheckAction} from "../../../ducks/loginCheck";
-import {mypageTooltipMenu} from "../../../common/Menus";
+import {headerMenu, mypageTooltipMenu} from "../../../common/Menus";
+import HeaderItem from "../../blocks/HeaderItem";
 
 
 const MobileHeader = () => {
@@ -29,26 +30,27 @@ const MobileHeader = () => {
   const loginMenu = <>
                       <section className={classes.section}>
                         {mypageTooltipMenu.map((item, idx) => (
-                            <MobileMenuList key={item.menuName} endPoint={item.path} onClick={mobileMenuPageHideHandler}>{item.menuName}</MobileMenuList>
+                            <MobileMenuList key={item.menuName} endPoint={item.path} onClick={mobileMenuPageHideHandler} menuName={item.menuName} />
                         ))}
                       </section>
                       <section className={classes.section}>
-                        <MobileMenuList endPoint='/' onClick={mobileLogOutHandler}>로그아웃</MobileMenuList>
+                        <MobileMenuList endPoint='/' onClick={mobileLogOutHandler} menuName='로그아웃' />
                       </section>
                     </>;
 
   const notLoginMenu = <section className={classes.section}>
-                        <MobileMenuList endPoint='/login' onClick={mobileMenuPageHideHandler}>로그인 / 회원가입</MobileMenuList>
+                        <MobileMenuList endPoint='/login' onClick={mobileMenuPageHideHandler} menuName='로그인 / 회원가입' />
                       </section>;
 
 
   const mobilePageMenu = <main className={classes.mobileMenuWrap}>
                            <section className={classes.section}>
-                             <MobileMenuList endPoint='/humanResources' onClick={mobileMenuPageHideHandler} >인재 채용</MobileMenuList>
-                             <MobileMenuList endPoint='/announcement' onClick={mobileMenuPageHideHandler}>채용 공고</MobileMenuList>
+                             {headerMenu.map((item, idx) => (
+                                 <MobileMenuList key={item.menuName} endPoint={item.menuLink} onClick={mobileMenuPageHideHandler} menuName={item.menuName} />
+                             ))}
                            </section>
                            <section className={classes.section}>
-                             <MobileMenuList endPoint='/company' onClick={mobileMenuPageHideHandler}>기업 서비스</MobileMenuList>
+                             <MobileMenuList endPoint='/company' menuName='기업 서비스' onClick={mobileMenuPageHideHandler} />
                            </section>
                            {!isLogin && notLoginMenu}
                            {isLogin && loginMenu}

@@ -6,7 +6,7 @@ const MobileMenuList = (props) => {
   return (
       <div>
         <Link to={props.endPoint} className={classes.mobileMenuListWrap} onClick={props.onClick}>
-          <p className={classes.param}>{props.children}</p>
+          <p className={classes.param}>{props.menuName}</p>
           <p className={classes.param}>＞</p>
         </Link>
       </div>

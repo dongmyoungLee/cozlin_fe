@@ -14,22 +14,30 @@ const headerMenuList = [
       menuName : '채용 공고',
       menuLink : '/announcement'
     },
+    {
+      menuName : '이미지 리사이즈',
+      menuLink : '/resize'
+    },
 ];
+
+const favoriteMenuList = [
+  {
+    menuName : '북마크 모아보기',
+    imgPath : bookmark_img,
+    clickFlag : 'bookmark',
+    path : '/bookmark',
+  },
+  {
+    menuName : '팔로우 모아보기',
+    imgPath : follow_img,
+    clickFlag : 'follow',
+    path : '/follow',
+  },
+]
 
 
 const mypageMenuList = [
-    {
-      menuName : '북마크 모아보기',
-      imgPath : bookmark_img,
-      clickFlag : 'bookmark',
-      path : '/bookmark',
-    },
-    {
-      menuName : '팔로우 모아보기',
-      imgPath : follow_img,
-      clickFlag : 'follow',
-      path : '/follow',
-    },
+
     {
       menuName : '지원 현황',
       imgPath : myHistory,
@@ -50,6 +58,6 @@ const mypageMenuList = [
     },
 ];
 
-
+export const mypageFavMenu = favoriteMenuList;
 export const headerMenu = headerMenuList;
 export const mypageTooltipMenu = mypageMenuList;

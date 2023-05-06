@@ -5,6 +5,7 @@ import Company from "./components/pages/Infomation/Company";
 import HumanResources from "./components/pages/Layout/HumanResources";
 import Announcement from "./components/pages/Layout/Announcement";
 import Signup from "./components/pages/Login/Signup";
+import Resize from "./components/pages/Layout/Resize";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup />
+      },
+      {
+        path: 'resize',
+        element: <Resize />
       }
     ],
   }
