@@ -7,7 +7,7 @@ import myAccount from '../asset/images/myaccount.png';
 
 const headerMenuList = [
     {
-      menuName : '인채 채용1',
+      menuName : '인채 채용',
       menuLink : '/humanResources'
     },
     {
