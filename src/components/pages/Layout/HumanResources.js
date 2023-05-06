@@ -1,6 +1,7 @@
 import Layout from "../../blocks/Layout";
 
 const HumanResources = () => {
+
   return (
       <>
         <Layout >
