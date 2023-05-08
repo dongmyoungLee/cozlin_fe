@@ -20,7 +20,7 @@ jobs:
     # Nodejs 런타임 정보 설정
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -51,4 +51,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "build/*"
           strip_components: 1
-          target: "/home/cozlin/cozlin_fe"
+          target: "/home/ubuntu/cozlin"
