@@ -56,6 +56,7 @@ const PopupPostCode = (props) => {
     width: "100%",
     height: "100vh",
     top: "50%",
+    zIndex : '10',
     left: '50%',
     transform : 'translate(-50%, -50%)',
     padding: "7px",
