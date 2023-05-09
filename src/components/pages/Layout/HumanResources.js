@@ -15,7 +15,7 @@ const HumanResources = () => {
     }
 
     const responseData = await response.json();
-    
+
     setServerData(responseData);
   }
 
@@ -26,7 +26,7 @@ const HumanResources = () => {
           <p>인재 채용 페이지</p>
           <button onClick={testApi} >testAPI</button>
           {serverData.map((item, idx) => (
-              <p key={item.id}>{item.name}</p>
+              <p key={item.customerNo}>{item.customerNo}</p>
           ))}
         </Layout>
       </>

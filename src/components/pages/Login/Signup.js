@@ -6,29 +6,38 @@ import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
 import PostPopupDom from "../../blocks/PostPopupDom";
 import PopupPostCode from "../../blocks/PopupPostCode";
+import axios from "axios";
 
 
 const Login = () => {
   const [idInput, setIdInput] = useState('');
   const [passInput, setPassInput] = useState('');
+  const [passCheckInput, setPassCheckInput] = useState('');
+  const [nameInput, setNameInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
   const [error, setError] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [userPostData, setUserPostData] = useState('');
   const [idInputWidth, setIdInputWidth] = useState('100%');
   const [phoneInputWidth, setPhoneInputWidth] = useState('100%');
+  const [birthBeforeInput, setBirthBeforeInput] = useState('');
+  const [birthAfterInput, setBirthAfterInput] = useState('');
   const [isIdBtnShow, setIsIdBtnShow] = useState(false);
   const [isPhoneBtnShow, setIsPhoneBtnShow] = useState(false);
-
+  const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
 
   const idInputHandler = (e) => {
+    // emailCheck(e.target.value)
     setIdInput(e.target.value);
     setIdInputWidth('80%');
     setIsIdBtnShow(true);
   }
 
-  const idBlur = (e) => {
+  const emailCheck = (username) => {
+    return emailRegEx.test(username); //형식에 맞을 경우, true 리턴
+  }
 
+  const idBlur = (e) => {
     if (idInput === '') {
       setIdInputWidth('100%');
       setIsIdBtnShow(false);
@@ -46,14 +55,48 @@ const Login = () => {
     setPassInput(e.target.value);
   }
 
+  const passCheckInputHandler = (e) => {
+    setPassCheckInput(e.target.value);
+  }
+
+  const nameInputHandler = (e) => {
+    setNameInput(e.target.value);
+  }
+
   const phoneInputHandler = (e) => {
     setPhoneInput(e.target.value);
     setPhoneInputWidth('80%');
     setIsPhoneBtnShow(true);
   }
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const birthBeforeInputHandler = (e) => {
+    setBirthBeforeInput(e.target.value);
   }
+
+  const birthAfterInputHandler = (e) => {
+    setBirthAfterInput(e.target.value);
+  }
+
+  const sendUserInfoDataHandler = (e) => {
+    e.preventDefault();
+
+
+
+
+    axios.post('http://localhost:9090/user', {}, {
+      params : {
+        userId: idInput,
+        userPassword: passInput,
+        userPhone: phoneInput,
+        userBirth: `${birthBeforeInput + birthAfterInput}`,
+        userAddr: userPostData,
+        userName: nameInput,
+    }}).then((res) => {
+      debugger
+    }).catch((error) => {
+      debugger
+    });
+  }
+
 
   const openPostCode = () => {
     setIsPopupOpen(true);
@@ -64,14 +107,13 @@ const Login = () => {
   }
 
 
-  const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
-
-  const pcLoginForm = <form className={classes2.signupGeneralForm} onSubmit={onSubmitHandler}>
+  const pcLoginForm = <form className={classes2.signupGeneralForm}>
                         <div className={classes2.flexOption}>
                           <Input label='아이디(이메일)' onBlur={idBlur} onChange={idInputHandler} input={{
                             type : 'text',
                             placeholder : 'example@email.com',
                             width : idInputWidth,
+                            name: 'userId'
                           }} />
                           <button tabIndex='-1' style={{display : isIdBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
                         </div>
@@ -79,10 +121,17 @@ const Login = () => {
                         <Input label='비밀번호' onChange={passInputHandler} input={{
                           type : 'password',
                           placeholder : '********',
+                          name: 'userPassword'
                         }} />
-                        <Input label='비밀번호 확인' input={{
+                        <Input label='비밀번호 확인' onChange={passCheckInputHandler} input={{
                           type : 'password',
                           placeholder : '********',
+                        }} />
+
+                        <Input label='성함' onChange={nameInputHandler} input={{
+                          type : 'text',
+                          placeholder : '홍길동',
+                          name: 'userName'
                         }} />
 
                         <div className={classes2.flexOption}>
@@ -90,30 +139,46 @@ const Login = () => {
                             type : 'text',
                             placeholder : '010-1234-5678',
                             width : phoneInputWidth,
+                            name: 'userPhone'
                           }} />
                           <button tabIndex='-1' style={{display : isPhoneBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
                         </div>
 
-                        <Input label='생년월일' input={{
-                          type : 'text',
-                          placeholder : '1999-01-01',
-                        }} />
+                        <div className={classes2.flexOption}>
+                          <Input label='주민번호 (7자리)' onChange={birthBeforeInputHandler} input={{
+                            type : 'text',
+                            placeholder : '000000',
+                            name: 'userBirth',
+                            width: '48%',
+                            maxLength: 6
+                          }} />
+                          <p className={classes2.lineHeight}>-</p>
+                          <Input onChange={birthAfterInputHandler} input={{
+                            type : 'text',
+                            placeholder : '0******',
+                            name: 'userBirth',
+                            width: '48%',
+                            maxLength : 1
+                          }} />
+                        </div>
+
 
                         <Input label='주소' onClick={openPostCode} input={{
                           type : 'text',
                           readOnly : 'readonly',
                           placeholder : '클릭해서 검색하기',
-                          value : userPostData
+                          value : userPostData,
+                          name: 'userAddr'
                         }} />
 
-                        {error && <p className={classes.error}>{errorParam}</p>}
                         <Button btn={{
                           type : '',
-                          value : '회원가입'
+                          value : '회원가입',
+                          onClick : sendUserInfoDataHandler
                         }} />
                       </form>;
 
-  const mobileLoginForm = <form className={classes2.mobileSignupGeneralForm} onSubmit={onSubmitHandler}>
+  const mobileLoginForm = <form className={classes2.mobileSignupGeneralForm}>
                             <div className={classes2.flexOption}>
                               <Input label='아이디(이메일)' onBlur={idBlur} onChange={idInputHandler} input={{
                                 type : 'text',
@@ -127,14 +192,27 @@ const Login = () => {
                               type : 'password',
                               placeholder : '********',
                             }} />
-                            <Input label='비밀번호 확인' input={{
+                            <Input label='비밀번호 확인' onChange={passCheckInputHandler} input={{
                               type : 'password',
                               placeholder : '********',
                             }} />
-                            <Input label='생년월일' input={{
-                              type : 'text',
-                              placeholder : '1999-01-01',
-                            }} />
+                            <div className={classes2.flexOption}>
+                              <Input label='주민번호 (7자리)' onChange={birthBeforeInputHandler} input={{
+                                type : 'text',
+                                placeholder : '000000',
+                                name: 'userBirth',
+                                width: '48%',
+                                maxLength: 6
+                              }} />
+                              <p className={classes2.lineHeight}>-</p>
+                              <Input onChange={birthAfterInputHandler} input={{
+                                type : 'text',
+                                placeholder : '0******',
+                                name: 'userBirth',
+                                width: '48%',
+                                maxLength : 1
+                              }} />
+                            </div>
                             <div className={classes2.flexOption}>
                               <Input label='연락처' onBlur={phoneBlur} onChange={phoneInputHandler}  input={{
                                 type : 'text',
@@ -149,10 +227,10 @@ const Login = () => {
                               placeholder : '클릭해서 검색하기',
                               value : userPostData
                             }} />
-                            {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
                               type : '',
-                              value : '회원가입'
+                              value : '회원가입',
+                              onClick : sendUserInfoDataHandler
                             }} />
                           </form>;
   return (
