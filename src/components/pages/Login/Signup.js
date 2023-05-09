@@ -4,7 +4,7 @@ import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
-import PostPopupDom from "../../blocks/PostPopupDom";
+import PopupDom from "../../blocks/PopupDom";
 import PopupPostCode from "../../blocks/PopupPostCode";
 import axios from "axios";
 
@@ -17,6 +17,7 @@ const Login = () => {
   const [phoneInput, setPhoneInput] = useState('');
   const [error, setError] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPostPopupOpen, setIsPostPopupOpen] = useState(false);
   const [userPostData, setUserPostData] = useState('');
   const [idInputWidth, setIdInputWidth] = useState('100%');
   const [phoneInputWidth, setPhoneInputWidth] = useState('100%');
@@ -100,10 +101,12 @@ const Login = () => {
 
   const openPostCode = () => {
     setIsPopupOpen(true);
+    setIsPostPopupOpen(true);
   }
 
   const closePostCode = () => {
     setIsPopupOpen(false)
+    setIsPostPopupOpen(false);
   }
 
 
@@ -265,9 +268,9 @@ const Login = () => {
         </Mobile>
         <div id='popupDom'>
          {isPopupOpen && (
-              <PostPopupDom>
-                <PopupPostCode onClose={closePostCode} setData={setUserPostData} />
-              </PostPopupDom>
+              <PopupDom>
+                {isPostPopupOpen && <PopupPostCode onClose={closePostCode} setData={setUserPostData} />}
+              </PopupDom>
           )}
         </div>
       </>
