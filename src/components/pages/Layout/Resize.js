@@ -143,10 +143,6 @@ const Resize = () => {
     });
   }
 
-  const resizeBatchDownloadImage = (imageUrl, maxWidth, maxHeight) => {
-
-  }
-
   return (
     <div className={classes.wrap}>
       <RadioGroup>

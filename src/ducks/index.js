@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import pageNavigatorReducer from './pageNavigator';
 import loginCheckReducer from './loginCheck';
-import loginCheck from "./loginCheck";
+//import loginCheck from "./loginCheck";
 import storage from 'redux-persist/lib/storage';
 import {persistReducer} from "redux-persist";
 

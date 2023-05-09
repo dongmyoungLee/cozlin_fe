@@ -6,7 +6,6 @@ import MobileMenuList from "../../blocks/MobileMenuList";
 import {useDispatch, useSelector} from "react-redux";
 import {loginCheckAction} from "../../../ducks/loginCheck";
 import {headerMenu, mypageTooltipMenu} from "../../../common/Menus";
-import HeaderItem from "../../blocks/HeaderItem";
 
 
 const MobileHeader = () => {

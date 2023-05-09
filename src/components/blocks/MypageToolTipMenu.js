@@ -4,7 +4,6 @@ import {mypageFavMenu, mypageTooltipMenu} from "../../common/Menus";
 import {loginCheckAction} from "../../ducks/loginCheck";
 import {useDispatch} from "react-redux";
 import logout from '../../asset/images/logout.png';
-import MobileMenuList from "./MobileMenuList";
 
 const MypageToolTipMenu = (props) => {
   const dispatch = useDispatch();
