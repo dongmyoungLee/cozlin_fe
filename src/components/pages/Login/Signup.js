@@ -312,7 +312,7 @@ const Login = () => {
         <PC>
           <section className={classes.section}>
             <div className={classes.wrap}>
-              <article className={classes.article}>
+              <article className={classes.signup_article}>
                 <div className={classes2.formWrap}>
                   <div>
                     <div className={classes.formOption}>

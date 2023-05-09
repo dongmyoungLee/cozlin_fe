@@ -1,8 +1,7 @@
 import classes from '../../../styles/pages/login/login.module.css'
-import logo from '../../../asset/images/logo.png';
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
@@ -49,7 +48,6 @@ const Login = () => {
   }
 
   const labelName = isLoginType === 'general' ? '아이디(이메일)' : '기업 아이디(이메일)';
-  const signUpLink = isLoginType === 'general' ? '회원가입 하기 ＞' : '기업회원 신청하기 ＞';
   const submitEvt = isLoginType === 'general' ? generalOnSubmitHandler : companyOnSubmitHandler;
   const idChangeEvt = isLoginType === 'general' ? generalIdInputHandler : companyIdInputHandler;
   const passChangeEvt = isLoginType === 'general' ? generalPassInputHandler : companyPassInputHandler;
