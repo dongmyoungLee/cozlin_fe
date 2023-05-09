@@ -52,6 +52,7 @@ const PopupPostCode = (props) => {
 
   const wrap = {
     position : 'fixed',
+    zIndex : '10',
     width: "100%",
     height: "100vh",
     top: "50%",
