@@ -326,7 +326,7 @@ const Login = () => {
         </PC>
         <Mobile>
           <section className={classes.mobileSection}>
-            <article className={classes.mobileArticle}>
+            <article className={classes.signup_mobileArticle}>
               <div className={classes.mobileFormWrap}>
                 <div>
                   <div className={classes.formOption}>
