@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ab9b773-4716-4ab0-b544-2581efb094c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/styles/blocks/MsgPopup.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/atoms/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/atoms/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/blocks/MsgPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/blocks/MsgPopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/Login/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Login/Signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/atoms/input.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/atoms/input.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/pages/login/login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/pages/login/login.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

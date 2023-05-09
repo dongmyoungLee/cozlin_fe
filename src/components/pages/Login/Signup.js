@@ -169,7 +169,7 @@ const Login = () => {
     if (afterVisitPath !== '') {
       navigate(afterVisitPath);
     }
-    
+
   }
 
 
@@ -263,6 +263,12 @@ const Login = () => {
                             <Input label='비밀번호 확인' onChange={passCheckInputHandler} input={{
                               type : 'password',
                               placeholder : '********',
+                            }} />
+                            <Input label='성함' onChange={nameInputHandler} input={{
+                              type : 'text',
+                              placeholder : '홍길동',
+                              name: 'userName',
+                              maxLength: 10,
                             }} />
                             <div className={classes2.flexOption}>
                               <Input label='주민번호 (7자리)' onChange={birthBeforeInputHandler} input={{
