@@ -21,13 +21,13 @@ const MsgPopup = (props) => {
       <>
         <div className={classes.wrap}>
           <div className={classes.contents}>
-            {props.msg !== '인증메일 발송처리 에러' &&
+            {props.msg === '인증메일 발송처리 에러' &&
                 <>
                   <div className={classes.exit} onClick={() => {props.onClick('exit')}}>×</div>
                   <p className={classes.errorMsg}>{props.msg}</p>
                 </>
             }
-            {props.msg === '인증메일 발송처리 에러' &&
+            {props.msg !== '인증메일 발송처리 에러' &&
                 <>
                   <div className={classes.exit} onClick={() => {props.onClick('exit')}}>×</div>
                   <div className={classes.areaMsgTop}>
