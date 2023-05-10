@@ -9,6 +9,7 @@ import PopupPostCode from "../../blocks/PopupPostCode";
 import axios from "axios";
 import MsgPopup from "../../blocks/MsgPopup";
 import {useNavigate} from "react-router-dom";
+import MailValidPopup from "../../blocks/MailValidPopup";
 
 
 const Login = () => {
@@ -20,6 +21,7 @@ const Login = () => {
   const [afterVisitPath, setAfterVisitPath] = useState('');
   const [isPostPopupOpen, setIsPostPopupOpen] = useState(false);
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
+  const [isMailValidPopupOpen, setIsMailValidPopupOpen] = useState({show : false, msg: ''});
   const [userPostData, setUserPostData] = useState('');
   const [idInputWidth, setIdInputWidth] = useState('100%');
   const [phoneInputWidth, setPhoneInputWidth] = useState('100%');
@@ -27,6 +29,10 @@ const Login = () => {
   const [birthAfterInput, setBirthAfterInput] = useState('');
   const [isIdBtnShow, setIsIdBtnShow] = useState(false);
   const [isPhoneBtnShow, setIsPhoneBtnShow] = useState(false);
+  const [userMailCode, setUserMailCode] = useState('');
+  const [userEnteredMailCode, setUserEnteredMailCode] = useState('');
+  const [idValidBtnText, setIdValidBtnText] = useState('인증');
+  const [idValidBtnDisabled, setIdValidBtnDisabled] = useState('');
   const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
   const passwordRegEx = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/
   const numberRegExp = /[0-9]/g;
@@ -130,8 +136,10 @@ const Login = () => {
       return ;
     }
 
-
-
+    if(idValidBtnText !== '완료') {
+      setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
+      return ;
+    }
 
     axios.post('http://localhost:9090/user', {}, {
       params : {
@@ -172,6 +180,53 @@ const Login = () => {
 
   }
 
+  const emailValidForm = (e) => {
+    e.preventDefault();
+
+    if (!emailCheck(idInput)) {
+      setIsMsgPopupOpen({show: true, msg: '아이디를 이메일형식으로 입력해주세요.'});
+      return ;
+    }
+
+    axios.post('http://localhost:9090/mail/confirm', {}, {
+      params : {
+        email: idInput,
+      }}).then((res) => {
+
+      if (res.status === 200) {
+        setUserMailCode(res.data.result[0]);
+        setIsMailValidPopupOpen({show: true, msg: '인증메일이 발송되었습니다.'});
+      }
+
+    }).catch((error) => {
+      setIsMailValidPopupOpen({show: true, msg: '인증메일 발송처리 에러'});
+    });
+
+
+  }
+
+  const emailValidCheck = (flag) => {
+
+    if (flag === 'exit') {
+      setIsMailValidPopupOpen({show: false, msg: ''});
+      return;
+    }
+
+    if (userMailCode !== userEnteredMailCode) {
+      setIsMailValidPopupOpen({show: true, msg: '인증코드가 올바르지 않습니다.'});
+      return ;
+    }
+
+    setIsMailValidPopupOpen({show: false, msg: ''});
+    setIdValidBtnText('완료');
+    setIdValidBtnDisabled('disabled');
+
+  }
+
+  const userEnteredCodeData = (userCode) => {
+    setUserEnteredMailCode(userCode);
+  }
+
 
   const pcLoginForm = <form className={classes2.signupGeneralForm}>
                         <div className={classes2.flexOption}>
@@ -181,7 +236,7 @@ const Login = () => {
                             width : idInputWidth,
                             name: 'userId'
                           }} />
-                          <button tabIndex='-1' style={{display : isIdBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
+                          <button onClick={emailValidForm} disabled={idValidBtnDisabled} tabIndex='-1' style={{display : isIdBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>{idValidBtnText}</button>
                         </div>
 
                         <Input label='비밀번호' onChange={passInputHandler} input={{
@@ -252,8 +307,9 @@ const Login = () => {
                                 type : 'text',
                                 placeholder : 'example@email.com',
                                 width : idInputWidth,
+                                name: 'userId'
                               }} />
-                              <button tabIndex='-1' style={{display : isIdBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
+                              <button onClick={emailValidForm} disabled={idValidBtnDisabled} tabIndex='-1' style={{display : isIdBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>{idValidBtnText}</button>
                             </div>
 
                             <Input label='비밀번호' onChange={passInputHandler} input={{
@@ -346,6 +402,9 @@ const Login = () => {
             <MsgPopup onClick={closeMsgPopup} msg={isMsgPopupOpen.msg} />
           </PopupDom>}
 
+          {isMailValidPopupOpen.show && <PopupDom>
+            <MailValidPopup userEnteredCodeData={userEnteredCodeData} onClick={emailValidCheck} msg={isMailValidPopupOpen.msg} userCode={userMailCode} />
+          </PopupDom>}
         </div>
       </>
   );
