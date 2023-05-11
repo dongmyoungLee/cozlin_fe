@@ -9,7 +9,7 @@ const HumanResources = () => {
 
   const testApi = async () => {
     const response = await fetch('http://localhost:9090/user');
-
+    debugger
     if (!response.ok) { 
         throw new Error('SomeThing went wrong!');
     }
