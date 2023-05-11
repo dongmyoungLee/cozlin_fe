@@ -6,10 +6,10 @@ import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
 import PopupDom from "../../blocks/PopupDom";
 import PopupPostCode from "../../blocks/PopupPostCode";
-import axios from "axios";
 import MsgPopup from "../../blocks/MsgPopup";
 import {useNavigate} from "react-router-dom";
 import MailValidPopup from "../../blocks/MailValidPopup";
+import {emailValidService, signUp} from "../../../common/ApiPostService";
 
 
 const Login = () => {
@@ -141,25 +141,16 @@ const Login = () => {
       return ;
     }
 
-    axios.post('http://localhost:9090/user', {}, {
-      params : {
-        userId: idInput,
-        userPassword: passInput,
-        userPhone: phoneInput,
-        userBirth: `${birthBeforeInput + birthAfterInput}`,
-        userAddr: userPostData,
-        userName: nameInput,
-    }}).then((res) => {
-
+    signUp()
+    .then((res) => {
       if (res.status === 200) {
         setAfterVisitPath('/login');
         setIsMsgPopupOpen({show: true, msg: '회원가입이 완료 되었습니다.'});
       }
-
-    }).catch((error) => {
+    })
+    .catch((error) => {
       setIsMsgPopupOpen({show: true, msg: error.response.data.errorMessage === undefined ? '데이터베이스 오류 입니다. 관리자에게 문의하세요.' : error.response.data.errorMessage });
-    });
-
+    })
   }
 
 
@@ -188,20 +179,17 @@ const Login = () => {
       return ;
     }
 
-    axios.post('http://localhost:9090/mail/confirm', {}, {
-      params : {
-        email: idInput,
-      }}).then((res) => {
-
+    emailValidService(idInput)
+    .then((res) => {
       if (res.status === 200) {
         setUserMailCode(res.data.result[0]);
         setIsMailValidPopupOpen({show: true, msg: '인증메일이 발송되었습니다.'});
       }
-
-    }).catch((error) => {
+    })
+    .catch((error) => {
+      debugger
       setIsMailValidPopupOpen({show: true, msg: '인증메일 발송처리 에러'});
-    });
-
+    })
 
   }
 

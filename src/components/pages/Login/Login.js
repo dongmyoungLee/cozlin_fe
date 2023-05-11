@@ -7,7 +7,7 @@ import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {loginCheckAction} from "../../../ducks/loginCheck";
+import {apiClient, executeLoginAuthenticationService} from "../../../common/ApiGetService";
 
 
 const Login = () => {
@@ -21,52 +21,50 @@ const Login = () => {
   const radioChangeHandler = (e) => {
     setIsLoginType(e.target.value);
   }
-  const generalIdInputHandler = (e) => {
+  const idInputHandler = (e) => {
     setIdInput(e.target.value);
   }
-  const generalPassInputHandler = (e) => {
+  const passInputHandler = (e) => {
     setPassInput(e.target.value);
   }
-  const generalOnSubmitHandler = (e) => {
-    e.preventDefault();
+  const loginSubmitHandler = (token) => {
+
+    // isLoginType 분기하자 나중에..
+
+    const basicAuthToken = 'Basic ' + window.btoa(idInput + ":" + passInput);
+
+    executeLoginAuthenticationService(basicAuthToken)
+    .then((res) => {
+
+    })
+    .catch((error) => {
+
+    })
 
     // 일반회원 로그인 후 에러처리하자
-    dispatch(loginCheckAction.isLogin(true));
-    navigate('/');
+    //dispatch(loginCheckAction.isLogin(true));
+    //navigate('/');
   }
 
-  const companyIdInputHandler = (e) => {
-    setIdInput(e.target.value);
-  }
-  const companyPassInputHandler = (e) => {
-    setPassInput(e.target.value);
-  }
-  const companyOnSubmitHandler = (e) => {
-    e.preventDefault();
-
-    // 기업회원 로그인 후 에러처리 하자
-  }
 
   const labelName = isLoginType === 'general' ? '아이디(이메일)' : '기업 아이디(이메일)';
-  const submitEvt = isLoginType === 'general' ? generalOnSubmitHandler : companyOnSubmitHandler;
-  const idChangeEvt = isLoginType === 'general' ? generalIdInputHandler : companyIdInputHandler;
-  const passChangeEvt = isLoginType === 'general' ? generalPassInputHandler : companyPassInputHandler;
   const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
 
 
-  const pcLoginForm = <form className={classes.generalForm} onSubmit={submitEvt}>
-                            <Input label={labelName} onChange={idChangeEvt} input={{
+  const pcLoginForm = <form className={classes.generalForm}>
+                            <Input label={labelName} onChange={idInputHandler} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
                             }} />
-                            <Input label='비밀번호' onChange={passChangeEvt} input={{
+                            <Input label='비밀번호' onChange={passInputHandler} input={{
                               type : 'password',
                               placeholder : '********',
                             }} />
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
-                              type : '',
-                              value : '로그인'
+                              type : 'button',
+                              value : '로그인',
+                              onClick : loginSubmitHandler
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
@@ -74,19 +72,20 @@ const Login = () => {
                             </div>
                       </form>;
 
-  const mobileLoginForm = <form className={classes.mobileGeneralForm} onSubmit={submitEvt}>
-                            <Input label={labelName} onChange={idChangeEvt} input={{
+  const mobileLoginForm = <form className={classes.mobileGeneralForm}>
+                            <Input label={labelName} onChange={idInputHandler} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
                             }} />
-                            <Input label='비밀번호' onChange={passChangeEvt} input={{
+                            <Input label='비밀번호' onChange={passInputHandler} input={{
                               type : 'password',
                               placeholder : '********',
                             }} />
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
-                              type : '',
-                              value : '로그인'
+                              type : 'button',
+                              value : '로그인',
+                              onClick : loginSubmitHandler
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
