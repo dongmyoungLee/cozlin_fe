@@ -8,13 +8,10 @@ const HumanResources = () => {
 
   const testApiHandler = async () => {
 
-    const basicAuthToken2 = 'Basic ' + window.btoa('in28minutes' + ":" + 'dummy');
-    const basicAuthToken = 'Bearer eyJraWQiOiI0MTUzOWEyYy01NzQ3LTQwMDYtODFhZi03NTBjMmJhZmU2YjEiLCJhbGciOiJSUzI1NiJ9';
-
     testGetApi().then((res) => {
 
     }).catch((error) => {
-      
+
     })
   }
 
