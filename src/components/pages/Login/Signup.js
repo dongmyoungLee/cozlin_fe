@@ -144,13 +144,11 @@ const Login = () => {
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, userPostData, nameInput)
     .then((res) => {
       if (res.status === 200) {
-        debugger
         setAfterVisitPath('/login');
         setIsMsgPopupOpen({show: true, msg: '회원가입이 완료 되었습니다.'});
       }
     })
     .catch((error) => {
-      debugger
       setIsMsgPopupOpen({show: true, msg: error.response.data.errorMessage === undefined ? '데이터베이스 오류 입니다. 관리자에게 문의하세요.' : error.response.data.errorMessage });
     })
   }
