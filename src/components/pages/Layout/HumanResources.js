@@ -1,22 +1,31 @@
 import Layout from "../../blocks/Layout";
-import {useState} from "react";
+import {testAuthenticate} from "../../../common/api/ApiPostService";
+import {testGetApi} from "../../../common/api/ApiGetService";
 
 
 const HumanResources = () => {
 
-  const [serverData, setServerData] = useState([]);
 
+  const testApiHandler = async () => {
 
-  const testApi = async () => {
-    const response = await fetch('http://localhost:9090/user');
-    debugger
-    if (!response.ok) { 
-        throw new Error('SomeThing went wrong!');
-    }
+    const basicAuthToken2 = 'Basic ' + window.btoa('in28minutes' + ":" + 'dummy');
+    const basicAuthToken = 'Bearer eyJraWQiOiI0MTUzOWEyYy01NzQ3LTQwMDYtODFhZi03NTBjMmJhZmU2YjEiLCJhbGciOiJSUzI1NiJ9';
 
-    const responseData = await response.json();
+    testGetApi().then((res) => {
 
-    setServerData(responseData);
+    }).catch((error) => {
+      
+    })
+  }
+
+  const testApiHandler2 = async () => {
+    testAuthenticate('in28minutes', 'dummy')
+        .then((res) => {
+
+        })
+        .catch((err) => {
+
+        })
   }
 
 
@@ -24,10 +33,8 @@ const HumanResources = () => {
       <>
         <Layout >
           <p>인재 채용 페이지</p>
-          <button onClick={testApi} >testAPI</button>
-          {serverData.map((item, idx) => (
-              <p key={item.customerNo}>{item.customerNo}</p>
-          ))}
+          <button onClick={testApiHandler} >testAPI</button>
+          <button onClick={testApiHandler2} >testJWTAPI</button>
         </Layout>
       </>
   );

@@ -1,14 +1,14 @@
 import classes from '../../../styles/pages/login/login.module.css'
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import {Mobile, PC} from "../../config/Responsive";
 import {Link, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {apiClient, executeLoginAuthenticationService} from "../../../common/ApiGetService";
-
+import {useDispatch, useSelector} from "react-redux";
+import {login} from "../../../common/AuthContext";
+import {loginCheckAction} from "../../../ducks/loginCheck";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
@@ -17,6 +17,14 @@ const Login = () => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
+
+  useEffect(() => {
+    // 페이지 처음 들어왔을때 로그인상태 라면 홈으로 반환..
+    if (isLogin) {
+      navigate('/');
+    }
+  }, []);
 
   const radioChangeHandler = (e) => {
     setIsLoginType(e.target.value);
@@ -27,23 +35,23 @@ const Login = () => {
   const passInputHandler = (e) => {
     setPassInput(e.target.value);
   }
-  const loginSubmitHandler = (token) => {
+  const loginSubmitHandler = async (e) => {
+    e.preventDefault();
 
-    // isLoginType 분기하자 나중에..
+    // @@ isLoginType 분기하자 나중에..
 
-    const basicAuthToken = 'Basic ' + window.btoa(idInput + ":" + passInput);
+    // login 인증함수..
+    const loginFn = await login(idInput, passInput);
 
-    executeLoginAuthenticationService(basicAuthToken)
-    .then((res) => {
+    // login 인증 완료 -> 해당 redux 에 login 정보 셋팅..
+    if (loginFn.isLogin) {
+      navigate('/');
+      dispatch(loginCheckAction.loginInfoSet(loginFn));
+    } else {
+      alert("로그인 실패");
+    }
 
-    })
-    .catch((error) => {
 
-    })
-
-    // 일반회원 로그인 후 에러처리하자
-    //dispatch(loginCheckAction.isLogin(true));
-    //navigate('/');
   }
 
 
@@ -51,7 +59,7 @@ const Login = () => {
   const errorParam = '이메일과 비밀번호가 일치하지 않습니다.';
 
 
-  const pcLoginForm = <form className={classes.generalForm}>
+  const pcLoginForm = <form className={classes.generalForm} onSubmit={loginSubmitHandler}>
                             <Input label={labelName} onChange={idInputHandler} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
@@ -62,9 +70,8 @@ const Login = () => {
                             }} />
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
-                              type : 'button',
+                              type : '',
                               value : '로그인',
-                              onClick : loginSubmitHandler
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
@@ -72,7 +79,7 @@ const Login = () => {
                             </div>
                       </form>;
 
-  const mobileLoginForm = <form className={classes.mobileGeneralForm}>
+  const mobileLoginForm = <form className={classes.mobileGeneralForm} onSubmit={loginSubmitHandler}>
                             <Input label={labelName} onChange={idInputHandler} input={{
                               type : 'text',
                               placeholder : 'example@email.com'
@@ -83,9 +90,8 @@ const Login = () => {
                             }} />
                             {error && <p className={classes.error}>{errorParam}</p>}
                             <Button btn={{
-                              type : 'button',
+                              type : '',
                               value : '로그인',
-                              onClick : loginSubmitHandler
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}

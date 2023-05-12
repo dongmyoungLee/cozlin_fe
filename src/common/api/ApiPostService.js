@@ -1,10 +1,5 @@
-import axios from "axios";
+import {apiClient} from "./ApiClient";
 
-export const apiClient = axios.create(
-    {
-      baseURL : 'http://localhost:9090'
-    }
-);
 
 export const emailValidService = (userId) => apiClient.post('/mail/confirm', {}, {
     params : {
@@ -22,4 +17,13 @@ export const signUp = (id, pwd, phone, birthBefore, birthAfter , addr, name) => 
       userName: name,
     }}
 )
+
+export const testAuthenticate = (userId, userPwd) => apiClient.post('authenticate', {
+  username : userId,
+  password : userPwd
+})
+
+export const executeJwtAuthenticationTokenService = (username, password) => apiClient.post('/authenticate', {username, password})
+
+
 

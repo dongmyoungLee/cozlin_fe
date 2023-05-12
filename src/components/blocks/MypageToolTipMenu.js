@@ -9,16 +9,21 @@ const MypageToolTipMenu = (props) => {
   const dispatch = useDispatch();
 
   const clickMethods = (flag) => {
-
-
     props.hide();
 
   }
 
   const logoutHandler =  () => {
-    dispatch(loginCheckAction.isLogin(false));
+    const logout = {
+      isLogin : false,
+      token : null,
+      userId : null,
+      loginEnteredTime : null,
+    }
+    dispatch(loginCheckAction.logout(logout));
     props.hide();
   }
+
 
 
   return (

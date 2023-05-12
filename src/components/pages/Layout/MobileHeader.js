@@ -11,7 +11,7 @@ import {headerMenu, mypageTooltipMenu} from "../../../common/Menus";
 const MobileHeader = () => {
   const [isMobileMenuPage, setIsMobileMenuPage] = useState(false);
   const dispatch = useDispatch();
-  const isLogin = useSelector(state => state.loginCheck.isLogin);
+  const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
 
   const mobileMenuPageHandler = () => {
     setIsMobileMenuPage(!isMobileMenuPage);
@@ -22,7 +22,13 @@ const MobileHeader = () => {
   }
 
   const mobileLogOutHandler = () => {
-    dispatch(loginCheckAction.isLogin(false));
+    const logout = {
+      isLogin : false,
+      token : null,
+      userId : null,
+      loginEnteredTime : null,
+    }
+    dispatch(loginCheckAction.logout(logout));
     setIsMobileMenuPage(false);
   }
 
