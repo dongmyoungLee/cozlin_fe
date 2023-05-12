@@ -5,7 +5,7 @@ import myProfile from '../asset/images/myprofile.png';
 import myAccount from '../asset/images/myaccount.png';
 
 
-const headerMenuList = [
+export const headerMenu = [
     {
       menuName : '인채 채용',
       menuLink : '/humanResources'
@@ -20,7 +20,7 @@ const headerMenuList = [
     },
 ];
 
-const favoriteMenuList = [
+export const mypageFavMenu = [
   {
     menuName : '북마크 모아보기',
     imgPath : bookmark_img,
@@ -36,7 +36,7 @@ const favoriteMenuList = [
 ]
 
 
-const mypageMenuList = [
+export const mypageTooltipMenu = [
 
     {
       menuName : '지원 현황',
@@ -57,7 +57,3 @@ const mypageMenuList = [
       path : '/myAccount',
     },
 ];
-
-export const mypageFavMenu = favoriteMenuList;
-export const headerMenu = headerMenuList;
-export const mypageTooltipMenu = mypageMenuList;

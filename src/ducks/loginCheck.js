@@ -1,16 +1,31 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialIsLoginState = {
-  isLogin : false
+  loginInfo : {
+      isLogin : false,
+      token : null,
+      userId : null,
+      loginEnteredTime : null,
+  }
 }
 
 const loginCheckSlise = createSlice({
   name : 'isLogin',
   initialState : initialIsLoginState,
   reducers : {
-    isLogin(state, action) {
-      state.isLogin = action.payload;
+
+    loginInfoSet(state, action) {
+      state.loginInfo = action.payload;
     },
+
+    isLogin(state, action) {
+      state.loginInfo.isLogin = action.payload;
+    },
+
+    logout(state, action) {
+      state.loginInfo = action.payload;
+    }
+
   }
 })
 
