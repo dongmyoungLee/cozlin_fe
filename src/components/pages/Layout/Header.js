@@ -13,7 +13,8 @@ import {useState} from "react";
 const Header = () => {
   const dispatch = useDispatch();
   const isCompany = useSelector(state => state.pageNavigator.isCompany);
-  const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
+  const isLogin = useSelector(state => state.loginCheck);
+  console.log(isLogin)
   const navigate = useNavigate();
   const [isMypageShow, setIsMypageShow] = useState(false);
 
