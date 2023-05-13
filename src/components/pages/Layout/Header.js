@@ -14,7 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const isCompany = useSelector(state => state.pageNavigator.isCompany);
   const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
-  
+
   const navigate = useNavigate();
   const [isMypageShow, setIsMypageShow] = useState(false);
 

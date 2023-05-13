@@ -9,6 +9,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../../common/AuthContext";
 import {loginCheckAction} from "../../../ducks/loginCheck";
+import PopupDom from "../../blocks/PopupDom";
+import MsgPopup from "../../blocks/MsgPopup";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
@@ -18,6 +20,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
+  const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
 
   useEffect(() => {
     // 페이지 처음 들어왔을때 로그인상태 라면 홈으로 반환..
@@ -41,17 +44,24 @@ const Login = () => {
     // @@ isLoginType 분기하자 나중에..
 
     // login 인증함수..
-    const loginFn = await login(idInput, passInput);
+    const loginFn = await login(idInput, passInput)
+      .then((res) => {
 
-    // login 인증 완료 -> 해당 redux 에 login 정보 셋팅..
-    if (loginFn.isLogin) {
-      navigate('/');
-      dispatch(loginCheckAction.loginInfoSet(loginFn));
-    } else {
-      alert("로그인 실패");
-    }
+        if (res.isLogin) {
+          // 로그인 성공
+          navigate('/');
+          debugger
+          dispatch(loginCheckAction.loginInfoSet(res));
+        } else {
+          // 로그인 실패
+          setIsMsgPopupOpen({show: true, msg: '로그인 정보가 일치하지 않습니다.'});
+        }
 
+      });
+  }
 
+  const closeMsgPopup = () => {
+    setIsMsgPopupOpen({show: false, msg: ''});
   }
 
 
@@ -144,6 +154,11 @@ const Login = () => {
             </article>
           </section>
         </Mobile>
+        <div id='popupDom'>
+          {isMsgPopupOpen.show && <PopupDom>
+            <MsgPopup onClick={closeMsgPopup} msg={isMsgPopupOpen.msg} />
+          </PopupDom>}
+        </div>
       </>
   );
 }
