@@ -7,6 +7,12 @@
     display: flex;
 }
 
+.mWrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
 .aside {
     width: 40%;
     height: calc(100vh - 57px);
@@ -154,4 +160,41 @@
     flex-direction: column;
     gap: 25px;
     margin: 0 auto;
+}
+
+.findPwdFormWrap {
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid rgb(228, 235, 240);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobileFindPwdFormWrap {
+    width: 280px;
+    height: 270px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid rgb(228, 235, 240);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.marginOption {
+    margin-bottom: 25px;
+}
+
+.fontSizeDefault {
+    font-size: 16px;
+}
+
+.gapOption {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
