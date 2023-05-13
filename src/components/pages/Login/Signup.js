@@ -136,10 +136,10 @@ const Login = () => {
       return ;
     }
 
-    if(idValidBtnText !== '완료') {
+    /*if(idValidBtnText !== '완료') {
       setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
       return ;
-    }
+    }*/
 
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, userPostData, nameInput)
     .then((res) => {
@@ -149,7 +149,7 @@ const Login = () => {
       }
     })
     .catch((error) => {
-      setIsMsgPopupOpen({show: true, msg: error.response.data.errorMessage === undefined ? '데이터베이스 오류 입니다. 관리자에게 문의하세요.' : error.response.data.errorMessage });
+      setIsMsgPopupOpen({show: true, msg: error.response.data.message === undefined ? '데이터베이스 오류 입니다. 관리자에게 문의하세요.' : error.response.data.message });
     })
   }
 
