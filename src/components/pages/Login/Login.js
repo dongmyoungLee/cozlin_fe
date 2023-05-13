@@ -50,7 +50,6 @@ const Login = () => {
         if (res.isLogin) {
           // 로그인 성공
           navigate('/');
-          debugger
           dispatch(loginCheckAction.loginInfoSet(res));
         } else {
           // 로그인 실패
@@ -85,7 +84,7 @@ const Login = () => {
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p>비밀번호 찾기 ></p>
+                              <p><Link to='/find-pwd'>비밀번호 찾기 ></Link></p>
                             </div>
                       </form>;
 
@@ -105,7 +104,7 @@ const Login = () => {
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p>비밀번호 찾기 ></p>
+                              <p><Link to='/find-pwd'>비밀번호 찾기 ></Link></p>
                             </div>
                           </form>;
   return (

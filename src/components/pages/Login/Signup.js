@@ -179,7 +179,7 @@ const Login = () => {
       return ;
     }
 
-    emailValidService(idInput)
+    emailValidService(idInput, 'signup')
     .then((res) => {
       if (res.status === 200) {
         setUserMailCode(res.data.result[0]);
