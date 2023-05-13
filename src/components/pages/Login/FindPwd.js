@@ -8,17 +8,13 @@ import {useState} from "react";
 import {findPwdService} from "../../../common/api/ApiPostService";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
+import {emailCheck} from "../../../common/Reg";
 
 const FindPwd = () => {
   const [isFindType, setIsFindType] = useState('id');
   const [phoneInput, setPhoneInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
-  const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
-
-  const emailCheck = (username) => {
-    return emailRegEx.test(username);
-  }
 
   const radioChangeHandler = (e) => {
     setIsFindType(e.target.value);

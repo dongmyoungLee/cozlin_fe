@@ -11,6 +11,7 @@ import {login} from "../../../common/AuthContext";
 import {loginCheckAction} from "../../../ducks/loginCheck";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
+import {emailCheck, passCheck} from "../../../common/Reg";
 
 const Login = () => {
   const [isLoginType, setIsLoginType] = useState('general');
@@ -42,6 +43,17 @@ const Login = () => {
     e.preventDefault();
 
     // @@ isLoginType 분기하자 나중에..
+
+    if (!emailCheck(idInput)) {
+      setIsMsgPopupOpen({show: true, msg: '아이디를 형식에 맞게 입력해주세요.'});
+      return ;
+    }
+
+    if (!passCheck(passInput)) {
+      setIsMsgPopupOpen({show: true, msg: '비밀번호를 형식에 맞게 입력해주세요.'});
+      return ;
+    }
+
 
     // login 인증함수..
     const loginFn = await login(idInput, passInput)
