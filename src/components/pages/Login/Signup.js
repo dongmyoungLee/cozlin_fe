@@ -340,7 +340,7 @@ const Login = () => {
   return (
       <>
         <PC>
-          <section className={classes.section}>
+          <section className={classes.signup_section}>
             <div className={classes.wrap}>
               <article className={classes.signup_article}>
                 <div className={classes2.formWrap}>

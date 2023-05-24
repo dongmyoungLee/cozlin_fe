@@ -6,6 +6,7 @@ import MobileMenuList from "../../blocks/MobileMenuList";
 import {useDispatch, useSelector} from "react-redux";
 import {loginCheckAction} from "../../../ducks/loginCheck";
 import {headerMenu, mypageTooltipMenu} from "../../../common/Menus";
+import {Link} from "react-router-dom";
 
 
 const MobileHeader = () => {
@@ -65,7 +66,9 @@ const MobileHeader = () => {
       <>
         <header className={classes.header}>
           <div className={classes.mobileHeaderWrapper}>
-            <img src={logo} className={classes.img} alt='cozlin_logo' />
+            <Link className={classes.blockOption} to='/'>
+                <img src={logo} className={classes.img} alt='cozlin_logo' />
+            </Link>
             <img src={menu} className={classes.menuImg} onClick={mobileMenuPageHandler} alt='menu_logo' />
           </div>
         </header>
