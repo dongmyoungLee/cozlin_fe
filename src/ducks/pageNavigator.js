@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialPageNavigatorState = {
-  isCompany : false
+  isCompany : false,
+  isMobileMenu : false,
 }
 
 const pageNavigatorSlise = createSlice({
@@ -11,6 +12,10 @@ const pageNavigatorSlise = createSlice({
     isCompany(state, action) {
       state.isCompany = action.payload;
     },
+
+    isMobileMenu(state, action) {
+      state.isMobileMenu = action.payload;
+    }
   }
 })
 
