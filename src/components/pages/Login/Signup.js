@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 import MailValidPopup from "../../blocks/MailValidPopup";
 import {emailValidService, signUp} from "../../../common/api/ApiPostService";
 import {emailCheck, numberCheck, passCheck} from "../../../common/Reg";
+import {useSelector} from "react-redux";
 
 
 const Login = () => {
@@ -35,6 +36,7 @@ const Login = () => {
   const [idValidBtnText, setIdValidBtnText] = useState('인증');
   const [idValidBtnDisabled, setIdValidBtnDisabled] = useState('');
   const navigate = useNavigate();
+  const isMobileMenu = useSelector(state => state.pageNavigator.isMobileMenu);
 
   const idInputHandler = (e) => {
     setIdInput(e.target.value);
@@ -355,7 +357,7 @@ const Login = () => {
           </section>
         </PC>
         <Mobile>
-          <section className={classes.mobileSection}>
+          <section className={isMobileMenu ? classes.hide_mobileSection : classes.mobileSection}>
             <article className={classes.signup_mobileArticle}>
               <div className={classes.mobileFormWrap}>
                 <div>
