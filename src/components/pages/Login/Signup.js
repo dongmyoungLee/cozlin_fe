@@ -124,10 +124,10 @@ const Login = () => {
       return ;
     }
 
-    /*if(idValidBtnText !== '완료') {
+    if(idValidBtnText !== '완료') {
       setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
       return ;
-    }*/
+    }
 
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, userPostData, nameInput)
     .then((res) => {
