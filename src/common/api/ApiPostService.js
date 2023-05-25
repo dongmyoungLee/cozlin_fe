@@ -27,11 +27,6 @@ export const signUp = (id, pwd, phone, birthBefore, birthAfter , addr, name) => 
     }}
 )
 
-export const testAuthenticate = (userId, userPwd) => apiClient.post('authenticate', {
-  username : userId,
-  password : userPwd
-})
-
 export const executeJwtAuthenticationTokenService = (username, password) => apiClient.post('/authenticate', {username, password})
 
 
