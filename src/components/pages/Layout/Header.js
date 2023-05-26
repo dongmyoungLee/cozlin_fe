@@ -14,9 +14,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const isCompany = useSelector(state => state.pageNavigator.isCompany);
   const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
-
+  const isTooltipMenu = useSelector(state => state.pageNavigator.isMobileTooltipMenu);
   const navigate = useNavigate();
-  const [isMypageShow, setIsMypageShow] = useState(false);
+
 
   const pageNavigationHandler = () => {
     dispatch(pageNavigatorAction.isCompany(!isCompany));
@@ -29,7 +29,7 @@ const Header = () => {
   }
 
   const mypageMenuShow = () => {
-    setIsMypageShow(!isMypageShow);
+    dispatch(pageNavigatorAction.isMobileTooltipMenu(!isTooltipMenu));
   }
 
 
@@ -67,7 +67,7 @@ const Header = () => {
             </div>
             {isLogin && loginedMenu}
             {!isLogin && notLoginMenu}
-            {isMypageShow && <MypageToolTipMenu hide={mypageMenuShow} />}
+            {isTooltipMenu && <MypageToolTipMenu hide={mypageMenuShow} />}
           </div>
         </Layout>
       </header>
