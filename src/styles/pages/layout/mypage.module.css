@@ -29,6 +29,10 @@
     padding: 40px 32px;
 }
 
+.mobile_account {
+    width: 100%;
+}
+
 .applicantText {
     padding: 8px 12px;
     font-weight: 500;

@@ -48,23 +48,23 @@ const router = createBrowserRouter([
         element: <FindUserInfo />
       },
       {
-        path : 'applicant/account',
+        path : 'account',
         element: <Account />
       },
       {
-        path : 'applicant/profile',
+        path : 'profile',
         element: <Profile />
       },
       {
-        path : 'applicant/history',
+        path : 'history',
         element: <History />
       },
       {
-        path : 'applicant/bookmark',
+        path : 'bookmark',
         element: <Bookmark />
       },
       {
-        path : 'applicant/follow',
+        path : 'follow',
         element: <Follow />
       },
     ],

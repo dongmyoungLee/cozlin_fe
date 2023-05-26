@@ -1,17 +1,26 @@
 import Applicant from "../../blocks/Applicant";
 import MypageLayout from "../../blocks/MypageLayout";
 import classes from '../../../styles/pages/layout/mypage.module.css';
-import {useParams} from "react-router-dom";
+import {Mobile, PC} from "../../config/Responsive";
+
 const Account = () => {
 
   return (
     <>
-      <MypageLayout>
-        <Applicant />
-        <div className={classes.account}>
+      <PC>
+        <MypageLayout>
+          <Applicant />
+          <div className={classes.account}>
+            <p>Account</p>
+          </div>
+        </MypageLayout>
+      </PC>
+      <Mobile>
+        <div className={classes.mobile_account}>
           <p>Account</p>
         </div>
-      </MypageLayout>
+      </Mobile>
+
     </>
   );
 }
