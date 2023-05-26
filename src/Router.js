@@ -7,6 +7,12 @@ import Announcement from "./components/pages/Layout/Announcement";
 import Signup from "./components/pages/Login/Signup";
 import Resize from "./components/pages/Layout/Resize";
 import FindUserInfo from "./components/pages/Login/FindUserInfo";
+import Account from "./components/pages/Infomation/Account";
+import Applicant from "./components/blocks/Applicant";
+import History from "./components/pages/Infomation/History";
+import Bookmark from "./components/pages/Infomation/Bookmark";
+import Follow from "./components/pages/Infomation/Follow";
+import Profile from "./components/pages/Infomation/Profile";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +46,27 @@ const router = createBrowserRouter([
       {
         path: 'find-pwd',
         element: <FindUserInfo />
-      }
+      },
+      {
+        path : 'applicant/account',
+        element: <Account />
+      },
+      {
+        path : 'applicant/profile',
+        element: <Profile />
+      },
+      {
+        path : 'applicant/history',
+        element: <History />
+      },
+      {
+        path : 'applicant/bookmark',
+        element: <Bookmark />
+      },
+      {
+        path : 'applicant/follow',
+        element: <Follow />
+      },
     ],
   }
 ]);

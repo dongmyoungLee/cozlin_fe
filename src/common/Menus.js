@@ -41,19 +41,19 @@ export const mypageTooltipMenu = [
     {
       menuName : '지원 현황',
       imgPath : myHistory,
-      clickFlag : 'myHistory',
-      path : '/myHistory',
+      clickFlag : 'history',
+      path : '/history',
     },
     {
       menuName : '프로필 관리',
       imgPath : myProfile,
-      clickFlag: 'myProfile',
-      path : '/myProfile',
+      clickFlag: 'profile',
+      path : '/profile',
     },
     {
       menuName : '계정 정보',
       imgPath : myAccount,
-      clickFlag: 'myAccount',
-      path : '/myAccount',
+      clickFlag: 'account',
+      path : '/account',
     },
 ];

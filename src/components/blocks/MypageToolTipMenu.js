@@ -2,15 +2,18 @@ import classes from "../../styles/blocks/MypageToolTipMenu.module.css";
 import MypageList from "./MypageList";
 import {mypageFavMenu, mypageTooltipMenu} from "../../common/Menus";
 import {loginCheckAction} from "../../ducks/loginCheck";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import logout from '../../asset/images/logout.png';
+import {pageNavigatorAction} from "../../ducks/pageNavigator";
+import {useNavigate} from "react-router-dom";
 
 const MypageToolTipMenu = (props) => {
   const dispatch = useDispatch();
-
+  const isTooltipMenu = useSelector(state => state.pageNavigator.isMobileTooltipMenu);
+  const navigate = useNavigate();
   const clickMethods = (flag) => {
-    props.hide();
-
+    dispatch(pageNavigatorAction.isMobileTooltipMenu(!isTooltipMenu));
+    navigate(`/applicant/${flag}`);
   }
 
   const logoutHandler =  () => {
