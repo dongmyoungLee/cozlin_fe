@@ -4,16 +4,22 @@ import {apiClient} from "./ApiClient";
 export const emailValidService = (userId, flag) => apiClient.post('/mail/confirm', {}, {
     params : {
       email: userId,
-      flag: 'signup',
+      flag: flag,
     }}
 )
 
-export const findPwdService = (userId, flag) => apiClient.post('/mail/confirm', {}, {
+export const findPwdService = (userId, flag) => apiClient.post('/user/update-pw', {}, {
     params : {
       email: userId,
-      flag: 'find',
+      flag: flag,
     }}
 )
+
+export const findIdService = (userPhone) => apiClient.post('/user/findByUserId', {}, {
+    params : {
+      phone : userPhone
+    }
+})
 
 
 export const signUp = (id, pwd, phone, birthBefore, birthAfter , addr, name) => apiClient.post('/user', {}, {
