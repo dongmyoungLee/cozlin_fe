@@ -25,6 +25,7 @@ const MypageToolTipMenu = (props) => {
     }
     dispatch(loginCheckAction.logout(logout));
     props.hide();
+    navigate("/humanResources");
   }
 
 
