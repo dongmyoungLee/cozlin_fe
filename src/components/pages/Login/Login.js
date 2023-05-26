@@ -96,7 +96,7 @@ const Login = () => {
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p><Link to='/find-pwd'>비밀번호 찾기 ></Link></p>
+                              <p><Link to='/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
                             </div>
                       </form>;
 
@@ -116,7 +116,7 @@ const Login = () => {
                             }} />
                             <div className={classes.signUpBox}>
                               {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p><Link to='/find-pwd'>비밀번호 찾기 ></Link></p>
+                              <p><Link to='/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
                             </div>
                           </form>;
   return (
