@@ -72,8 +72,8 @@ const Login = () => {
 
   const phoneInputHandler = (e) => {
     setPhoneInput((e.target.value).replaceAll("-", ""));
-    setPhoneInputWidth('80%');
-    setIsPhoneBtnShow(true);
+    //setPhoneInputWidth('80%');
+    //setIsPhoneBtnShow(true);
   }
   const birthBeforeInputHandler = (e) => {
     setBirthBeforeInput(e.target.value);
@@ -240,7 +240,7 @@ const Login = () => {
                             name: 'userPhone',
                             maxLength: 13,
                           }} />
-                          <button tabIndex='-1' style={{display : isPhoneBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
+                          {/*<button tabIndex='-1' style={{display : isPhoneBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>*/}
                         </div>
 
                         <div className={classes2.flexOption}>
@@ -325,7 +325,7 @@ const Login = () => {
                                 placeholder : '010-1234-5678',
                                 width : phoneInputWidth,
                               }} />
-                              <button tabIndex='-1' style={{display : isPhoneBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>
+                              {/*<button tabIndex='-1' style={{display : isPhoneBtnShow ? 'block' : 'none', transition : '0.5s'}} className={classes2.buttonOption}>인증</button>*/}
                             </div>
                             <Input label='주소' onClick={openPostCode} input={{
                               type : 'text',
