@@ -25,13 +25,13 @@ export const mypageFavMenu = [
     menuName : '북마크 모아보기',
     imgPath : bookmark_img,
     clickFlag : 'bookmark',
-    path : '/bookmark',
+    path : '/applicant/bookmark',
   },
   {
     menuName : '팔로우 모아보기',
     imgPath : follow_img,
     clickFlag : 'follow',
-    path : '/follow',
+    path : '/applicant/follow',
   },
 ]
 
@@ -42,18 +42,18 @@ export const mypageTooltipMenu = [
       menuName : '지원 현황',
       imgPath : myHistory,
       clickFlag : 'history',
-      path : '/history',
+      path : '/applicant/history',
     },
     {
       menuName : '프로필 관리',
       imgPath : myProfile,
       clickFlag: 'profile',
-      path : '/profile',
+      path : '/applicant/profile',
     },
     {
       menuName : '계정 정보',
       imgPath : myAccount,
       clickFlag: 'account',
-      path : '/account',
+      path : '/applicant/account',
     },
 ];

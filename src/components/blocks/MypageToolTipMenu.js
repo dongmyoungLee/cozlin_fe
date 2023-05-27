@@ -13,7 +13,7 @@ const MypageToolTipMenu = (props) => {
   const navigate = useNavigate();
   const clickMethods = (flag) => {
     dispatch(pageNavigatorAction.isMobileTooltipMenu(!isTooltipMenu));
-    navigate(`/${flag}`);
+    navigate(`/applicant/${flag}`);
   }
 
   const logoutHandler =  () => {

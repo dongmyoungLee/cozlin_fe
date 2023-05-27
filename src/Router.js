@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
 import App from "./App";
 import Login from "./components/pages/Login/Login";
 import Company from "./components/pages/Infomation/Company";
@@ -8,7 +8,6 @@ import Signup from "./components/pages/Login/Signup";
 import Resize from "./components/pages/Layout/Resize";
 import FindUserInfo from "./components/pages/Login/FindUserInfo";
 import Account from "./components/pages/Infomation/Account";
-import Applicant from "./components/blocks/Applicant";
 import History from "./components/pages/Infomation/History";
 import Bookmark from "./components/pages/Infomation/Bookmark";
 import Follow from "./components/pages/Infomation/Follow";
@@ -48,23 +47,23 @@ const router = createBrowserRouter([
         element: <FindUserInfo />
       },
       {
-        path : 'account',
+        path : '/applicant/account',
         element: <Account />
       },
       {
-        path : 'profile',
+        path : '/applicant/profile',
         element: <Profile />
       },
       {
-        path : 'history',
+        path : '/applicant/history',
         element: <History />
       },
       {
-        path : 'bookmark',
+        path : '/applicant/bookmark',
         element: <Bookmark />
       },
       {
-        path : 'follow',
+        path : '/applicant/follow',
         element: <Follow />
       },
     ],

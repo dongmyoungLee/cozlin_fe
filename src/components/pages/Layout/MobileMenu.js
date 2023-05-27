@@ -1,5 +1,5 @@
 import classes from "../../../styles/pages/layout/mobileHeader.module.css";
-import {headerMenu, mypageTooltipMenu} from "../../../common/Menus";
+import {headerMenu, mypageFavMenu, mypageTooltipMenu} from "../../../common/Menus";
 import MobileMenuList from "../../blocks/MobileMenuList";
 import {useDispatch, useSelector} from "react-redux";
 import {loginCheckAction} from "../../../ducks/loginCheck";
@@ -31,6 +31,9 @@ const MobileMenu = (props) => {
 
     const loginMenu = <>
         <section className={classes.section}>
+            {mypageFavMenu.map((item, idx) => (
+                <MobileMenuList key={item.menuName} endPoint={item.path} onClick={props.onClick} menuName={item.menuName} />
+            ))}
             {mypageTooltipMenu.map((item, idx) => (
                 <MobileMenuList key={item.menuName} endPoint={item.path} onClick={props.onClick} menuName={item.menuName} />
             ))}
