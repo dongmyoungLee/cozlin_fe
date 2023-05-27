@@ -134,10 +134,10 @@ const Login = () => {
       return ;
     }
 
-    if(idValidBtnText !== '완료') {
-      setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
-      return ;
-    }
+    // if(idValidBtnText !== '완료') {
+    //   setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
+    //   return ;
+    // }
 
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, (userPostData + ' ' +  userAddrDetail), nameInput)
     .then((res) => {
@@ -346,6 +346,10 @@ const Login = () => {
                               readOnly : 'readonly',
                               placeholder : '클릭해서 검색하기',
                               value : userPostData
+                            }} />
+                            <Input label='상세주소' onChange={userAddrDetailHandler} input={{
+                              type : 'text',
+                              name: 'userAddrDetail'
                             }} />
                             <Button btn={{
                               type : '',
