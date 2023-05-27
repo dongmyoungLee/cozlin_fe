@@ -33,6 +33,7 @@ const Login = () => {
   const [isPhoneBtnShow, setIsPhoneBtnShow] = useState(false);
   const [userMailCode, setUserMailCode] = useState('');
   const [userEnteredMailCode, setUserEnteredMailCode] = useState('');
+  const [userAddrDetail, setIserAddrDetail] = useState('');
   const [idValidBtnText, setIdValidBtnText] = useState('인증');
   const [idValidBtnDisabled, setIdValidBtnDisabled] = useState('');
   const navigate = useNavigate();
@@ -86,6 +87,10 @@ const Login = () => {
     setBirthAfterInput(e.target.value);
   }
 
+  const userAddrDetailHandler = (e) => {
+    setIserAddrDetail(e.target.value);
+  }
+
   const sendUserInfoDataHandler = (e) => {
     e.preventDefault();
 
@@ -109,6 +114,11 @@ const Login = () => {
       return ;
     }
 
+    if(userAddrDetail === '') {
+      setIsMsgPopupOpen({show: true, msg: '상세주소를 입력 해주세요.'});
+      return ;
+    }
+
     if(!numberCheck(phoneInput)) {
       setIsMsgPopupOpen({show: true, msg: '연락처를 숫자 형식으로 입력 해주세요.'});
       return ;
@@ -129,7 +139,7 @@ const Login = () => {
       return ;
     }
 
-    signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, userPostData, nameInput)
+    signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, (userPostData + ' ' +  userAddrDetail), nameInput)
     .then((res) => {
       if (res.status === 200) {
         setAfterVisitPath('/login');
@@ -261,13 +271,17 @@ const Login = () => {
                           }} />
                         </div>
 
-
                         <Input label='주소' onClick={openPostCode} input={{
                           type : 'text',
                           readOnly : 'readonly',
                           placeholder : '클릭해서 검색하기',
                           value : userPostData,
                           name: 'userAddr'
+                        }} />
+
+                        <Input label='상세주소' onChange={userAddrDetailHandler} input={{
+                          type : 'text',
+                          name: 'userAddrDetail'
                         }} />
 
                         <Button btn={{
