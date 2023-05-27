@@ -31,6 +31,68 @@
 
 .mobile_account {
     width: 100%;
+    height: calc(100vh - 57px);
+    background: rgb(246, 249, 250);
+}
+
+.mobile_h2 {
+    font-weight: 600;
+    font-size: 24px;
+    color: rgb(58, 62, 65);
+}
+
+.mobile_param {
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(157, 167, 174);
+}
+
+.mobile_top_info {
+    padding: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: #fff;
+}
+
+.mobile_bot_info {
+    padding: 0px 16px 40px 16px;
+    background: #fff;
+}
+
+.bottom_info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(58, 62, 65);
+}
+
+.indent {
+    padding: 8px 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgb(58, 62, 65);
+}
+
+.indentClick {
+    padding: 8px 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgb(58, 62, 65);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(228, 235, 240);
 }
 
 .applicantText {
@@ -40,3 +102,4 @@
     line-height: 17px;
     color: rgb(157, 167, 174);
 }
+
