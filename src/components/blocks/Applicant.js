@@ -1,10 +1,8 @@
 import classes from '../../styles/pages/layout/mypage.module.css';
 import {mypageTooltipMenu} from "../../common/Menus";
 import MypageList from "./MypageList";
-import {pageNavigatorAction} from "../../ducks/pageNavigator";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
 
 const Applicant = () => {
   const dispatch = useDispatch();
