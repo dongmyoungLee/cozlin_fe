@@ -35,5 +35,11 @@ export const signUp = (id, pwd, phone, birthBefore, birthAfter , addr, name) => 
 
 export const executeJwtAuthenticationTokenService = (username, password) => apiClient.post('/authenticate', {username, password})
 
+export const findUserJobInfo = (userId) => apiClient.post('/user/job', {}, {
+  params : {
+    id : userId
+  }
+})
+
 
 
