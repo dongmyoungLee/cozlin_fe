@@ -21,7 +21,7 @@ const Applicant = () => {
         <p className={classes.applicantText}>My page</p>
         <ul>
           {mypageTooltipMenu.map((item, idx) => (
-            <MypageList key={item.menuName} menuTitle={item.menuName} imgPath={item.imgPath} onClick={() => {clickMethods(item.clickFlag)}} borderRaPx="8px" marginBot="5px" />
+            <MypageList key={item.menuName} menuTitle={item.menuName} imgPath={item.imgPath} clickFlag={item.clickFlag} onClick={() => {clickMethods(item.clickFlag)}} borderRaPx="8px" marginBot="5px" />
           ))}
         </ul>
       </div>

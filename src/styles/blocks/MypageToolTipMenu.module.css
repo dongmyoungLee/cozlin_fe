@@ -49,6 +49,17 @@
     gap: 10px;
 }
 
+.li_back_option {
+    padding: 15px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,98,223, 0.2);
+}
+
 .li_option:hover {
     background-color: rgba(0,98,223, 0.2);
 }
