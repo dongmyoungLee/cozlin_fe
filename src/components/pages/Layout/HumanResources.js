@@ -20,7 +20,11 @@ const HumanResources = () => {
   }
 
   const testMethods = () => {
-    testGetApi().then((res) => {
+    axios.post('http://cozlin.com/user/job', {}, {
+      params : {
+        id : 'pajang1515@daum.net',
+      }
+    }).then((res) => {
       console.log(res);
     }).catch((err) => {
       console.log(err)
@@ -28,11 +32,11 @@ const HumanResources = () => {
   }
 
   const testMethods2 = () => {
-    axios.post('http://localhost:9090/user/update-pw-pagein', {}, {
+    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
       params : {
         id : 'pajang1515@daum.net',
-        currPwd : '12345678a!!!',
-        changePwd : '12345678a!'
+        currPwd : '12345678a!',
+        changePwd : '12345678a!!'
       }
     }).then((res) => {
       console.log(res);
@@ -51,6 +55,7 @@ const HumanResources = () => {
               <FilterButton value="직무" count={0} onClick={detailMenuShow} btnDupCondition={!isDetailMenuShow} />
               {isDetailMenuShow && <FilterDetailMenu menuList={filterJobList} />}
               <button onClick={testMethods2}>test</button>
+              <button onClick={testMethods}>test</button>
             </article>
             <article></article>
           </section>
