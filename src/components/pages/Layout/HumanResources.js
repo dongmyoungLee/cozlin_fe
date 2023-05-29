@@ -1,36 +1,45 @@
 import Layout from "../../blocks/Layout";
+import WelcomeInfo from "../../blocks/WelcomeInfo";
+import CategorySection from "../../blocks/CategorySection";
+import classes from "../../../styles/pages/layout/humanResources.module.css";
+import FilterButton from "../../blocks/FilterButton";
+import FilterDetailMenu from "../../blocks/FilterDetailMenu";
+import {useEffect, useRef, useState} from "react";
+import {humanResourcesDevJob} from "../../../common/Menus";
+import axios from "axios";
 import {testGetApi} from "../../../common/api/ApiGetService";
-import {findUserJobInfo} from "../../../common/api/ApiPostService";
-
 
 const HumanResources = () => {
+  const [category, setCategory] = useState('개발');
+  const [filterJobList, setFilterJobList] = useState(humanResourcesDevJob);
+  const [isDetailMenuShow, setIsDetailMenuShow] = useState(false);
 
 
-  const testApiHandler = async () => {
+  const detailMenuShow = () => {
+    setIsDetailMenuShow(!isDetailMenuShow);
+  }
 
+  const testMethods = () => {
     testGetApi().then((res) => {
-        console.log(res);
-    }).catch((error) => {
-        console.log(error);
+      console.log(res);
+    }).catch((err) => {
+      console.log(err)
     })
   }
-
-  const testApiHandler2 = async () => {
-
-    findUserJobInfo('pajang1515@daum.net').then((res) => {
-        console.log(res);
-    }).catch((error) => {
-        console.log(error);
-    })
-  }
-
 
   return (
       <>
         <Layout >
-          <p>인재 채용 페이지</p>
-          <button onClick={testApiHandler} >testAPI</button>
-          <button onClick={testApiHandler2} >testJOBAPI</button>
+          <WelcomeInfo />
+          <CategorySection setCategory={setCategory} />
+          <section className={classes.filterSection}>
+            <article className={classes.filterArticle}>
+              <FilterButton value="직무" count={0} onClick={detailMenuShow} btnDupCondition={!isDetailMenuShow} />
+              {isDetailMenuShow && <FilterDetailMenu menuList={filterJobList} />}
+              <button onClick={testMethods}>test</button>
+            </article>
+            <article></article>
+          </section>
         </Layout>
       </>
   );
