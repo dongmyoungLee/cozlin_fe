@@ -4,8 +4,12 @@ const initialIsLoginState = {
   loginInfo : {
       isLogin : false,
       token : null,
-      userId : null,
       loginEnteredTime : null,
+      userId : null,
+      userName : null,
+      userPhone : null,
+      userBirth : null,
+      userAddr : null,
   }
 }
 

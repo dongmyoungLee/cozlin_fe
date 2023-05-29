@@ -6,6 +6,8 @@ import FilterButton from "../../blocks/FilterButton";
 import FilterDetailMenu from "../../blocks/FilterDetailMenu";
 import {useEffect, useRef, useState} from "react";
 import {humanResourcesDevJob} from "../../../common/Menus";
+import axios from "axios";
+import {testGetApi} from "../../../common/api/ApiGetService";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -17,6 +19,14 @@ const HumanResources = () => {
     setIsDetailMenuShow(!isDetailMenuShow);
   }
 
+  const testMethods = () => {
+    testGetApi().then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
       <>
         <Layout >
@@ -26,6 +36,7 @@ const HumanResources = () => {
             <article className={classes.filterArticle}>
               <FilterButton value="직무" count={0} onClick={detailMenuShow} btnDupCondition={!isDetailMenuShow} />
               {isDetailMenuShow && <FilterDetailMenu menuList={filterJobList} />}
+              <button onClick={testMethods}>test</button>
             </article>
             <article></article>
           </section>
