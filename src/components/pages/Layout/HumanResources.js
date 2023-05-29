@@ -27,6 +27,20 @@ const HumanResources = () => {
     })
   }
 
+  const testMethods2 = () => {
+    axios.post('http://localhost:9090/user/update-pw-pagein', {}, {
+      params : {
+        id : 'pajang1515@daum.net',
+        currPwd : '12345678a!!!',
+        changePwd : '12345678a!'
+      }
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
       <>
         <Layout >
@@ -36,7 +50,7 @@ const HumanResources = () => {
             <article className={classes.filterArticle}>
               <FilterButton value="직무" count={0} onClick={detailMenuShow} btnDupCondition={!isDetailMenuShow} />
               {isDetailMenuShow && <FilterDetailMenu menuList={filterJobList} />}
-              <button onClick={testMethods}>test</button>
+              <button onClick={testMethods2}>test</button>
             </article>
             <article></article>
           </section>

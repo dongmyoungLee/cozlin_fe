@@ -58,7 +58,6 @@ const Login = () => {
     // login 인증함수..
     const loginFn = await login(idInput, passInput)
       .then((res) => {
-
         if (res.isLogin) {
           // 로그인 성공
           navigate('/');
