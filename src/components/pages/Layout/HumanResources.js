@@ -20,7 +20,7 @@ const HumanResources = () => {
   }
 
   const testMethods = () => {
-    axios.post('http://localhost:9090/user/job', {}, {
+    axios.post('http://cozlin.com/user/job', {}, {
       params : {
         id : 'pajang1515@daum.net',
       }
@@ -32,7 +32,7 @@ const HumanResources = () => {
   }
 
   const testMethods2 = () => {
-    axios.post('http://localhost:9090/user/update-pw-pagein', {}, {
+    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
       params : {
         id : 'pajang1515@daum.net',
         currPwd : '12345678a!',
