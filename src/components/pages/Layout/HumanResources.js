@@ -3,46 +3,26 @@ import WelcomeInfo from "../../blocks/WelcomeInfo";
 import CategorySection from "../../blocks/CategorySection";
 import classes from "../../../styles/pages/layout/humanResources.module.css";
 import FilterButton from "../../blocks/FilterButton";
-import FilterDetailMenu from "../../blocks/FilterDetailMenu";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {humanResourcesDevJob} from "../../../common/Menus";
-import axios from "axios";
-import {testGetApi} from "../../../common/api/ApiGetService";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
   const [filterJobList, setFilterJobList] = useState(humanResourcesDevJob);
   const [isDetailMenuShow, setIsDetailMenuShow] = useState(false);
-
+  const [selectCategoryCount, setSelectCategoryCount] = useState(0);
 
   const detailMenuShow = () => {
     setIsDetailMenuShow(!isDetailMenuShow);
   }
 
-  const testMethods = () => {
-    axios.post('http://cozlin.com/user/job', {}, {
-      params : {
-        id : 'pajang1515@daum.net',
-      }
-    }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+  const checkBoxChangeHandler = (e) => {
+    if (e.target.checked) {
+      setSelectCategoryCount(selectCategoryCount + 1);
+    } else {
+      setSelectCategoryCount(selectCategoryCount - 1);
+    }
 
-  const testMethods2 = () => {
-    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
-      params : {
-        id : 'pajang1515@daum.net',
-        currPwd : '12345678a!',
-        changePwd : '12345678a!!'
-      }
-    }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err)
-    })
   }
 
   return (
@@ -52,10 +32,7 @@ const HumanResources = () => {
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>
-              <FilterButton value="직무" count={0} onClick={detailMenuShow} btnDupCondition={!isDetailMenuShow} />
-              {isDetailMenuShow && <FilterDetailMenu menuList={filterJobList} />}
-              <button onClick={testMethods2}>test</button>
-              <button onClick={testMethods}>test</button>
+              <FilterButton onChange={checkBoxChangeHandler} onClick={detailMenuShow} isDetailJobMenuShow={isDetailMenuShow} menuHide={setIsDetailMenuShow} menuList={filterJobList} value="직무" count={selectCategoryCount}/>
             </article>
             <article></article>
           </section>

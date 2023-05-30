@@ -8,13 +8,14 @@ const CategorySection = (props) => {
   const [selectedCategory, setSelectedCategory] = useState('개발');
   const [isDetailMenuShow, setIsDetailMenuShow] = useState(false);
   const myMenuRef = useRef(null);
+  const myMenuRef2 = useRef(null);
 
   useEffect(() => {
 
     const handleClickOutside = (e) => {
 
-      if (myMenuRef.current && !myMenuRef.current.contains(e.target)) {
-        setIsDetailMenuShow(!isDetailMenuShow);
+      if (myMenuRef.current && !myMenuRef.current.contains(e.target) && !myMenuRef2.current.contains(e.target)) {
+        setIsDetailMenuShow(false);
       }
 
     }
@@ -41,7 +42,7 @@ const CategorySection = (props) => {
                                                     {humanResourcesCategory.map((item, idx) => (
                                                       <div key={idx} className={classes.filterFlex} onClick={categoryMenuClickHandler}>
                                                         <div className={classes.flexCommon}>
-                                                          <div style={{color : selectedCategory == item.menuName ? '#0062df' : ''}} htmlFor="filter" className={classes.labelOption}>{item.menuName}</div>
+                                                          <div style={{color : selectedCategory == item.menuName ? '#0062df' : ''}}  className={classes.labelOption}>{item.menuName}</div>
                                                         </div>
                                                       </div>
                                                     ))}
@@ -52,7 +53,7 @@ const CategorySection = (props) => {
   return (
     <>
       <section className={classes.categorySection}>
-        <article className={classes.jobCategory} onClick={detailMenuShow}>
+        <article className={classes.jobCategory} onClick={detailMenuShow} ref={myMenuRef2}>
           <span className={classes.jobTitle}>{selectedCategory}</span>
           <div className={classes.circle}>
             <img src={arrow} className={classes.circle_imgOption} />
