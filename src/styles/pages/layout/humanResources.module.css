@@ -125,13 +125,15 @@
 
 .filterArticle {
     position: relative;
+    display: flex;
+    gap: 15px;
 }
 
 .filterSection {
     margin-top: 32px;
 }
 .filterOption {
-    padding: 12px 12px 12px 16px;
+    padding: 12px 16px 12px 16px;
     border-radius: 8px;
     border: 1px solid #e4ebf0;
     color: #3a3e41;

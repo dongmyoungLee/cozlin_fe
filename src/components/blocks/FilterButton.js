@@ -32,7 +32,7 @@ const FilterButton = (props) => {
           <img src={arrow} className={classes.filterImgOption} />
         </div>
       </button>
-      {props.isDetailJobMenuShow && <div className={classes.detailMenu} ref={myMenuRef}>
+      {props.isDetailMenuShow && <div style={{left : props.left}} className={classes.detailMenu} ref={myMenuRef}>
         <ul>
           {props.menuList.map((item, idx) => (
             <div className={classes.filterFlex} key={idx}>

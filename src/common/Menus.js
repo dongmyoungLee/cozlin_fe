@@ -58,6 +58,71 @@ export const mypageTooltipMenu = [
     },
 ];
 
+export const careerFilterCategory = [
+  {
+    menuName : '신입'
+  },
+  {
+    menuName : '1~3년'
+  },
+  {
+    menuName : '4~6년'
+  },
+  {
+    menuName : '7년 이상'
+  },
+];
+
+export const regionFilterCategory = [
+  {
+    menuName : '서울'
+  },
+  {
+    menuName : '판교'
+  },
+  {
+    menuName : '경기'
+  },
+  {
+    menuName : '인천'
+  },
+  {
+    menuName : '강원'
+  },
+  {
+    menuName : '대전'
+  },
+  {
+    menuName : '세종'
+  },
+  {
+    menuName : '충청'
+  },
+  {
+    menuName : '광주'
+  },
+  {
+    menuName : '전라'
+  },
+  {
+    menuName : '부산'
+  },
+  {
+    menuName : '대구'
+  },
+  {
+    menuName : '울산'
+  },
+  {
+    menuName : '경상'
+  },
+  {
+    menuName : '제주'
+  },
+
+
+];
+
 export const humanResourcesCategory = [
   {
     menuName : '개발'
