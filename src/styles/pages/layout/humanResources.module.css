@@ -249,3 +249,31 @@
     top: 0;
     left: 0;
 }
+
+.itemWrap {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.filterItem {
+    display: inline-block;
+    gap: 4px;
+    padding: 6px 8px;
+    background-color: #f2f6f8;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 160%;
+    color: #5f666b;
+    cursor: pointer;
+}
+
+.spanMr {
+    margin-right: 10px;
+}
+
+.spanSize {
+    font-size: 18px;
+    color: rgb(199, 210, 216);
+}

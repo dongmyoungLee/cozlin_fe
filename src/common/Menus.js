@@ -138,10 +138,7 @@ export const humanResourcesCategory = [
   },
   {
     menuName : '경영, 인사, 운영'
-  },
-  {
-    menuName : '기타'
-  },
+  }
 ];
 
 export const humanResourcesDevJob = [
