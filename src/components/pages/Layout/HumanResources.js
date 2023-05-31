@@ -3,8 +3,14 @@ import WelcomeInfo from "../../blocks/WelcomeInfo";
 import CategorySection from "../../blocks/CategorySection";
 import classes from "../../../styles/pages/layout/humanResources.module.css";
 import FilterButton from "../../blocks/FilterButton";
-import {useState} from "react";
-import {careerFilterCategory, humanResourcesDevJob, regionFilterCategory} from "../../../common/Menus";
+import {useEffect, useState} from "react";
+import {
+  careerFilterCategory, humanResourcesDesignJob,
+  humanResourcesDevJob, humanResourcesEtcJob, humanResourcesMarketingJob,
+  humanResourcesPlannerJob,
+  regionFilterCategory
+} from "../../../common/Menus";
+import FilteredItem from "../../blocks/FilteredItem";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -15,6 +21,29 @@ const HumanResources = () => {
   const [selectJobCategoryCount, setSelectJobCategoryCount] = useState(0);
   const [selectCareerCategoryCount, setSelectCareerCategoryCount] = useState(0);
   const [selectRegionCategoryCount, setSelectRegionCategoryCount] = useState(0);
+
+  //
+
+  useEffect(() => {
+    switch (category) {
+      case '개발' :
+        setFilterJobList(humanResourcesDevJob);
+      break;
+      case '기획' :
+        setFilterJobList(humanResourcesPlannerJob);
+      break;
+      case '마케팅' :
+        setFilterJobList(humanResourcesMarketingJob);
+      break;
+      case '디자인' :
+        setFilterJobList(humanResourcesDesignJob);
+      break;
+      case '경영, 인사, 운영' :
+        setFilterJobList(humanResourcesEtcJob);
+      break;
+    }
+
+  }, [category])
 
   const detailMenuJobShow = () => {
     setIsDetailJobMenuShow(!isDetailJobMenuShow);
@@ -28,17 +57,11 @@ const HumanResources = () => {
   }
 
   const checkBoxChangeHandler = (e) => {
-
     if (e.target.checked) {
       setSelectJobCategoryCount(selectJobCategoryCount + 1);
-
     } else {
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
-
     }
-
-
-
   }
 
   const checkBoxChangeCareerHandler = (e) => {
@@ -47,7 +70,6 @@ const HumanResources = () => {
     } else {
       setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
     }
-
   }
 
   const checkBoxChangeRegionHandler = (e) => {
@@ -56,7 +78,6 @@ const HumanResources = () => {
     } else {
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
     }
-
   }
 
   return (
@@ -68,15 +89,13 @@ const HumanResources = () => {
             <article className={classes.filterArticle}>
               <FilterButton onChange={checkBoxChangeHandler} onClick={detailMenuJobShow} isDetailMenuShow={isDetailJobMenuShow} menuHide={setIsDetailJobMenuShow} menuList={filterJobList} value="직무" count={selectJobCategoryCount}/>
 
-
               <FilterButton onChange={checkBoxChangeCareerHandler} onClick={detailMenuCareerShow} left="92px" isDetailMenuShow={isDetailCareerMenuShow} menuHide={setIsDetailCareerMenuShow} menuList={careerFilterCategory} value="경력" count={selectCareerCategoryCount}/>
 
-
               <FilterButton onChange={checkBoxChangeRegionHandler} onClick={detailMenuRegionShow} left="182px" isDetailMenuShow={isDetailRegionMenuShow} menuHide={setIsDetailRegionMenuShow} menuList={regionFilterCategory} value="지역" count={selectRegionCategoryCount}/>
-
-
             </article>
-            <article></article>
+            <article>
+              <FilteredItem />
+            </article>
           </section>
         </Layout>
       </>
