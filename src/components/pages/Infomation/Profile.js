@@ -1,14 +1,13 @@
 import Applicant from "../../blocks/Applicant";
 import classes from "../../../styles/pages/layout/mypage.module.css";
 import MypageLayout from "../../blocks/MypageLayout";
-import App from "../../blocks/App"
+import Background from "../../blocks/Background"
 
 const Profile = () => {
   return (
     <MypageLayout>
       <Applicant />
-      <App/>
-      {/* <Input></Input> */}
+      <Background/>
     </MypageLayout>
   );
 }

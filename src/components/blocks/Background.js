@@ -1,6 +1,7 @@
 import classes from '../../styles/pages/layout/mypage.module.css';
+import Input2  from "./Input2";
 
-const App = () =>{
+const Background = () =>{
    return(
       <div className={classes.account}>
          <div className={classes.management_box}>
@@ -13,10 +14,19 @@ const App = () =>{
             </button>
          </div>
          <div className={classes.line}></div>
+         <div className={classes.profile}>
+            <div>기본정보</div>
+            <div className={classes.input_box}>
+               <Input2/>
+               <Input2/>
+               <Input2/>
+            </div>
+         </div>
       </div>
+
    )
 }
 
-export default App;
+export default Background;
 
 

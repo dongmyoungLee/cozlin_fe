@@ -21,7 +21,7 @@
 
 .account {
     width: 1016px;
-    background: #fff;
+    background:rgb(249, 250, 251);
     padding: 12px 10px;
     border: 1px solid rgb(228, 235, 240);
     border-radius: 8px;
@@ -152,3 +152,21 @@
     color: rgb(157, 167, 174);
 }
 
+.inputOption{
+    width: 200px;
+    height: 20px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #eee;
+    margin-bottom: 5px;
+    padding: 10px;
+
+}
+.profile{
+    display:flex;
+}
+
+.input_box{
+    display: flex;
+    flex-direction: column;
+}

@@ -5,7 +5,7 @@ import {Mobile, PC} from "../../config/Responsive";
 import { useSelector } from "react-redux";
 import { findUserJobInfo } from "../../../common/api/ApiPostService";
 import axios from "axios";
-import App from "../../blocks/App"
+import App from "../../blocks/Background"
 
 const Account = () => {
 
