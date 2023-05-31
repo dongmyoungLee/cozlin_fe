@@ -21,8 +21,9 @@ const HumanResources = () => {
   const [selectJobCategoryCount, setSelectJobCategoryCount] = useState(0);
   const [selectCareerCategoryCount, setSelectCareerCategoryCount] = useState(0);
   const [selectRegionCategoryCount, setSelectRegionCategoryCount] = useState(0);
+  const [userSelectFilter, setUserSelectFilter] = useState([]);
+  const [userJobFilter, setUserJobFilter] = useState([]);
 
-  //
 
   useEffect(() => {
     switch (category) {
@@ -58,10 +59,18 @@ const HumanResources = () => {
 
   const checkBoxChangeHandler = (e) => {
     if (e.target.checked) {
+      const newArray = [...userJobFilter, e.target.value];
+
       setSelectJobCategoryCount(selectJobCategoryCount + 1);
+      setUserSelectFilter([...userSelectFilter]);
+
+      setUserJobFilter(newArray);
+
     } else {
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
     }
+
+
   }
 
   const checkBoxChangeCareerHandler = (e) => {
@@ -87,7 +96,7 @@ const HumanResources = () => {
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>
-              <FilterButton onChange={checkBoxChangeHandler} onClick={detailMenuJobShow} isDetailMenuShow={isDetailJobMenuShow} menuHide={setIsDetailJobMenuShow} menuList={filterJobList} value="직무" count={selectJobCategoryCount}/>
+              <FilterButton userMemoryFilter={userJobFilter} onChange={checkBoxChangeHandler} onClick={detailMenuJobShow} isDetailMenuShow={isDetailJobMenuShow} menuHide={setIsDetailJobMenuShow} menuList={filterJobList} value="직무" count={selectJobCategoryCount}/>
 
               <FilterButton onChange={checkBoxChangeCareerHandler} onClick={detailMenuCareerShow} left="92px" isDetailMenuShow={isDetailCareerMenuShow} menuHide={setIsDetailCareerMenuShow} menuList={careerFilterCategory} value="경력" count={selectCareerCategoryCount}/>
 

@@ -21,6 +21,8 @@ const FilterButton = (props) => {
     };
   }, [myMenuRef]);
 
+
+
   return (
     <>
       <button className={classes.filterOption} onClick={props.onClick} ref={myMenuRef2}>
