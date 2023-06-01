@@ -39,7 +39,7 @@ const FilterButton = (props) => {
           {props.menuList.map((item, idx) => (
             <div className={classes.filterFlex} key={idx}>
               <div className={classes.flexCommon}>
-                <input value={item.menuName} onChange={props.onChange} id={'filter' + idx} className={classes.checkBoxInput} type="checkbox" />
+                <input checked={props.userMemoryFilter.includes(item.menuName)} value={item.menuName} onChange={props.onChange} id={'filter' + idx} className={classes.checkBoxInput} type="checkbox" />
                 <label htmlFor={'filter' + idx} className={classes.labelOption}>{item.menuName}</label>
               </div>
             </div>
