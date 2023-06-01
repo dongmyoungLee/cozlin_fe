@@ -1,5 +1,5 @@
 import {apiClient} from "./ApiClient";
 
-export const testGetApi = () => apiClient.get('/user')
+export const userGet = () => apiClient.get('/user')
 
 

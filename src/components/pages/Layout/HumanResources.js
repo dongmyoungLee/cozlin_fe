@@ -11,6 +11,7 @@ import {
   regionFilterCategory
 } from "../../../common/Menus";
 import FilteredItem from "../../blocks/FilteredItem";
+import {userGet} from "../../../common/api/ApiGetService";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -25,11 +26,25 @@ const HumanResources = () => {
   const [userCareerFilter, setUserCareerFilter] = useState([]);
   const [userRegionFilter, setUserRegionFilter] = useState([]);
   const [filterBlock, setFilterBlock] = useState([]);
+  const [devUser, setDevUser] = useState([]);
 
   useEffect(() => {
+
+    // 필터리스트 변경할용도..
     switch (category) {
       case '개발' :
         setFilterJobList(humanResourcesDevJob);
+
+        userGet().then((res) => {
+          if (res.status === 200) {
+            setDevUser(res.data);
+            console.log(res.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
       break;
       case '기획' :
         setFilterJobList(humanResourcesPlannerJob);
@@ -143,9 +158,35 @@ const HumanResources = () => {
 
       setUserRegionFilter((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
     }
-
-
   }
+
+  const userList = devUser.length !== 0 ? devUser.map((item, idx) => (
+                                                    <div key={idx} className={classes.mainCard}>
+                                                      <div className={classes.imgArea}>
+                                                      </div>
+                                                      <div className={classes.mainNameArea}>
+                                                        <p>{item.userName}</p>
+                                                      </div>
+                                                      <div className={classes.mainJobArea}>
+                                                        <p className={classes.mainJobText}>서버/백엔드 개발자</p>
+                                                      </div>
+                                                      <div className={classes.iconInfoArea}>
+                                                        <div className={classes.iconWrap}>
+                                                          <div className={classes.iconInfo}></div>
+                                                          <p className={classes.iconInfoText}>Java</p>
+                                                        </div>
+                                                        <div className={classes.iconWrap}>
+                                                          <div className={classes.iconInfo}></div>
+                                                          <p className={classes.iconInfoText}>Spring</p>
+                                                        </div>
+                                                        <div className={classes.iconWrap}>
+                                                          <div className={classes.iconInfo}></div>
+                                                          <p className={classes.iconInfoText}>Linux</p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  ))
+                                                : <p>조회되는 데이터가 없습니다.</p>;
 
   return (
       <>
@@ -163,6 +204,11 @@ const HumanResources = () => {
             <article>
               <FilteredItem item={filterBlock} onClick={filterRemoveBlock} />
             </article>
+          </section>
+          <section className={classes.mainContents}>
+            <div className={classes.mainCardWrap}>
+              {userList}
+            </div>
           </section>
         </Layout>
       </>
