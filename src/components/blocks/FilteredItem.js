@@ -5,8 +5,8 @@ const FilteredItem = (props) => {
     <div className={classes.itemWrap}>
       {props.item.map((item, idx) => (
         <div key={idx} onClick={props.onClick} className={classes.filterItem}>
-          <span value={item} className={classes.spanMr}>{item}</span>
-          <span value={item} className={classes.spanSize}>×</span>
+          <p value={item} className={classes.spanMr}>{item}</p>
+          <p value={item} className={classes.spanSize}>×</p>
         </div>
       ))}
     </div>

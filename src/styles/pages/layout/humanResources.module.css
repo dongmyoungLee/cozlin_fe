@@ -258,9 +258,7 @@
 }
 
 .filterItem {
-    display: inline-block;
     gap: 4px;
-    padding: 6px 8px;
     background-color: rgb(41 138 255 / 0.1);
     border-radius: 8px;
     font-weight: 500;
@@ -268,13 +266,18 @@
     line-height: 160%;
     color: #0062df;
     cursor: pointer;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .spanMr {
-    margin-right: 10px;
+    padding: 5px 0 5px 10px;
 }
 
 .spanSize {
-    font-size: 18px;
+    height: 100%;
+    font-size: 20px;
     color: rgb(199, 210, 216);
+    padding: 4px 6px 4px 0;
 }
