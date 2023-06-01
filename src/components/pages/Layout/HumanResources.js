@@ -59,16 +59,27 @@ const HumanResources = () => {
   }
 
   const checkBoxChangeHandler = (e) => {
+
     if (e.target.checked) {
+      // 직무필터 item tmp 배열..
       const jobArray = [...userJobFilter, e.target.value];
 
+      // 필터 카운트 추가..
       setSelectJobCategoryCount(selectJobCategoryCount + 1);
 
+      // 직무필터 useState 넣기..
       setUserJobFilter(jobArray);
 
+      // 필터내용 기억해서 블록 만들려고 전달..
       const tmp = [...filterBlock, e.target.value];
       setFilterBlock(tmp);
     } else {
+
+      // 체크 해제시 배열에서 뺀다..
+      setUserJobFilter((prevItems) => prevItems.filter((item) => item !== e.target.value));
+      setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.value));
+
+      // 필터 카운트 감소
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
     }
 
@@ -85,6 +96,10 @@ const HumanResources = () => {
       const tmp = [...filterBlock, e.target.value];
       setFilterBlock(tmp);
     } else {
+
+      setUserCareerFilter((prevItems) => prevItems.filter((item) => item !== e.target.value));
+      setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.value));
+
       setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
     }
   }
@@ -100,6 +115,7 @@ const HumanResources = () => {
       const tmp = [...filterBlock, e.target.value];
       setFilterBlock(tmp);
     } else {
+      setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.value));
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
     }
   }
@@ -107,6 +123,21 @@ const HumanResources = () => {
   const filterRemoveBlock = (e) => {
 
     setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
+
+    if (userJobFilter.includes(e.target.getAttribute('value'))) {
+      // 필터 카운트 감소..
+      setSelectJobCategoryCount(selectJobCategoryCount - 1);
+    }
+
+    if (userCareerFilter.includes(e.target.getAttribute('value'))) {
+      setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
+    }
+
+    if (userRegionFilter.includes(e.target.getAttribute('value'))) {
+      setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
+    }
+
+
   }
 
   return (
