@@ -253,6 +253,7 @@
 .itemWrap {
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -260,12 +261,12 @@
     display: inline-block;
     gap: 4px;
     padding: 6px 8px;
-    background-color: #f2f6f8;
+    background-color: rgb(41 138 255 / 0.1);
     border-radius: 8px;
     font-weight: 500;
     font-size: 13px;
     line-height: 160%;
-    color: #5f666b;
+    color: #0062df;
     cursor: pointer;
 }
 

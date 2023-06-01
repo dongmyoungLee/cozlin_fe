@@ -21,8 +21,10 @@ const HumanResources = () => {
   const [selectJobCategoryCount, setSelectJobCategoryCount] = useState(0);
   const [selectCareerCategoryCount, setSelectCareerCategoryCount] = useState(0);
   const [selectRegionCategoryCount, setSelectRegionCategoryCount] = useState(0);
-
-  //
+  const [userJobFilter, setUserJobFilter] = useState([]);
+  const [userCareerFilter, setUserCareerFilter] = useState([]);
+  const [userRegionFilter, setUserRegionFilter] = useState([]);
+  const [filterBlock, setFilterBlock] = useState([]);
 
   useEffect(() => {
     switch (category) {
@@ -58,15 +60,30 @@ const HumanResources = () => {
 
   const checkBoxChangeHandler = (e) => {
     if (e.target.checked) {
+      const jobArray = [...userJobFilter, e.target.value];
+
       setSelectJobCategoryCount(selectJobCategoryCount + 1);
+
+      setUserJobFilter(jobArray);
+
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
     }
+
   }
 
   const checkBoxChangeCareerHandler = (e) => {
     if (e.target.checked) {
+      const careerArray = [...userCareerFilter, e.target.value];
+
       setSelectCareerCategoryCount(selectCareerCategoryCount + 1);
+
+      setUserCareerFilter(careerArray);
+
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
     }
@@ -74,10 +91,22 @@ const HumanResources = () => {
 
   const checkBoxChangeRegionHandler = (e) => {
     if (e.target.checked) {
+      const regionArray = [...userRegionFilter, e.target.value];
+
       setSelectRegionCategoryCount(selectRegionCategoryCount + 1);
+
+      setUserRegionFilter(regionArray);
+
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
     }
+  }
+
+  const filterRemoveBlock = (e) => {
+
+    setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
   }
 
   return (
@@ -87,14 +116,14 @@ const HumanResources = () => {
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>
-              <FilterButton onChange={checkBoxChangeHandler} onClick={detailMenuJobShow} isDetailMenuShow={isDetailJobMenuShow} menuHide={setIsDetailJobMenuShow} menuList={filterJobList} value="직무" count={selectJobCategoryCount}/>
+              <FilterButton userMemoryFilter={userJobFilter} onChange={checkBoxChangeHandler} onClick={detailMenuJobShow} isDetailMenuShow={isDetailJobMenuShow} menuHide={setIsDetailJobMenuShow} menuList={filterJobList} value="직무" count={selectJobCategoryCount}/>
 
-              <FilterButton onChange={checkBoxChangeCareerHandler} onClick={detailMenuCareerShow} left="92px" isDetailMenuShow={isDetailCareerMenuShow} menuHide={setIsDetailCareerMenuShow} menuList={careerFilterCategory} value="경력" count={selectCareerCategoryCount}/>
+              <FilterButton userMemoryFilter={userCareerFilter} onChange={checkBoxChangeCareerHandler} onClick={detailMenuCareerShow} left="92px" isDetailMenuShow={isDetailCareerMenuShow} menuHide={setIsDetailCareerMenuShow} menuList={careerFilterCategory} value="경력" count={selectCareerCategoryCount}/>
 
-              <FilterButton onChange={checkBoxChangeRegionHandler} onClick={detailMenuRegionShow} left="182px" isDetailMenuShow={isDetailRegionMenuShow} menuHide={setIsDetailRegionMenuShow} menuList={regionFilterCategory} value="지역" count={selectRegionCategoryCount}/>
+              <FilterButton userMemoryFilter={userRegionFilter} onChange={checkBoxChangeRegionHandler} onClick={detailMenuRegionShow} left="182px" isDetailMenuShow={isDetailRegionMenuShow} menuHide={setIsDetailRegionMenuShow} menuList={regionFilterCategory} value="지역" count={selectRegionCategoryCount}/>
             </article>
             <article>
-              <FilteredItem />
+              <FilteredItem item={filterBlock} onClick={filterRemoveBlock} />
             </article>
           </section>
         </Layout>
