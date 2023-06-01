@@ -24,7 +24,7 @@ const HumanResources = () => {
   const [userJobFilter, setUserJobFilter] = useState([]);
   const [userCareerFilter, setUserCareerFilter] = useState([]);
   const [userRegionFilter, setUserRegionFilter] = useState([]);
-
+  const [filterBlock, setFilterBlock] = useState([]);
 
   useEffect(() => {
     switch (category) {
@@ -66,6 +66,8 @@ const HumanResources = () => {
 
       setUserJobFilter(jobArray);
 
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
     }
@@ -79,6 +81,9 @@ const HumanResources = () => {
       setSelectCareerCategoryCount(selectCareerCategoryCount + 1);
 
       setUserCareerFilter(careerArray);
+
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
     }
@@ -91,9 +96,17 @@ const HumanResources = () => {
       setSelectRegionCategoryCount(selectRegionCategoryCount + 1);
 
       setUserRegionFilter(regionArray);
+
+      const tmp = [...filterBlock, e.target.value];
+      setFilterBlock(tmp);
     } else {
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
     }
+  }
+
+  const filterRemoveBlock = (e) => {
+
+    setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
   }
 
   return (
@@ -110,7 +123,7 @@ const HumanResources = () => {
               <FilterButton userMemoryFilter={userRegionFilter} onChange={checkBoxChangeRegionHandler} onClick={detailMenuRegionShow} left="182px" isDetailMenuShow={isDetailRegionMenuShow} menuHide={setIsDetailRegionMenuShow} menuList={regionFilterCategory} value="지역" count={selectRegionCategoryCount}/>
             </article>
             <article>
-              <FilteredItem />
+              <FilteredItem item={filterBlock} onClick={filterRemoveBlock} />
             </article>
           </section>
         </Layout>
