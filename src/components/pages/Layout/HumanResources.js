@@ -127,14 +127,21 @@ const HumanResources = () => {
     if (userJobFilter.includes(e.target.getAttribute('value'))) {
       // 필터 카운트 감소..
       setSelectJobCategoryCount(selectJobCategoryCount - 1);
+
+      // 체크 제거..
+      setUserJobFilter((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
     }
 
     if (userCareerFilter.includes(e.target.getAttribute('value'))) {
       setSelectCareerCategoryCount(selectCareerCategoryCount - 1);
+
+      setUserCareerFilter((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
     }
 
     if (userRegionFilter.includes(e.target.getAttribute('value'))) {
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
+
+      setUserRegionFilter((prevItems) => prevItems.filter((item) => item !== e.target.getAttribute('value')));
     }
 
 
