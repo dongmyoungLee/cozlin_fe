@@ -171,7 +171,7 @@ const HumanResources = () => {
                                                         <p>{item.userName}</p>
                                                       </div>
                                                       <div className={classes.mainJobArea}>
-                                                        <p className={classes.mainJobText}>서버/백엔드 개발자</p>
+                                                        <p className={classes.mainJobText}>{item.userJob.userDesiredJob}</p>
                                                       </div>
                                                       <div className={classes.iconInfoArea}>
                                                         <div className={classes.iconWrap}>
