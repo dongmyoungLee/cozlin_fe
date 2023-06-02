@@ -12,6 +12,7 @@ import {
 } from "../../../common/Menus";
 import FilteredItem from "../../blocks/FilteredItem";
 import {userGet} from "../../../common/api/ApiGetService";
+import {useSelector} from "react-redux";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -27,6 +28,8 @@ const HumanResources = () => {
   const [userRegionFilter, setUserRegionFilter] = useState([]);
   const [filterBlock, setFilterBlock] = useState([]);
   const [devUser, setDevUser] = useState([]);
+
+  const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
 
   useEffect(() => {
 
@@ -191,7 +194,7 @@ const HumanResources = () => {
   return (
       <>
         <Layout >
-          <WelcomeInfo />
+          {isLogin && <WelcomeInfo />}
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>
