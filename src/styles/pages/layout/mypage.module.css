@@ -7,7 +7,7 @@
 
 .wrap {
     width: 100%;
-    height: calc(100vh - 57px);
+    /* height: calc(100vh - 57px); */
     background: rgb(246, 249, 250);
     padding: 40px 0;
 }
@@ -44,11 +44,35 @@
     color: rgb(157, 167, 174);
 }
 
+.account_information{
+
+    margin-top: 50px;
+}
 .management_box{
     display:flex;
     justify-content: space-between;
     align-items: center;
     /* background-color: darkblue; */
+}
+
+.input_name{
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgb(58, 62, 65);
+}
+
+.input_password{
+    padding: 8px 16px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgb(58, 62, 65);
+
 }
 
 .box{
@@ -152,21 +176,87 @@
     color: rgb(157, 167, 174);
 }
 
-.inputOption{
-    width: 200px;
-    height: 20px;
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid #eee;
-    margin-bottom: 5px;
-    padding: 10px;
-
+.privacy{
+    height:500px;
 }
 .profile{
-    display:flex;
+    gap: 20px;
+    margin-bottom:20px;
+    /* margin-top:40px; */
+    /* background-color: darkcyan; */
+}
+.title{
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+    color: #141617;
+    color: #3A3E41;
 }
 
-.input_box{
+.input{
+    /* gap: 12px;
+    grid-template-columns: 70px 1fr;
+    display: grid;
+    align-items: center; */
+    width: 650px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name{
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #141617;
+    color: #3A3E41;
+}
+
+
+
+.input_style{
+    width:532px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 56px;
+    padding: 16px;
+    background-color: #F6F9FA;
+    border: 1px solid #D7E0E6;
+    border-radius: 8px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #141617;
+    color: #5F666B;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    /* line-height: 160%; */
+    color: #141617;
+    color: #5F666B;
+    outline: none;
+}
+
+.id_box{
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.id{
+    width:86px;
+    
 }

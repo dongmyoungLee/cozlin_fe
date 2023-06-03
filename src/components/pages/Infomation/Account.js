@@ -5,7 +5,7 @@ import {Mobile, PC} from "../../config/Responsive";
 import { useSelector } from "react-redux";
 import { findUserJobInfo } from "../../../common/api/ApiPostService";
 import axios from "axios";
-import App from "../../blocks/Background"
+import InputComponent from "../../blocks/InputComponent";
 
 const Account = () => {
 
@@ -47,21 +47,36 @@ const Account = () => {
 
   }
 
-
-
-
   return (
     <>
       <PC>
         <MypageLayout>
           <Applicant />
-      
           <div className={classes.account}>
-            <p>Account</p>
+            <div className={classes.management_box}>
+              <div className={classes.dark}>
+                <h2>프로필 관리</h2>
+                <p>작성한 프로필로 입사지원을 할 수 있습니다.</p>
+              </div>
+              <button className={classes.box}>
+                <a className={classes.edit} href="https://www.kurly.com/board/notice">수정하기</a>
+              </button>
+            </div>
+            <div className={classes.line}></div>
+            <div className={classes.account_information}>
+               <div className={classes.id_box}>
+                 <div className={classes.id}>아이디</div>
+                 <div className={classes.input_name}>yuljeonjw@naver.com</div>
+               </div>
+            </div>
+            <InputComponent label="기본정보" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}} />
+
+
+            {/* <p>Account</p>
             <div>
               <button style={{display : 'block'}} onClick={testMethod}>GET 으로 요청 하기</button>
               <button onClick={testMethod2}>POST 로 요청하기</button>
-            </div>
+            </div> */}
           </div>
         </MypageLayout>
       </PC>
