@@ -41,5 +41,21 @@ export const findUserJobInfo = (userId) => apiClient.post('/user/job', {}, {
   }
 })
 
+export const updateUserJobProfile = (id, userDesiredJobGroup, userDesiredJob, userDesiredJobGroupCareer, userJobSkill, userLastCompany, userLastJobGroup, userLastJobGroupCareer, userLastSchoolName, userLastSchoolStatus, userLastSchoolDept) => apiClient.post('/user/job-profile', {}, {
+  params : {
+    id : id,
+    userDesiredJobGroup : userDesiredJobGroup,
+    userDesiredJob : userDesiredJob,
+    userDesiredJobGroupCareer : userDesiredJobGroupCareer,
+    userJobSkill : userJobSkill,
+    userLastCompany : userLastCompany,
+    userLastJobGroup : userLastJobGroup,
+    userLastJobGroupCareer : userLastJobGroupCareer,
+    userLastSchoolName : userLastSchoolName,
+    userLastSchoolStatus : userLastSchoolStatus,
+    userLastSchoolDept : userLastSchoolDept,
+  }
+})
+
 
 
