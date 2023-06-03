@@ -29,9 +29,10 @@ const HumanResources = () => {
   const [filterBlock, setFilterBlock] = useState([]);
   const [devUser, setDevUser] = useState([]);
 
-  const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
+  const isLogin = useSelector(state => state.loginCheck.loginInfo);
 
   useEffect(() => {
+
 
     // 필터리스트 변경할용도..
     switch (category) {
@@ -62,6 +63,17 @@ const HumanResources = () => {
         setFilterJobList(humanResourcesEtcJob);
       break;
     }
+
+    setIsDetailJobMenuShow(false);
+    setIsDetailCareerMenuShow(false);
+    setIsDetailRegionMenuShow(false);
+    setSelectJobCategoryCount(0);
+    setSelectCareerCategoryCount(0);
+    setSelectRegionCategoryCount(0);
+    setUserJobFilter([]);
+    setUserCareerFilter([]);
+    setUserRegionFilter([]);
+    setFilterBlock([]);
 
   }, [category])
 
@@ -166,6 +178,7 @@ const HumanResources = () => {
   const userList = devUser.length !== 0 ? devUser.map((item, idx) => (
                                                     <div key={idx} className={classes.mainCard}>
                                                       <div className={classes.imgArea}>
+
                                                       </div>
                                                       <div className={classes.mainNameArea}>
                                                         <p>{item.userName}</p>
@@ -174,18 +187,12 @@ const HumanResources = () => {
                                                         <p className={classes.mainJobText}>{item.userJob.userDesiredJob}</p>
                                                       </div>
                                                       <div className={classes.iconInfoArea}>
-                                                        <div className={classes.iconWrap}>
-                                                          <div className={classes.iconInfo}></div>
-                                                          <p className={classes.iconInfoText}>Java</p>
-                                                        </div>
-                                                        <div className={classes.iconWrap}>
-                                                          <div className={classes.iconInfo}></div>
-                                                          <p className={classes.iconInfoText}>Spring</p>
-                                                        </div>
-                                                        <div className={classes.iconWrap}>
-                                                          <div className={classes.iconInfo}></div>
-                                                          <p className={classes.iconInfoText}>Linux</p>
-                                                        </div>
+                                                        {item.userJob.userJobSkill.split(",").map((item, idx2) => (
+                                                          <div key={idx2} className={classes.iconWrap}>
+                                                            <div className={classes.iconInfo}></div>
+                                                            <p className={classes.iconInfoText}>{item}</p>
+                                                          </div>
+                                                        ))}
                                                       </div>
                                                     </div>
                                                   ))
@@ -194,7 +201,7 @@ const HumanResources = () => {
   return (
       <>
         <Layout >
-          {isLogin && <WelcomeInfo />}
+          {(isLogin.isLogin && isLogin.userJobEnterdYn === 'N') && <WelcomeInfo />}
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>

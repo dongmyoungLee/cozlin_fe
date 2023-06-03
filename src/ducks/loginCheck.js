@@ -10,6 +10,8 @@ const initialIsLoginState = {
       userPhone : null,
       userBirth : null,
       userAddr : null,
+      userJobEnterdYn : null,
+      userDesiredJobGroupCareer : null
   }
 }
 
@@ -28,6 +30,10 @@ const loginCheckSlise = createSlice({
 
     logout(state, action) {
       state.loginInfo = action.payload;
+    },
+
+    userJobEnterdYnSet(state, action) {
+      state.loginInfo.userJobEnterdYn = action.payload;
     }
 
   }
