@@ -13,6 +13,7 @@ import {
 import FilteredItem from "../../blocks/FilteredItem";
 import {userGet} from "../../../common/api/ApiGetService";
 import {useSelector} from "react-redux";
+import userDefaultImg from "../../../asset/images/defaultuser.jpg";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -178,7 +179,7 @@ const HumanResources = () => {
   const userList = devUser.length !== 0 ? devUser.map((item, idx) => (
                                                     <div key={idx} className={classes.mainCard}>
                                                       <div className={classes.imgArea}>
-
+                                                        <img style={{width : '100%', height : '100%'}} src={userDefaultImg} />
                                                       </div>
                                                       <div className={classes.mainNameArea}>
                                                         <p>{item.userName}</p>
@@ -189,7 +190,8 @@ const HumanResources = () => {
                                                       <div className={classes.iconInfoArea}>
                                                         {item.userJob.userJobSkill.split(",").map((item, idx2) => (
                                                           <div key={idx2} className={classes.iconWrap}>
-                                                            <div className={classes.iconInfo}></div>
+                                                            <div className={classes.iconInfo}>
+                                                            </div>
                                                             <p className={classes.iconInfoText}>{item}</p>
                                                           </div>
                                                         ))}
