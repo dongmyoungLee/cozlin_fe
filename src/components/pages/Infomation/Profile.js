@@ -13,7 +13,7 @@ const Profile = () => {
 
 
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
-  
+  console.log(isLogin);
   const navigate = useNavigate();
 
   const currPwdHandler = (e) => {

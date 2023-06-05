@@ -7,7 +7,7 @@ const InputComponent = (props) => {
 
    return(
       <div>
-         <div className={classes.line}></div>
+         {/* <div className={classes.line}></div> */}
          <div className={classes.input_layout}>
             <div>{props.label}</div>
             <div> 
