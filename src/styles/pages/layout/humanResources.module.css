@@ -283,7 +283,7 @@
 }
 
 .mainContents {
-    margin-top: 20px;
+    padding: 40px 0;
 }
 
 .mainCardWrap {
@@ -346,8 +346,8 @@
 }
 
 .bannerArea {
-    margin: 40px 0;
     cursor: pointer;
+    padding-right: 20px;
 }
 
 .bannerAreaSection {

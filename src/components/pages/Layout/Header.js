@@ -54,7 +54,7 @@ const Header = () => {
           <div className={classes.flexWrap}>
             <div className={classes.flexItem}>
               <div className={classes.logo}>
-                <Link className={classes.blockOption} to='/'>
+                <Link className={classes.blockOption} to='/human-resources'>
                   <img className={classes.img} src={logo} alt='cozlin_logo' />
                 </Link>
               </div>
