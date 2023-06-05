@@ -290,3 +290,99 @@
     color: #ffffff;
     margin-left:760px;
 }
+
+.edit_profile{  
+    width: 288px;
+    top: 70px;
+    bottom: unset;
+    border: 1px solid #E4EBF0;
+    padding: 40px 24px 24px;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: -webkit-sticky;
+    position: sticky;
+    border-radius: 8px;
+    z-index: 0;
+
+}
+
+.title_h2{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    color: #3A3E41;
+}
+
+.button_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.save_btn{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 16px 40px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #141617;
+    border: none;
+    background-color: #6E50FF;
+    color: #fff;
+}
+
+.cancel_btn{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 16px 40px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+    color: #141617;
+    border: 1px solid #E4EBF0;
+    background-color: #fff;
+    color: #81898F;
+}

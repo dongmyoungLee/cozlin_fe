@@ -13,6 +13,7 @@ const Profile = () => {
 
 
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
+  
   const navigate = useNavigate();
 
   const currPwdHandler = (e) => {
@@ -62,7 +63,7 @@ const Profile = () => {
          <div className={classes.line}></div>
          <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}}  placeholder={{first :isLogin.userName , second :isLogin.userPhone, third : isLogin.userId}} use="isReadOnly" label="기본정보" inputTitle={{first : '이름', second : '연락처', third : '이메일'}} />
          <div className={classes.line}></div>
-         <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "", second : "", third : ""}} use="isReadOnly" label="희망직무" inputTitle={{first : '직군', second : '직무', third : '직무경력'}} />
+         <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "", second : "", third : isLogin.userDesiredJobGroupCareer}} use="isReadOnly" label="희망직무" inputTitle={{first : '직군', second : '직무', third : '직무경력'}} />
          <div className={classes.line}></div>
          <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "", second : "", third : ""}}  use="isReadOnly" label="최종학력" inputTitle={{first : '학교명', second : '이수상태', third : '학과명'}} />
 
