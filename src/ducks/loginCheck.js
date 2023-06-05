@@ -21,6 +21,8 @@ const initialIsLoginState = {
       userLastSchoolName : null,
       userLastSchoolStatus : null,
       userLastSchoolDept : null,
+      userJobCareerYn : null
+
   }
 }
 
