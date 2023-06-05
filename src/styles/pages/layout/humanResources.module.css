@@ -345,4 +345,42 @@
     font-size: 13px;
 }
 
+.bannerArea {
+    margin: 40px 0;
+    cursor: pointer;
+}
 
+.bannerAreaSection {
+    height: 132px;
+    padding: 0px 48px;
+    border-radius: 12px;
+    background-color: rgba(0,98,223, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bannerImg {
+    height: 100%;
+}
+
+.bannerTextArea {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bannerH3Option {
+    font-weight: 600;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+.bannerBtn {
+    width: fit-content;
+    padding: 10px 10px 10px 16px;
+    border-radius: 24px;
+    background-color: rgb(255, 203, 64);
+    font-weight: 700;
+    font-size: 12px;
+}

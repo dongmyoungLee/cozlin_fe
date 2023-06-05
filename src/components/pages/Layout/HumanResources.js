@@ -14,6 +14,7 @@ import FilteredItem from "../../blocks/FilteredItem";
 import {userGet} from "../../../common/api/ApiGetService";
 import {useSelector} from "react-redux";
 import userDefaultImg from "../../../asset/images/defaultuser.jpg";
+import bannerImg from "../../../asset/images/ai_compare_banner.webp";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -176,7 +177,7 @@ const HumanResources = () => {
     }
   }
 
-  const userList = devUser.length !== 0 ? devUser.map((item, idx) => (
+  const userTopList = devUser.length !== 0 ? devUser.slice(0, 8).map((item, idx) => (
                                                     <div key={idx} className={classes.mainCard}>
                                                       <div className={classes.imgArea}>
                                                         <img style={{width : '100%', height : '100%'}} src={userDefaultImg} />
@@ -200,6 +201,7 @@ const HumanResources = () => {
                                                   ))
                                                 : <p>조회되는 데이터가 없습니다.</p>;
 
+
   return (
       <>
         <Layout >
@@ -219,7 +221,18 @@ const HumanResources = () => {
           </section>
           <section className={classes.mainContents}>
             <div className={classes.mainCardWrap}>
-              {userList}
+              {userTopList}
+            </div>
+          </section>
+          <section className={classes.bannerArea}>
+            <div className={classes.bannerAreaSection}>
+              <div className={classes.bannerTextArea}>
+                <h3 className={classes.bannerH3Option}>내 이력서는 어느 회사에 합격할 수 있을까 ?</h3>
+                <div className={classes.bannerBtn}>
+                  <p>ChatGPT 이력서 코칭 받기 ></p>
+                </div>
+              </div>
+              <img src={bannerImg} className={classes.bannerImg} />
             </div>
           </section>
         </Layout>
