@@ -9,8 +9,14 @@
 
 .wrap {
     width: 100%;
-    /* height: calc(100vh - 57px); */
-    height:100vh;
+    height: calc(100vh - 57px);
+    /* height:100vh; */
+    background: rgb(246, 249, 250);
+    padding: 40px 0;
+}
+
+.profileWrap {
+    width: 100%;
     background: rgb(246, 249, 250);
     padding: 40px 0;
 }

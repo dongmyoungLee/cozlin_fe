@@ -12,6 +12,7 @@ import History from "./components/pages/Infomation/History";
 import Bookmark from "./components/pages/Infomation/Bookmark";
 import Follow from "./components/pages/Infomation/Follow";
 import Profile from "./components/pages/Infomation/Profile";
+import ProfileUpdate from './components/pages/Infomation/ProfileUpdate';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path : '/applicant/profile',
         element: <Profile />
+      },
+      {
+        path : '/applicant/profile/update',
+        element : <ProfileUpdate/>
       },
       {
         path : '/applicant/history',

@@ -23,8 +23,7 @@ const Account = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isLogin = useSelector(state => state.loginCheck.loginInfo);
-  
+  const isLogin = useSelector(state => state.loginCheck.loginInfo);  
   
   const currPwdHandler = (e) => {
     setCurrentPwd(e.target.value);
@@ -56,21 +55,6 @@ const Account = (props) => {
     // 나는 서버에 2개를 보내야됨. 현재 비밀번호와 바뀔비밀번호
 
     // 이 주소로 -> /user/update-pw-pagein 이걸 태워서 -> (id, currPwd, changePwd)
-
-    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
-      params:{
-        id : isLogin.userId,
-        currPwd:currentPwd,
-        changePwd:changePwd,
-      }
-    }).then((response)=>{
-      console.log(response)
-    }).catch((err)=>{
-      console.log(err)
-    })
-
-
-    /*
     axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
       params : {
         id : isLogin.userId,
@@ -101,16 +85,16 @@ const Account = (props) => {
     }).catch((error) => {
       setIsMsgPopupOpen({show: true, msg: error.data.message});
     })
-    */
+    
 
   }
 
   const closeMsgPopup = () => {
     
     // 팝업에서 확인버튼을 눌렀을 때 내 로그인정보가 없다면 /humanResources 으로 가겠음. 
-    // if (isLogin.userId === null) {
-    //   navigate("/humanResources");
-    // }
+    if (isLogin.userId === null) {
+      navigate("/humanResources");
+    }
 
     setIsMsgPopupOpen({show: false, msg: ''});
   }
@@ -143,8 +127,7 @@ const Account = (props) => {
                  <div className={classes.input_name}>{isLogin.userId}</div>
                </div>
             </div>
-
-            {/* InputComponent 의 출신을 적어주면 됨 */}
+            <div className={classes.line}></div>
             <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********"}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}}  />
 
             <div style={{display : 'flex', justifyContent : 'flex-end', paddingRight : '30px'}}>
