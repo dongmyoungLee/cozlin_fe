@@ -1,5 +1,5 @@
 import classes from '../../styles/atoms/radio.module.css';
-import {Mobile, PC} from "../config/Responsive";
+import {Mobile, PC, Tablet} from "../config/Responsive";
 
 const Radio = (props) => {
   return (

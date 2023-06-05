@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Company />
       },
       {
-        path: 'humanResources',
+        path: 'human-resources',
         element: <HumanResources />
       },
       {

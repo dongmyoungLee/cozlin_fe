@@ -8,7 +8,7 @@ import mypageIcon from '../../../asset/images/mypage.png';
 import MypageToolTipMenu from "../../blocks/MypageToolTipMenu";
 import HeaderItem from "../../blocks/HeaderItem";
 import { headerMenu } from "../../../common/Menus";
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const Header = () => {
   const isLogin = useSelector(state => state.loginCheck.loginInfo.isLogin);
   const isTooltipMenu = useSelector(state => state.pageNavigator.isMobileTooltipMenu);
   const navigate = useNavigate();
+  const myMenuRef2 = useRef(null);
 
 
   const pageNavigationHandler = () => {
@@ -45,7 +46,7 @@ const Header = () => {
                         </div>
                       </div>;
 
-  const loginedMenu = <div><img className={classes.mypageLogo} src={mypageIcon} onClick={mypageMenuShow} alt='loginMenu' /></div>
+  const loginedMenu = <div ref={myMenuRef2}><img className={classes.mypageLogo} src={mypageIcon} onClick={mypageMenuShow} alt='loginMenu' /></div>
 
   return (
       <header className={classes.header}>
@@ -53,7 +54,7 @@ const Header = () => {
           <div className={classes.flexWrap}>
             <div className={classes.flexItem}>
               <div className={classes.logo}>
-                <Link className={classes.blockOption} to='/'>
+                <Link className={classes.blockOption} to='/human-resources'>
                   <img className={classes.img} src={logo} alt='cozlin_logo' />
                 </Link>
               </div>
@@ -67,7 +68,7 @@ const Header = () => {
             </div>
             {isLogin && loginedMenu}
             {!isLogin && notLoginMenu}
-            {isTooltipMenu && <MypageToolTipMenu hide={mypageMenuShow} />}
+            {isTooltipMenu && <MypageToolTipMenu myMenuRef2={myMenuRef2} hide={mypageMenuShow} />}
           </div>
         </Layout>
       </header>

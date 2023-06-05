@@ -1,5 +1,5 @@
 import classes from '../../styles/atoms/input.module.css';
-import {Mobile, PC} from "../config/Responsive";
+import {Mobile, PC, Tablet} from "../config/Responsive";
 
 const Input = (props) => {
 

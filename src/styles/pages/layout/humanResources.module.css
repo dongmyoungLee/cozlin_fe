@@ -249,3 +249,138 @@
     top: 0;
     left: 0;
 }
+
+.itemWrap {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filterItem {
+    gap: 4px;
+    background-color: rgb(41 138 255 / 0.1);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 160%;
+    color: #0062df;
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.spanMr {
+    padding: 5px 0 5px 10px;
+}
+
+.spanSize {
+    height: 100%;
+    font-size: 20px;
+    color: rgb(199, 210, 216);
+    padding: 4px 6px 4px 0;
+}
+
+.mainContents {
+    padding: 40px 0;
+}
+
+.mainCardWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 20px;
+}
+
+.mainCard {
+    width: calc(100% / 4 - 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.imgArea {
+    height: 158px;
+    background-color: rgb(242, 246, 248);
+    border: 1px solid rgb(228, 235, 240);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mainNameArea {
+
+}
+
+.mainJobArea {
+
+}
+
+.mainJobText {
+    font-weight: 600;
+    font-size: 18px;
+    color: #3a3e41;
+}
+
+.iconInfoArea {
+    display: flex;
+    gap: 8px;
+}
+
+.iconInfo {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgb(129, 137, 143);
+}
+
+.iconWrap {
+    display: flex;
+    align-content: center;
+    gap: 3px;
+}
+
+.iconInfoText {
+    color: rgb(129, 137, 143);
+    font-size: 13px;
+}
+
+.bannerArea {
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.bannerAreaSection {
+    height: 132px;
+    padding: 0px 48px;
+    border-radius: 12px;
+    background-color: rgba(0,98,223, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bannerImg {
+    height: 100%;
+}
+
+.bannerTextArea {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bannerH3Option {
+    font-weight: 600;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+.bannerBtn {
+    width: fit-content;
+    padding: 10px 10px 10px 16px;
+    border-radius: 24px;
+    background-color: rgb(255, 203, 64);
+    font-weight: 700;
+    font-size: 12px;
+}

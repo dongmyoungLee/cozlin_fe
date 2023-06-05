@@ -1,6 +1,6 @@
 import React from 'react';
 import DaumPostcode from "react-daum-postcode";
-import {Mobile, PC} from "../config/Responsive";
+import {Mobile, PC, Tablet} from "../config/Responsive";
 
 const PopupPostCode = (props) => {
   // 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용

@@ -41,13 +41,21 @@ export const findUserJobInfo = (userId) => apiClient.post('/user/job', {}, {
   }
 })
 
-export const testA = (id, currPwd, changePwd) => apiClient.post('/user/update-pw-pagein', {}, {
+export const updateUserJobProfile = (id, userDesiredJobGroup, userDesiredJob, userDesiredJobGroupCareer, userJobSkill, userLastCompany, userLastJobGroup, userLastJobGroupCareer, userLastSchoolName, userLastSchoolStatus, userLastSchoolDept) => apiClient.post('/user/job-profile', {}, {
   params : {
     id : id,
-    currPwd : currPwd,
-    changePwd : changePwd,
-  }}
-) 
+    userDesiredJobGroup : userDesiredJobGroup,
+    userDesiredJob : userDesiredJob,
+    userDesiredJobGroupCareer : userDesiredJobGroupCareer,
+    userJobSkill : userJobSkill,
+    userLastCompany : userLastCompany,
+    userLastJobGroup : userLastJobGroup,
+    userLastJobGroupCareer : userLastJobGroupCareer,
+    userLastSchoolName : userLastSchoolName,
+    userLastSchoolStatus : userLastSchoolStatus,
+    userLastSchoolDept : userLastSchoolDept,
+  }
+})
 
 
 

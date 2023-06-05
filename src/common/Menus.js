@@ -8,7 +8,7 @@ import myAccount from '../asset/images/myaccount.png';
 export const headerMenu = [
     {
       menuName : '인채 채용',
-      menuLink : '/humanResources'
+      menuLink : '/human-resources'
     },
     {
       menuName : '채용 공고',
@@ -138,10 +138,7 @@ export const humanResourcesCategory = [
   },
   {
     menuName : '경영, 인사, 운영'
-  },
-  {
-    menuName : '기타'
-  },
+  }
 ];
 
 export const humanResourcesDevJob = [

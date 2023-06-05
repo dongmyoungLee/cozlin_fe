@@ -1,4 +1,4 @@
-import {Mobile, PC} from "../../config/Responsive";
+import {Mobile, PC, Tablet} from "../../config/Responsive";
 import classes from "../../../styles/pages/login/login.module.css";
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
