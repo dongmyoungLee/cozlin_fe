@@ -4,7 +4,7 @@ import Radio from "../../atoms/Radio";
 import {useEffect, useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
-import {Mobile, PC} from "../../config/Responsive";
+import {Mobile, PC, Tablet} from "../../config/Responsive";
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../../common/AuthContext";

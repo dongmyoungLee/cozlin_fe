@@ -3,7 +3,7 @@ import classes2 from '../../../styles/pages/login/signup.module.css';
 import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
-import {Mobile, PC} from "../../config/Responsive";
+import {Mobile, PC, Tablet} from "../../config/Responsive";
 import PopupDom from "../../blocks/PopupDom";
 import PopupPostCode from "../../blocks/PopupPostCode";
 import MsgPopup from "../../blocks/MsgPopup";
