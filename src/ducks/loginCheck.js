@@ -11,7 +11,16 @@ const initialIsLoginState = {
       userBirth : null,
       userAddr : null,
       userJobEnterdYn : null,
-      userDesiredJobGroupCareer : null
+      userDesiredJobGroupCareer : null,
+      userDesiredJobGroup : null,
+      userDesiredJob : null,
+      userJobSkill : null,
+      userLastCompany : null,
+      userLastJobGroup : null,
+      userLastJobGroupCareer : null,
+      userLastSchoolName : null,
+      userLastSchoolStatus : null,
+      userLastSchoolDept : null,
   }
 }
 
