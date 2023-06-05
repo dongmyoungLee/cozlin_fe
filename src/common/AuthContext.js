@@ -23,6 +23,7 @@ export const login = async (userId, userPwd) => {
     userLastSchoolName : null,
     userLastSchoolStatus : null,
     userLastSchoolDept : null,
+    userJobCareerYn : null,
   }
 
   try {
@@ -51,6 +52,7 @@ export const login = async (userId, userPwd) => {
       res.userLastSchoolName = response.data.userLastSchoolName;
       res.userLastSchoolStatus = response.data.userLastSchoolStatus;
       res.userLastSchoolDept = response.data.userLastSchoolDept;
+      res.userJobCareerYn = response.data.userJobCareerYn;
 
       // 토큰 인증 성공시 모든 API에 기본 요청 토큰 설정..
       apiClient.interceptors.request.use((config) => {
