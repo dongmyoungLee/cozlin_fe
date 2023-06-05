@@ -1,4 +1,4 @@
-import {Mobile, PC} from "../../config/Responsive";
+import {Mobile, PC, Tablet} from "../../config/Responsive";
 import classes from "../../../styles/pages/login/login.module.css";
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
@@ -120,6 +120,35 @@ const FindUserInfo = () => {
             </div>
           </section>
         </PC>
+        <Tablet>
+          <section className={classes.mobileSection}>
+            <div className={classes.mWrap}>
+              <article className={classes.mobileArticle}>
+                <div className={classes.mobileFindPwdFormWrap}>
+                  <div className={classes.marginOption}>
+                    <RadioGroup>
+                      <Radio name="contact" value="id" defaultChecked onChange={radioChangeHandler}>
+                        <p className={classes.fontSizeDefault}>아이디 찾기</p>
+                      </Radio>
+                      <Radio name="contact" value="pwd" onChange={radioChangeHandler}>
+                        <p className={classes.fontSizeDefault}>비밀번호 찾기</p>
+                      </Radio>
+                    </RadioGroup>
+                  </div>
+                  <div className={classes.gapOption}>
+                    {isFindType === 'id' && idFindForm}
+                    {isFindType === 'pwd' && pwFindForm}
+                    <Button btn={{
+                      type : '',
+                      value : '인증하기',
+                      onClick : pwValidSubmitHandler
+                    }} />
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </Tablet>
         <Mobile>
           <section className={classes.mobileSection}>
             <div className={classes.mWrap}>

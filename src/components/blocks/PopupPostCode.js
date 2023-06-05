@@ -1,6 +1,6 @@
 import React from 'react';
 import DaumPostcode from "react-daum-postcode";
-import {Mobile, PC} from "../config/Responsive";
+import {Mobile, PC, Tablet} from "../config/Responsive";
 
 const PopupPostCode = (props) => {
   // 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
@@ -89,6 +89,12 @@ const PopupPostCode = (props) => {
             <button style={closeBtnStyle} type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
           </div>
         </PC>
+        <Tablet>
+          <div style={layOutWrapMobile}>
+            <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+            <button style={closeBtnStyle} type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
+          </div>
+        </Tablet>
         <Mobile>
           <div style={layOutWrapMobile}>
             <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />

@@ -1,5 +1,5 @@
 import classes from '../../styles/atoms/radio.module.css';
-import {Mobile, PC} from "../config/Responsive";
+import {Mobile, PC, Tablet} from "../config/Responsive";
 
 const Radio = (props) => {
   return (
@@ -18,6 +18,20 @@ const Radio = (props) => {
             {props.children}
           </label>
         </PC>
+        <Tablet>
+          <label className={classes.mobileRadioOption}>
+            <input
+              type='radio'
+              value={props.value}
+              name={props.name}
+              defaultChecked={props.defaultChecked}
+              disabled={props.disabled}
+              className={classes.mobileRadioSize}
+              onChange={props.onChange}
+            />
+            {props.children}
+          </label>
+        </Tablet>
         <Mobile>
           <label className={classes.mobileRadioOption}>
             <input

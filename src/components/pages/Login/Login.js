@@ -4,7 +4,7 @@ import Radio from "../../atoms/Radio";
 import {useEffect, useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
-import {Mobile, PC} from "../../config/Responsive";
+import {Mobile, PC, Tablet} from "../../config/Responsive";
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../../common/AuthContext";
@@ -143,6 +143,27 @@ const Login = () => {
             </div>
           </section>
         </PC>
+        <Tablet>
+          <section className={classes.mobileSection}>
+            <article className={classes.mobileArticle}>
+              <div className={classes.mobileFormWrap}>
+                <RadioGroup>
+                  <Radio name="contact" value="general" defaultChecked onChange={radioChangeHandler}>
+                    <p>일반회원</p>
+                  </Radio>
+                  <Radio name="contact" value="company" onChange={radioChangeHandler}>
+                    기업회원
+                  </Radio>
+                </RadioGroup>
+                <div>
+                  <div className={classes.formOption}>
+                    {mobileLoginForm}
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </Tablet>
         <Mobile>
           <section className={classes.mobileSection}>
             <article className={classes.mobileArticle}>
