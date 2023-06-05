@@ -109,6 +109,7 @@ const HumanResources = () => {
     // 가져온 데이터를 기존 데이터와 결합하여 업데이트
     userGet().then((res) => {
       if (res.status === 200) {
+
         const newData = res.data;
         setUserBotListData(prevData => [...prevData, ...newData]);
 

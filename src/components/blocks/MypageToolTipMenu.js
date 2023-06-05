@@ -29,7 +29,7 @@ const MypageToolTipMenu = (props) => {
     }
     dispatch(loginCheckAction.logout(logout));
     props.hide();
-    navigate("/humanResources");
+    navigate("/human-resources");
   }
 
   useEffect(() => {
