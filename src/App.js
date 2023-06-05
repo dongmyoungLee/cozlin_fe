@@ -16,10 +16,6 @@ function App() {
             <HeightSpace />
             <Header />
           </PC>
-          <Tablet>
-            <HeightSpace />
-            <MobileHeader />
-          </Tablet>
           <Mobile>
             <HeightSpace />
             <MobileHeader />

@@ -143,27 +143,6 @@ const Login = () => {
             </div>
           </section>
         </PC>
-        <Tablet>
-          <section className={classes.mobileSection}>
-            <article className={classes.mobileArticle}>
-              <div className={classes.mobileFormWrap}>
-                <RadioGroup>
-                  <Radio name="contact" value="general" defaultChecked onChange={radioChangeHandler}>
-                    <p>일반회원</p>
-                  </Radio>
-                  <Radio name="contact" value="company" onChange={radioChangeHandler}>
-                    기업회원
-                  </Radio>
-                </RadioGroup>
-                <div>
-                  <div className={classes.formOption}>
-                    {mobileLoginForm}
-                  </div>
-                </div>
-              </div>
-            </article>
-          </section>
-        </Tablet>
         <Mobile>
           <section className={classes.mobileSection}>
             <article className={classes.mobileArticle}>

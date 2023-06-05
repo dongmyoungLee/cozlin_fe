@@ -376,19 +376,6 @@ const Login = () => {
             </div>
           </section>
         </PC>
-        <Tablet>
-          <section className={isMobileMenu ? classes.hide_mobileSection : classes.mobileSection}>
-            <article className={classes.signup_mobileArticle}>
-              <div className={classes.mobileFormWrap}>
-                <div>
-                  <div className={classes.formOption}>
-                    {mobileLoginForm}
-                  </div>
-                </div>
-              </div>
-            </article>
-          </section>
-        </Tablet>
         <Mobile>
           <section className={isMobileMenu ? classes.hide_mobileSection : classes.mobileSection}>
             <article className={classes.signup_mobileArticle}>
