@@ -1,14 +1,14 @@
 import Layout from "../../blocks/Layout";
 import classes from '../../../styles/pages/layout/header.module.css';
 import logo from '../../../asset/images/logo.png';
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { pageNavigatorAction } from "../../../ducks/pageNavigator";
+import {Link, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {pageNavigatorAction} from "../../../ducks/pageNavigator";
 import mypageIcon from '../../../asset/images/mypage.png';
 import MypageToolTipMenu from "../../blocks/MypageToolTipMenu";
 import HeaderItem from "../../blocks/HeaderItem";
-import { headerMenu } from "../../../common/Menus";
-import {useRef, useState} from "react";
+import {headerMenu} from "../../../common/Menus";
+import {useRef} from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
