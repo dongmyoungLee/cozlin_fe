@@ -6,12 +6,10 @@ const InputBox = (props) =>{
    return(
          <div className={classes.profile}>
             <div className={classes.input}>
-               <div style={{color : props.color}} className={classes.name}>{props.inputTitle}</div>
-               <input readOnly={props.isReadOnly} className={props.widthSize  ? classes.input_style : classes.input_style2}></input>
+               <div  className={classes.name}>{props.inputTitle}</div>
+               <input style={{backgroundColor: props.isReadOnly ? '#F6F9FA' : '#FFFFFF'}}type={props.type} onChange={props.onChange} placeholder={props.placeholder}readOnly={props.isReadOnly}  className={classes.input_style}></input>
             </div>
          </div>
-         
-   )
+      );
 }
-
 export default InputBox;

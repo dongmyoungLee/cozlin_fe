@@ -2,42 +2,66 @@ import Applicant from "../../blocks/Applicant";
 import MypageLayout from "../../blocks/MypageLayout";
 import classes from '../../../styles/pages/layout/mypage.module.css';
 import {Mobile, PC} from "../../config/Responsive";
-import { useSelector } from "react-redux";
-import { findUserJobInfo } from "../../../common/api/ApiPostService";
+import { useDispatch, useSelector } from "react-redux";
+import { findUserJobInfo, testA } from "../../../common/api/ApiPostService";
 import axios from "axios";
 import InputComponent from "../../blocks/InputComponent";
+import Button from "../../atoms/Button";
+import { useState } from "react";
+import { passCheck } from "../../../common/Reg";
+import PopupDom from "../../blocks/PopupDom";
+import MsgPopup from "../../blocks/MsgPopup";
+import { useNavigate } from "react-router-dom";
+import { loginCheckAction } from "../../../ducks/loginCheck";
 
-const Account = () => {
+const Account = (props) => {
+  const [currentPwd, setCurrentPwd] = useState("");
+  const [changePwd,  setChangePwd] = useState("");
+  const [changeCheckPwd, setChangeCheckPwd] = useState("");
+  const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
 
-  // redux 에서 데이터를 꺼내오는 행위
-  const userId = useSelector(state => state.loginCheck.loginInfo.userId);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const isLogin = useSelector(state => state.loginCheck.loginInfo);
   
-
-  const testMethod = () => {
-
-    // 받기만한다
-    // 서버에 있는 값을 모두받아온다
-    // http://cozlin.com/user
-    
-    axios.get("http://cozlin.com/user").then((response)=>{
-      console.log(response)
-    }).catch((err)=>{
-      console.log(err)
-    })
-
+  
+  const currPwdHandler = (e) => {
+    setCurrentPwd(e.target.value);
   }
 
+  const changePwdHandler = (e) => {
+    setChangePwd(e.target.value);
+  }
 
-  const testMethod2 = () => {
-    //  주고받고한다
-    //  서버에있는 값중에 내가 원하는 값만 가져온다 
-    //  첫번째 중괄호 = body
-    //  두번째 중괄호 = params
-    // http://cozlin.com/user/job
-    axios.post("http://cozlin.com/user/job", {} , {
+  const changeCheckPwdHandler = (e) => {
+    setChangeCheckPwd(e.target.value);
+  }
+
+  const changePwdSubmit = (e) => {
+
+    // 한 블럭에 하나의 책임만  
+    if (!passCheck(changePwd)) {
+      setIsMsgPopupOpen({show: true, msg: '변경할 비밀번호는 영문, 숫자, 특문 포함 8자 이상 입니다.'});
+      return ;
+    }
+    
+    if (changePwd !== changeCheckPwd) {
+      setIsMsgPopupOpen({show: true, msg: '비밀번호 확인이 일치하지 않습니다.'});
+      return ;
+    }
+
+    // 정규식 다 통과하면 axios 요청..
+    // 서버에게 비밀번호를 바꿔주세요~ 라는 POST 요청을 보낼거에요.
+    // 나는 서버에 2개를 보내야됨. 현재 비밀번호와 바뀔비밀번호
+
+    // 이 주소로 -> /user/update-pw-pagein 이걸 태워서 -> (id, currPwd, changePwd)
+
+    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
       params:{
-        id : userId
+        id : isLogin.userId,
+        currPwd:currentPwd,
+        changePwd:changePwd,
       }
     }).then((response)=>{
       console.log(response)
@@ -45,8 +69,60 @@ const Account = () => {
       console.log(err)
     })
 
+
+    /*
+    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
+      params : {
+        id : isLogin.userId,
+        currPwd : currentPwd,
+        changePwd : changePwd,
+      }
+    }).then((response) => {
+      if (response.status === 200) {
+
+        //  요청이 성공적이라면 내 로그인정보 비워주기 -> 결론 로그아웃 시킴
+        const res = {
+          isLogin : false,
+          token : null,
+          loginEnteredTime : Date.now(),
+          userId : null,
+          userName : null,
+          userPhone : null,
+          userBirth : null,
+          userAddr : null,
+        }
+        
+        // Redux 에 있는 내 로그인정보를 비워주기
+        dispatch(loginCheckAction.loginInfoSet(res));
+
+        // 팝업을 띄워줌
+        setIsMsgPopupOpen({show: true, msg: '비밀번호 변경이 완료 되었습니다.'});
+      }
+    }).catch((error) => {
+      setIsMsgPopupOpen({show: true, msg: error.data.message});
+    })
+    */
+
   }
 
+  const closeMsgPopup = () => {
+    
+    // 팝업에서 확인버튼을 눌렀을 때 내 로그인정보가 없다면 /humanResources 으로 가겠음. 
+    // if (isLogin.userId === null) {
+    //   navigate("/humanResources");
+    // }
+
+    setIsMsgPopupOpen({show: false, msg: ''});
+  }
+
+
+  // redux 에서 데이터를 꺼내오는 행위
+  const userId = useSelector(state => state.loginCheck.loginInfo.userId);
+
+  // 1. password input 에 쓰는 데이터를 저장한다.
+  // 2. password input 에 정해져있는 정규식을 저장한다.
+  // 3. 비밀번호 변경요청을 한다.
+  
   return (
     <>
       <PC>
@@ -55,28 +131,27 @@ const Account = () => {
           <div className={classes.account}>
             <div className={classes.management_box}>
               <div className={classes.dark}>
-                <h2>프로필 관리</h2>
-                <p>작성한 프로필로 입사지원을 할 수 있습니다.</p>
+                <h2 className={classes.h2_option}>계정 정보</h2>
+                <p  className={classes.p_option}>로그인 정보를 변경할 수 있습니다.</p>
               </div>
-              <button className={classes.box}>
-                <a className={classes.edit} href="https://www.kurly.com/board/notice">수정하기</a>
-              </button>
+
             </div>
             <div className={classes.line}></div>
             <div className={classes.account_information}>
                <div className={classes.id_box}>
                  <div className={classes.id}>아이디</div>
-                 <div className={classes.input_name}>yuljeonjw@naver.com</div>
+                 <div className={classes.input_name}>{isLogin.userId}</div>
                </div>
             </div>
-            <InputComponent label="기본정보" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}} />
 
+            {/* InputComponent 의 출신을 적어주면 됨 */}
+            <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********"}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}}  />
 
-            {/* <p>Account</p>
-            <div>
-              <button style={{display : 'block'}} onClick={testMethod}>GET 으로 요청 하기</button>
-              <button onClick={testMethod2}>POST 로 요청하기</button>
-            </div> */}
+            <div style={{display : 'flex', justifyContent : 'flex-end', paddingRight : '30px'}}>
+              <div style={{width:'137px'}}>
+                <Button btn={{value:'수정하기', onClick:changePwdSubmit}}/>
+              </div>
+            </div>
           </div>
         </MypageLayout>
       </PC>
@@ -99,6 +174,11 @@ const Account = () => {
           </div>
         </div>
       </Mobile>
+      <div id='popupDom'>
+          {isMsgPopupOpen.show && <PopupDom>
+            <MsgPopup onClick={closeMsgPopup} msg={isMsgPopupOpen.msg} />
+          </PopupDom>}
+      </div>
     </>
   );
 }

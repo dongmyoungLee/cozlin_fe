@@ -1,19 +1,19 @@
+import { useState } from 'react';
 import classes from '../../styles/pages/layout/mypage.module.css';
 import InputBox from './InputBox';
 
 const InputComponent = (props) => {
+   const use = props.use === 'isReadOnly' ? true : false;
 
-   
-   
    return(
       <div>
          <div className={classes.line}></div>
-         <div style={{display : 'flex', justifyContent : 'space-between', padding:'30px'}}>
+         <div className={classes.input_layout}>
             <div>{props.label}</div>
             <div> 
-               <InputBox inputTitle={props.inputTitle.first} color="red" widthSize={false} isReadOnly={true} />
-               <InputBox inputTitle={props.inputTitle.second} color="blue" widthSize={true} isReadOnly={true} />
-               <InputBox inputTitle={props.inputTitle.third} color="green" widthSize={false} isReadOnly={true} />
+               <InputBox onChange={props.onChange.first} type={props.type} inputTitle={props.inputTitle.first}  placeholder={props.placeholder.first} isReadOnly={use} />
+               <InputBox onChange={props.onChange.second} type={props.type} inputTitle={props.inputTitle.second} placeholder={props.placeholder.second} isReadOnly={use}  />
+               <InputBox onChange={props.onChange.third} type={props.type} inputTitle={props.inputTitle.third} placeholder={props.placeholder.third} isReadOnly={use} />
             </div>
          </div>
       </div>

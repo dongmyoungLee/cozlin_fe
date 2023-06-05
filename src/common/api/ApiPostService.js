@@ -41,5 +41,13 @@ export const findUserJobInfo = (userId) => apiClient.post('/user/job', {}, {
   }
 })
 
+export const testA = (id, currPwd, changePwd) => apiClient.post('/user/update-pw-pagein', {}, {
+  params : {
+    id : id,
+    currPwd : currPwd,
+    changePwd : changePwd,
+  }}
+) 
+
 
 
