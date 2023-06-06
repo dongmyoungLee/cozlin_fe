@@ -39,12 +39,12 @@ const MobileMenu = (props) => {
             ))}
         </section>
         <section className={classes.section}>
-            <MobileMenuList endPoint='/' onClick={mobileLogOutHandler} menuName='로그아웃' />
+            <MobileMenuList endPoint='/employment/human-resources' onClick={mobileLogOutHandler} menuName='로그아웃' />
         </section>
     </>;
 
     const notLoginMenu = <section className={classes.section}>
-        <MobileMenuList endPoint='/login' onClick={props.onClick} menuName='로그인 / 회원가입' />
+        <MobileMenuList endPoint='/member/login' onClick={props.onClick} menuName='로그인 / 회원가입' />
     </section>;
 
     return (
@@ -55,7 +55,7 @@ const MobileMenu = (props) => {
                 ))}
             </section>
             <section className={classes.section}>
-                <MobileMenuList endPoint='/company' menuName='기업 서비스' onClick={props.onClick} />
+                <MobileMenuList endPoint='/' menuName='기업 서비스' onClick={props.onClick} />
             </section>
             {!isLogin && notLoginMenu}
             {isLogin && loginMenu}
