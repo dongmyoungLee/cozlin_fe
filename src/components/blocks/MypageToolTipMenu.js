@@ -17,7 +17,7 @@ const MypageToolTipMenu = (props) => {
 
   const clickMethods = (flag) => {
     dispatch(pageNavigatorAction.isMobileTooltipMenu(!isTooltipMenu));
-    navigate(`/applicant/${flag}`);
+    navigate(`/member/${flag}`);
   }
 
   const logoutHandler =  () => {
@@ -29,7 +29,7 @@ const MypageToolTipMenu = (props) => {
     }
     dispatch(loginCheckAction.logout(logout));
     props.hide();
-    navigate("/human-resources");
+    navigate("/employment/human-resources");
   }
 
   useEffect(() => {
