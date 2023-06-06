@@ -23,9 +23,9 @@ const Header = () => {
     dispatch(pageNavigatorAction.isCompany(!isCompany));
 
     if (isCompany) {
-      navigate('/');
+      navigate('/employment/human-resources');
     } else {
-      navigate('/company');
+      navigate('/');
     }
   }
 
@@ -39,7 +39,7 @@ const Header = () => {
   const userType = isCompany ?  <p>일반 회원 바로가기</p> : <p>기업 서비스</p>;
 
   const notLoginMenu = <div className={classes.flexItem}>
-                        <Link className={classes.loginText} to='/login'>로그인 / 회원가입</Link>
+                        <Link className={classes.loginText} to='/member/login'>로그인 / 회원가입</Link>
                         <div className={classes.verticalSpace}></div>
                         <div className={classes.categoryBoxCss} onClick={pageNavigationHandler}>
                           {userType}
@@ -54,7 +54,7 @@ const Header = () => {
           <div className={classes.flexWrap}>
             <div className={classes.flexItem}>
               <div className={classes.logo}>
-                <Link className={classes.blockOption} to='/human-resources'>
+                <Link className={classes.blockOption} to='/'>
                   <img className={classes.img} src={logo} alt='cozlin_logo' />
                 </Link>
               </div>

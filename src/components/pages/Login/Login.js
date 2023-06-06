@@ -26,7 +26,7 @@ const Login = () => {
   useEffect(() => {
     // 페이지 처음 들어왔을때 로그인상태 라면 홈으로 반환..
     if (isLogin) {
-      navigate('/');
+      navigate('/employment/human-resources');
     }
   }, []);
 
@@ -60,7 +60,7 @@ const Login = () => {
       .then((res) => {
         if (res.isLogin) {
           // 로그인 성공
-          navigate('/');
+          navigate('/employment/human-resources');
           dispatch(loginCheckAction.loginInfoSet(res));
         } else {
           // 로그인 실패
@@ -94,8 +94,8 @@ const Login = () => {
                               value : '로그인',
                             }} />
                             <div className={classes.signUpBox}>
-                              {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p><Link to='/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
+                              {isLoginType === 'general' ? <p><Link to='/member/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
+                              <p><Link to='/member/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
                             </div>
                       </form>;
 
@@ -114,8 +114,8 @@ const Login = () => {
                               value : '로그인',
                             }} />
                             <div className={classes.signUpBox}>
-                              {isLoginType === 'general' ? <p><Link to='/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
-                              <p><Link to='/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
+                              {isLoginType === 'general' ? <p><Link to='/member/signup'>회원가입 하기 ＞</Link></p> : <p><Link to='/'>기업회원 신청하기 ＞</Link></p>}
+                              <p><Link to='/member/find-pwd'>아이디 및 비밀번호 찾기 ></Link></p>
                             </div>
                           </form>;
   return (

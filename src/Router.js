@@ -12,16 +12,55 @@ import History from "./components/pages/Infomation/History";
 import Bookmark from "./components/pages/Infomation/Bookmark";
 import Follow from "./components/pages/Infomation/Follow";
 import Profile from "./components/pages/Infomation/Profile";
+import HeaderSection from "./components/pages/Layout/HeaderSection";
 
 const router = createBrowserRouter([
   {
     path : '/',
     element : <App />,
-    children: [
+  },
+  {
+    path : '/member',
+    element : <HeaderSection />,
+    children : [
       {
         path: 'login',
         element: <Login />,
       },
+      {
+        path: 'signup',
+        element: <Signup />
+      },
+      {
+        path: 'find-pwd',
+        element: <FindUserInfo />
+      },
+      {
+        path : 'account',
+        element: <Account />
+      },
+      {
+        path : 'profile',
+        element: <Profile />
+      },
+      {
+        path : 'history',
+        element: <History />
+      },
+      {
+        path : 'bookmark',
+        element: <Bookmark />
+      },
+      {
+        path : 'follow',
+        element: <Follow />
+      },
+    ]
+  },
+  {
+    path : 'employment',
+    element : <HeaderSection />,
+    children : [
       {
         path: 'company',
         element: <Company />
@@ -35,39 +74,11 @@ const router = createBrowserRouter([
         element: <Announcement />
       },
       {
-        path: 'signup',
-        element: <Signup />
-      },
-      {
         path: 'resize',
         element: <Resize />
       },
-      {
-        path: 'find-pwd',
-        element: <FindUserInfo />
-      },
-      {
-        path : '/applicant/account',
-        element: <Account />
-      },
-      {
-        path : '/applicant/profile',
-        element: <Profile />
-      },
-      {
-        path : '/applicant/history',
-        element: <History />
-      },
-      {
-        path : '/applicant/bookmark',
-        element: <Bookmark />
-      },
-      {
-        path : '/applicant/follow',
-        element: <Follow />
-      },
-    ],
-  }
+    ]
+  },
 ]);
 
 export default router;

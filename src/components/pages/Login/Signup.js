@@ -134,15 +134,15 @@ const Login = () => {
       return ;
     }
 
-    if(idValidBtnText !== '완료') {
-      setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
-      return ;
-    }
+    // if(idValidBtnText !== '완료') {
+    //   setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
+    //   return ;
+    // }
 
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, (userPostData + ' ' +  userAddrDetail), nameInput)
     .then((res) => {
       if (res.status === 200) {
-        setAfterVisitPath('/login');
+        setAfterVisitPath('/member/login');
         setIsMsgPopupOpen({show: true, msg: '회원가입이 완료 되었습니다.'});
       }
     })

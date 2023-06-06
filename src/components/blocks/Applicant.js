@@ -10,7 +10,7 @@ const Applicant = () => {
   const isTooltipMenu = useSelector(state => state.pageNavigator.isMobileTooltipMenu);
 
   const clickMethods = (flag) => {
-    navigate(`/applicant/${flag}`);
+    navigate(`/member/${flag}`);
   }
 
   return (
