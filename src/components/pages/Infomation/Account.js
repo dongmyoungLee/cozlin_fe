@@ -93,7 +93,7 @@ const Account = (props) => {
     
     // 팝업에서 확인버튼을 눌렀을 때 내 로그인정보가 없다면 /humanResources 으로 가겠음. 
     if (isLogin.userId === null) {
-      navigate("/humanResources");
+      navigate("/human-resources");
     }
 
     setIsMsgPopupOpen({show: false, msg: ''});
@@ -128,7 +128,7 @@ const Account = (props) => {
                </div>
             </div>
             <div className={classes.line}></div>
-            <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********"}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}}  />
+            <InputComponent value={{first : '' , second :'', third : '', fourth : ''}}  onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********", fourth :''}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인', fourth : ''}}  />
 
             <div style={{display : 'flex', justifyContent : 'flex-end', paddingRight : '30px'}}>
               <div style={{width:'137px'}}>

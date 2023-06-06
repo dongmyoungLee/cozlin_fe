@@ -1,0 +1,45 @@
+.btnWrap {
+   width: 400px;
+   height: 50px;
+   background-color: #fff;
+   border-radius: 8px;
+   border: 1px solid gray;
+   cursor: pointer;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 14px 14px;
+   margin-top: 20px;
+}
+
+.btnOption {
+   background-color: #fff;
+   outline: none;
+}
+
+.dropDownMenu {
+   width: 400px;
+   background-color: #fff;
+   border: 1px solid gray;
+   border-radius: 8px;
+}
+
+.dropDownMenuFlex {
+   display: flex;
+   align-items: center;
+   padding: 0 10px;
+   cursor: pointer;
+}
+
+.dropDownMenu_ul {
+   height: 200px;
+   overflow-y: scroll;
+}
+
+.dropDownMenu_li {
+   padding: 14px 14px;
+}
+
+.dropDownMenuFlex:hover {
+   background-color: rgba(34, 34, 34, 0.1);
+}

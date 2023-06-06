@@ -277,3 +277,55 @@ export const humanResourcesEtcJob = [
   },
 
 ];
+
+export const humanResourcesCareer = [
+  {
+    menuName : '직무 관련 경험 없음'
+  },
+  {
+    menuName : '1년 차'
+  },
+  {
+    menuName : '2년 차'
+  },
+  {
+    menuName : '3년 차'
+  },
+  {
+    menuName : '4년 차'
+  },
+  {
+    menuName : '5년 차'
+  },
+  {
+    menuName : '6년 차'
+  },
+  {
+    menuName : '7년 차 이상'
+  },
+];
+
+export const humanResourcesSchoolStatus = [
+  {
+    menuName : '졸업'
+  },
+  {
+    menuName : '재학중'
+  },
+  {
+    menuName : '휴학중'
+  },
+  {
+    menuName : '수료'
+  },
+  {
+    menuName : '중퇴'
+  },
+  {
+    menuName : '자퇴'
+  },
+  {
+    menuName : '졸업예정'
+  },
+]
+

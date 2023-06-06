@@ -337,26 +337,12 @@
 }
 
 .cancel_btn{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
     flex-grow: 1;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     border-radius: 8px;
     padding: 16px 40px;
-    font-family: Pretendard;
-    font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 160%;
