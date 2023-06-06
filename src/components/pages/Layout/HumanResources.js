@@ -5,8 +5,11 @@ import classes from "../../../styles/pages/layout/humanResources.module.css";
 import FilterButton from "../../blocks/FilterButton";
 import {useEffect, useState} from "react";
 import {
-  careerFilterCategory, humanResourcesDesignJob,
-  humanResourcesDevJob, humanResourcesEtcJob, humanResourcesMarketingJob,
+  careerFilterCategory,
+  humanResourcesDesignJob,
+  humanResourcesDevJob,
+  humanResourcesEtcJob,
+  humanResourcesMarketingJob,
   humanResourcesPlannerJob,
   regionFilterCategory
 } from "../../../common/Menus";

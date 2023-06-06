@@ -4,6 +4,7 @@ import {Outlet} from "react-router-dom";
 import {Mobile, PC} from "./components/config/Responsive";
 import MobileHeader from "./components/pages/Layout/MobileHeader";
 import HeightSpace from "./components/atoms/HeightSpace";
+import Company from "./components/pages/Infomation/Company";
 
 
 function App() {
@@ -13,10 +14,12 @@ function App() {
           <PC>
             <HeightSpace />
             <Header />
+            <Company />
           </PC>
           <Mobile>
             <HeightSpace />
             <MobileHeader />
+            <Company />
           </Mobile>
           <Outlet />
         </main>
