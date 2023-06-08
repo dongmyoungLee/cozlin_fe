@@ -12,6 +12,7 @@ import MailValidPopup from "../../blocks/MailValidPopup";
 import {emailValidService, signUp} from "../../../common/api/ApiPostService";
 import {emailCheck, numberCheck, passCheck} from "../../../common/Reg";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 
 const Login = () => {
@@ -134,10 +135,10 @@ const Login = () => {
       return ;
     }
 
-    // if(idValidBtnText !== '완료') {
-    //   setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
-    //   return ;
-    // }
+    if(idValidBtnText !== '완료') {
+      setIsMsgPopupOpen({show: true, msg: '이메일 인증을 완료 해주세요.'});
+      return ;
+    }
 
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, (userPostData + ' ' +  userAddrDetail), nameInput)
     .then((res) => {
