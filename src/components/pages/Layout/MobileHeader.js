@@ -24,7 +24,7 @@ const MobileHeader = () => {
       <>
         <header className={classes.header}>
           <div className={classes.mobileHeaderWrapper}>
-            <Link className={classes.blockOption} to='/human-resources'>
+            <Link className={classes.blockOption} to='/employment/human-resources'>
                 <img src={logo} className={classes.img} alt='cozlin_logo' />
             </Link>
             <img src={menu} className={classes.menuImg} onClick={mobileMenuPageHandler} alt='menu_logo' />

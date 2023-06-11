@@ -12,6 +12,7 @@ import MailValidPopup from "../../blocks/MailValidPopup";
 import {emailValidService, signUp} from "../../../common/api/ApiPostService";
 import {emailCheck, numberCheck, passCheck} from "../../../common/Reg";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 
 const Login = () => {
@@ -142,7 +143,7 @@ const Login = () => {
     signUp(idInput, passInput, phoneInput, birthBeforeInput, birthAfterInput, (userPostData + ' ' +  userAddrDetail), nameInput)
     .then((res) => {
       if (res.status === 200) {
-        setAfterVisitPath('/login');
+        setAfterVisitPath('/member/login');
         setIsMsgPopupOpen({show: true, msg: '회원가입이 완료 되었습니다.'});
       }
     })
