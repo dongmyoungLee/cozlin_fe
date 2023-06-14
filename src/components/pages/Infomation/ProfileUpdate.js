@@ -66,7 +66,9 @@ const ProfileUpdate = () => {
 
         {/* 자식 컴포넌트에서 드롭다운 메뉴를 고를때 나오는 값을 여기(부모컴포넌트)로 보내줘야함 */}
         {/* props 넘겨줄때 값이면 보통 부모에서 자식으로 주고 넘겨줄때 함수면 보통 자식에서 부모로 뭔가 보내주고 있는거임 (값 = 파란색, 함수 = 노란색) */}
+
         <SelectBox menuList={humanResourcesCategory} settingCategory={settingCategoryHandler} />
+
         <SelectBox menuList={changeMenuList} settingCategory={settingCategoryHandler} />
 
       </div>

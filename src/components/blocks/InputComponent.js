@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from '../../styles/pages/layout/mypage.module.css';
 import InputBox from './InputBox';
 
@@ -13,12 +13,12 @@ const InputComponent = (props) => {
          <div className={classes.input_layout}>
             <div>{props.label}</div>
             <div> 
-               <InputBox value={props.value.first} onChange={props.onChange.first} type={props.type} inputTitle={props.inputTitle.first}  placeholder={props.placeholder.first} isReadOnly={use} />
-               <InputBox value={props.value.second} onChange={props.onChange.second} type={props.type} inputTitle={props.inputTitle.second} placeholder={props.placeholder.second} isReadOnly={use}  />
-               <InputBox value={props.value.third} onChange={props.onChange.third} type={props.type} inputTitle={props.inputTitle.third} placeholder={props.placeholder.third} isReadOnly={use} />
+               <InputBox onChange={props.onChange.first} type={props.type} inputTitle={props.inputTitle.first}  placeholder={props.placeholder.first} isReadOnly={use} />
+               <InputBox onChange={props.onChange.second} type={props.type} inputTitle={props.inputTitle.second} placeholder={props.placeholder.second} isReadOnly={use}  />
+               <InputBox onChange={props.onChange.third} type={props.type} inputTitle={props.inputTitle.third} placeholder={props.placeholder.third} isReadOnly={use} />
 
                
-               {lastInput && <InputBox value={props.value.fourth} onChange={props.onChange.fourth} type={props.type} inputTitle={props.inputTitle.fourth} placeholder={props.placeholder.fourth} isReadOnly={use} />}
+               {lastInput && <InputBox onChange={props.onChange.fourth} type={props.type} inputTitle={props.inputTitle.fourth} placeholder={props.placeholder.fourth} isReadOnly={use} />}
 
             </div>
          </div>

@@ -55,13 +55,12 @@ const Account = (props) => {
     // 나는 서버에 2개를 보내야됨. 현재 비밀번호와 바뀔비밀번호
 
     // 이 주소로 -> /user/update-pw-pagein 이걸 태워서 -> (id, currPwd, changePwd)
-    axios.post('http://cozlin.com/user/update-pw-pagein', {}, {
-      params : {
-        id : isLogin.userId,
-        currPwd : currentPwd,
-        changePwd : changePwd,
-      }
-    }).then((response) => {
+    axios.post('http://cozlin.com/api/v1/user/update-pw-pagein', {
+      id : isLogin.userId,
+      currPwd : currentPwd,
+      changePwd : changePwd,
+      }).then((response) => {
+
       if (response.status === 200) {
 
         //  요청이 성공적이라면 내 로그인정보 비워주기 -> 결론 로그아웃 시킴
@@ -93,7 +92,7 @@ const Account = (props) => {
     
     // 팝업에서 확인버튼을 눌렀을 때 내 로그인정보가 없다면 /humanResources 으로 가겠음. 
     if (isLogin.userId === null) {
-      navigate("/human-resources");
+      navigate("/employment/human-resources/");
     }
 
     setIsMsgPopupOpen({show: false, msg: ''});
@@ -128,7 +127,7 @@ const Account = (props) => {
                </div>
             </div>
             <div className={classes.line}></div>
-            <InputComponent value={{first : '' , second :'', third : '', fourth : ''}}  onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********", fourth :''}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인', fourth : ''}}  />
+            <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} placeholder={{first : "********", second : "********", third : "********", fourth :''}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인', fourth : ''}}  />
 
             <div style={{display : 'flex', justifyContent : 'flex-end', paddingRight : '30px'}}>
               <div style={{width:'137px'}}>
