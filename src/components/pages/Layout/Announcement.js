@@ -8,7 +8,7 @@ const Announcement = () => {
 
   const testM = () => {
 
-    updateUserJobProfile('test41@naver.com', '김창식', '01022453928', '개발', '앱 개발자', '3년 차', 'React native', '카카오 게임즈', '유니티 개발자', '3년 차', '홍익대학교', '졸업', '패션디자인과', 'Y').then((res) => {
+    updateUserJobProfile('user04@naver.com', '김창수', '01042413928', '개발', '프론트 개발자', '3년 차', 'React native', '카카오 게임즈', '유니티 개발자', '3년 차', '홍익대학교', '졸업', '패션디자인과', 'Y').then((res) => {
       console.log(res);
     }).catch((err) => {
       console.log(err)
