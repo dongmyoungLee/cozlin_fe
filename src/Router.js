@@ -13,6 +13,7 @@ import Bookmark from "./components/pages/Infomation/Bookmark";
 import Follow from "./components/pages/Infomation/Follow";
 import Profile from "./components/pages/Infomation/Profile";
 import HeaderSection from "./components/pages/Layout/HeaderSection";
+import ProfileUpdate from './components/pages/Infomation/ProfileUpdate';
 
 const router = createBrowserRouter([
   {
