@@ -230,33 +230,31 @@
 
 .input_style{
     width:532px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     height: 56px;
     padding: 16px;
     border: 1px solid #D7E0E6;
     border-radius: 8px;
-    font-family: Pretendard;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 160%;
-    color: #141617;
-    color: #5F666B;
-    font-family: Pretendard;
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    /* line-height: 160%; */
-    color: #141617;
     color: #5F666B;
     outline: none;
+}
+
+.div_style {
+    width:532px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 16px;
+    border: 1px solid #D7E0E6;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #5F666B;
+    outline: none;
+    background-color: #F6F9FA;
 }
 
 .id_box{

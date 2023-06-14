@@ -45,6 +45,10 @@ const router = createBrowserRouter([
         element: <Profile />
       },
       {
+        path : 'update',
+        element: <ProfileUpdate />
+      },
+      {
         path : 'history',
         element: <History />
       },
