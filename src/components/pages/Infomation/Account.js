@@ -3,7 +3,7 @@ import MypageLayout from "../../blocks/MypageLayout";
 import classes from '../../../styles/pages/layout/mypage.module.css';
 import {Mobile, PC} from "../../config/Responsive";
 import { useDispatch, useSelector } from "react-redux";
-import { findUserJobInfo, testA } from "../../../common/api/ApiPostService";
+import {findUserJobInfo, testA, updateUserPwd} from "../../../common/api/ApiPostService";
 import axios from "axios";
 import InputComponent from "../../blocks/InputComponent";
 import Button from "../../atoms/Button";
@@ -54,7 +54,7 @@ const Account = (props) => {
     // 서버에게 비밀번호를 바꿔주세요~ 라는 POST 요청을 보낼거에요.
     // 나는 서버에 2개를 보내야됨. 현재 비밀번호와 바뀔비밀번호
 
-    // 이 주소로 -> /user/update-pw-pagein 이걸 태워서 -> (id, currPwd, changePwd)
+
     axios.post('http://cozlin.com/api/v1/user/update-pw-pagein', {
       id : isLogin.userId,
       currPwd : currentPwd,

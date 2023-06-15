@@ -181,7 +181,7 @@ const Login = () => {
     emailValidService(idInput, 'signup')
     .then((res) => {
       if (res.status === 200) {
-        setUserMailCode(res.data.listData[0]);
+        setUserMailCode(res.data.data);
         setIsMailValidPopupOpen({show: true, msg: '인증메일이 발송되었습니다.'});
       }
     })
