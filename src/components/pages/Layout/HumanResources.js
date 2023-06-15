@@ -184,6 +184,7 @@ const HumanResources = () => {
   }
 
   const checkBoxChangeRegionHandler = (e) => {
+
     if (e.target.checked) {
       const regionArray = [...userRegionFilter, e.target.value];
 
@@ -194,6 +195,7 @@ const HumanResources = () => {
       const tmp = [...filterBlock, e.target.value];
       setFilterBlock(tmp);
     } else {
+      setUserRegionFilter((prevItems) => prevItems.filter((item) => item !== e.target.value));
       setFilterBlock((prevItems) => prevItems.filter((item) => item !== e.target.value));
       setSelectRegionCategoryCount(selectRegionCategoryCount - 1);
     }
