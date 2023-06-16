@@ -54,14 +54,8 @@ const Account = (props) => {
     // 서버에게 비밀번호를 바꿔주세요~ 라는 POST 요청을 보낼거에요.
     // 나는 서버에 2개를 보내야됨. 현재 비밀번호와 바뀔비밀번호
 
-
-    axios.post('http://cozlin.com/api/v1/user/update-pw-pagein', {
-      id : isLogin.userId,
-      currPwd : currentPwd,
-      changePwd : changePwd,
-      }).then((response) => {
-
-      if (response.status === 200) {
+    updateUserPwd(isLogin.userId, currentPwd, changePwd).then((res) => {
+      if (res.status === 200) {
 
         //  요청이 성공적이라면 내 로그인정보 비워주기 -> 결론 로그아웃 시킴
         const res = {
@@ -74,16 +68,46 @@ const Account = (props) => {
           userBirth : null,
           userAddr : null,
         }
-        
+
         // Redux 에 있는 내 로그인정보를 비워주기
         dispatch(loginCheckAction.loginInfoSet(res));
 
         // 팝업을 띄워줌
         setIsMsgPopupOpen({show: true, msg: '비밀번호 변경이 완료 되었습니다.'});
       }
-    }).catch((error) => {
-      setIsMsgPopupOpen({show: true, msg: error.data.message});
+    }).catch((err) => {
+      setIsMsgPopupOpen({show: true, msg: err.data.message});
     })
+
+    // axios.post('http://cozlin.com/api/v1/user/update-pw-pagein', {
+    //   id : isLogin.userId,
+    //   currPwd : currentPwd,
+    //   changePwd : changePwd,
+    //   }).then((response) => {
+    //
+    //   if (response.status === 200) {
+    //
+    //     //  요청이 성공적이라면 내 로그인정보 비워주기 -> 결론 로그아웃 시킴
+    //     const res = {
+    //       isLogin : false,
+    //       token : null,
+    //       loginEnteredTime : Date.now(),
+    //       userId : null,
+    //       userName : null,
+    //       userPhone : null,
+    //       userBirth : null,
+    //       userAddr : null,
+    //     }
+    //
+    //     // Redux 에 있는 내 로그인정보를 비워주기
+    //     dispatch(loginCheckAction.loginInfoSet(res));
+    //
+    //     // 팝업을 띄워줌
+    //     setIsMsgPopupOpen({show: true, msg: '비밀번호 변경이 완료 되었습니다.'});
+    //   }
+    // }).catch((error) => {
+    //   setIsMsgPopupOpen({show: true, msg: error.data.message});
+    // })
     
 
   }

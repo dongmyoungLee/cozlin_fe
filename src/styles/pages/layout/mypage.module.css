@@ -174,8 +174,16 @@
 .line {
     width: 100%;
     height: 1px;
-    background-color: rgb(228, 235, 240);
+    background-color: #EEF3F6;
     margin-top:40px;
+}
+
+.line2 {
+    width: 100%;
+    height: 1px;
+    background-color: #EEF3F6;
+    margin-top:40px;
+    margin-bottom: 40px;
 }
 
 .applicantText {
@@ -257,6 +265,18 @@
     background-color: #F6F9FA;
 }
 
+.div_inner_left {
+    width: 95%;
+}
+
+.div_inner_right {
+    width: 5%;
+}
+
+.downloadIcon {
+    height: 20px;
+}
+
 .id_box{
     display: flex;
     align-items: center;
@@ -265,7 +285,6 @@
 
 .id{
     width:218px;
-    
 }
 
 .input_layout{
@@ -291,61 +310,276 @@
 
 .edit_profile{  
     width: 288px;
-    top: 70px;
-    bottom: unset;
-    border: 1px solid #E4EBF0;
-    padding: 40px 24px 24px;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    position: -webkit-sticky;
-    position: sticky;
-    border-radius: 8px;
-    z-index: 0;
-
 }
 
-.title_h2{
+.edit_profile_wrap {
+    border: 1px solid rgb(228, 235, 240);
+    padding: 40px 24px 24px;
+    border-radius: 8px;
+    background: #fff;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.textArea {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.topText {
     font-weight: 600;
     font-size: 20px;
-    line-height: 140%;
-    color: #3A3E41;
+    color: rgb(58, 62, 65);
 }
 
-.button_container{
+.botText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: rgb(58, 62, 65);
+}
+
+.btnArea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cancelBtn {
+    width: 100%;
+    height: 58px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgb(228, 235, 240);
+    color: rgb(129, 137, 143);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstSection {
+    display: flex;
+}
+
+.leftInner {
+    width: 40%;
     display: flex;
     flex-direction: column;
 }
 
-.save_btn{
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    padding: 16px 40px;
+.leftInnerTopText {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 160%;
-    border: none;
-    background-color: #6E50FF;
-    color: #fff;
+    color: rgb(58, 62, 65);
 }
 
-.cancel_btn{
+.leftInnerBotText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: rgb(157, 167, 174);
+}
+
+.rightInner {
+    width: 60%;
     display: flex;
-    flex-grow: 1;
-    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.selectSection {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 8px;
-    padding: 16px 40px;
+}
+
+.selectSectionSkill {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectText {
+    width: 15%;
     font-weight: 600;
     font-size: 16px;
     line-height: 160%;
-    color: #141617;
+    color: rgb(58, 62, 65);
+    display: flex;
+    align-items: center;
+}
+
+.btnSection1 {
+    width: 80%;
+}
+
+.inputSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 16px;
+    border: 1px solid #D7E0E6;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #5F666B;
+    outline: none;
+}
+
+.careerSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btnSection2 {
+    width: 80%;
+}
+
+.choiceBtn {
+    width: 80%;
+}
+
+.choiceBtnWrap {
+    border-radius: 8px;
+    display: flex;
+}
+
+.dropSkillMenuWrap {
+    width: 80%;
+    position: relative;
+}
+
+.leftBtn {
+    width: 50%;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #6E50FF;
+    background-color: #6E50FF;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #FFFFFF;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+}
+
+
+.rightBtn {
+    width: 50%;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #E4EBF0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #5F666B;
+    background: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.skillsWrap {
     background-color: #fff;
-    color: #81898F;
+    border-radius: 8px;
+    border: 1px solid #d7e0e6;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+}
+
+.skillsWrap2 {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.infoText {
+    white-space: nowrap;
+    margin-left: 107px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: rgb(157, 167, 174);
+}
+
+.skill {
+    padding: 4px 6px;
+    background-color: rgb(238, 243, 246);
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(95, 102, 107);
+}
+
+.dropDownMenu {
+    width: 100%;
+    position: absolute;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(215, 224, 230);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(20, 22, 23, 0.2) 0px 8px 20px;
+    z-index: 1;
+}
+
+.itemWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 6px;
+    padding: 0px 16px 16px 13px;
+    max-height: 350px;
+    max-height: 350px;
+}
+
+.skillPlaceHolde {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(180, 191, 198);
+}
+
+.skillSelect {
+    display: inline-block;
+    border: 1px solid rgb(228, 235, 240);
+    border-radius: 24px;
+    background-color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 14px;
+    color: rgb(58, 62, 65);
+}
+
+.arrowSection {
+
+}
+
+.arrowSize {
+    height: 15px;
+    margin-top: 2px;
+}
+
+.choiceBtn {
+
 }

@@ -329,3 +329,67 @@ export const humanResourcesSchoolStatus = [
   },
 ]
 
+export const skillSet = [
+  {
+    menuName : 'HTML5'
+  },
+  {
+    menuName : 'CSS3'
+  },
+  {
+    menuName : 'Javascript'
+  },
+  {
+    menuName : 'TypeScript'
+  },
+  {
+    menuName : 'React'
+  },
+  {
+    menuName : 'Vue.js'
+  },
+  {
+    menuName : 'AngularJS'
+  },{
+    menuName : 'Next.js'
+  },{
+    menuName : 'Svelte'
+  },{
+    menuName : 'React Native'
+  },{
+    menuName : 'Flutter'
+  },{
+    menuName : 'iOS'
+  },{
+    menuName : 'Android Studio'
+  },{
+    menuName : 'Kotlin'
+  },{
+    menuName : 'C#'
+  },{
+    menuName : 'Unity'
+  },{
+    menuName : 'Unreal'
+  },{
+    menuName : 'PHP'
+  },{
+    menuName : 'Node.js'
+  },{
+    menuName : 'Spring'
+  },{
+    menuName : 'SpringBoot'
+  },{
+    menuName : 'Nest.js'
+  },{
+    menuName : 'Express.js'
+  },{
+    menuName : 'Python'
+  },{
+    menuName : 'Django'
+  },{
+    menuName : 'Flask'
+  },{
+    menuName : 'MySQL'
+  },
+]
+

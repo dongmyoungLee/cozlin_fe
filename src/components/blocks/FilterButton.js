@@ -28,6 +28,7 @@ const FilterButton = (props) => {
       <button className={classes.filterOption} onClick={props.onClick} ref={myMenuRef2}>
         <div className={classes.marginfilter}>
           <span className={classes.filterText}>{props.value}</span>
+
           {props.count !== 0 && <span className={classes.filterNum}>{props.count}</span>}
         </div>
         <div className={classes.displayFilter}>

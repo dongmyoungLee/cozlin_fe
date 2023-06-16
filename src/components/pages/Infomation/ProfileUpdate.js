@@ -1,36 +1,64 @@
 import MypageLayout from "../../blocks/MypageLayout";
 import classes from '../../../styles/pages/layout/mypage.module.css';
-import { useSelector } from "react-redux";
-import InputComponent from "../../blocks/InputComponent";
+import {useSelector} from "react-redux";
 import Button from "../../atoms/Button";
-import { useNavigate } from "react-router-dom";
-import SelectBox from "../../atoms/SelectBox";
-import { useState } from "react";
-import { humanResourcesDevJob, humanResourcesCategory, humanResourcesPlannerJob, humanResourcesMarketingJob, humanResourcesDesignJob, humanResourcesEtcJob } from "../../../common/Menus";
+import {useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {
+  humanResourcesCareer,
+  humanResourcesCategory,
+  humanResourcesDesignJob,
+  humanResourcesDevJob,
+  humanResourcesEtcJob,
+  humanResourcesMarketingJob,
+  humanResourcesPlannerJob,
+  humanResourcesSchoolStatus
+} from "../../../common/Menus";
+import InputUpdateBox from "../../blocks/InputUpdateBox";
+import InputSkillBox from "../../blocks/InputSkillBox";
+import InputUpdateInputBox from "../../blocks/InputUpdateInputBox";
 
 const ProfileUpdate = () => {
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
   const navigate = useNavigate();
   const [changeMenuList, setChangeMenuList] = useState([{menuName : '선택'}]);
+  const [userCareerYn, setUserCareerYn] = useState(true);
 
-
-  const currPwdHandler = (e) => {
-    //
-  }
-
-  const changePwdHandler = (e) => {
-    //
-  }
-
-  const changeCheckPwdHandler = (e) => {
-    //
-  }
+  // profile저장용 변수
+  const [userDesiredJobGroup, setUserDesiredJobGroup] = useState(isLogin.userDesiredJobGroup);
+  const [userDesiredJob, setUserDesiredJob] = useState(isLogin.userDesiredJob);
+  const [userDesiredJobGroupCareer, setUserDesiredJobGroupCareer] = useState(isLogin.userDesiredJobGroupCareer);
+  const [userJobSkill, setUserJobSkill] = useState([]);
+  const [userLastCompany, setUserLastCompany] = useState('');
+  const [userLastJobGroup, setUserLastJobGroup] = useState('');
+  const [userLastJobGroupCareer, setUserLastJobGroupCareer]= useState('');
+  const [userLastSchoolName, setUserLastSchoolName] = useState('');
+  const [userLastSchoolStatus, setUserLastSchoolStatus]= useState(isLogin.userLastSchoolStatus);
+  const [userLastSchoolDept, setUserLastSchoolDept] = useState('');
 
   const settingCategoryHandler = (data) => {
     // data -> e.target.querySelector("li").innerText
     // 자식태그에서 드롭다운 메뉴 하나를 선택하면 실행되는 함수.
-    
-    switch(data) {
+
+    switch (data.label) {
+      case '직군' :
+        setUserDesiredJobGroup(data.text);
+      break;
+
+      case '직무' :
+        setUserDesiredJob(data.text);
+      break;
+
+      case '직무 경력' :
+        setUserDesiredJobGroupCareer(data.text);
+      break;
+
+      case '이수 상태' :
+        setUserLastSchoolStatus(data.text);
+      break;
+    }
+
+    switch(data.text) {
 
       case '개발' :
         setChangeMenuList(humanResourcesDevJob);
@@ -58,29 +86,136 @@ const ProfileUpdate = () => {
     }
   }
 
+  const settingSkills = (data) => {
+    setUserJobSkill(data);
+  }
+
+  const userCareerYnBtnChange = () => {
+    setUserCareerYn(true);
+  }
+  const userNotCareerYnBtnChange = () => {
+    setUserCareerYn(false);
+  }
+
+  const companyNameHandler = (e) => {
+    setUserLastCompany(e.target.value);
+  }
+  const careerJonHandler = (e) => {
+    setUserLastJobGroup(e.target.value);
+  }
+  const careerYearHandler = (e) => {
+    setUserLastJobGroupCareer(e.target.value);
+  }
+  const schoolNameHandler = (e) => {
+    setUserLastSchoolName(e.target.value);
+  }
+
+  const deptNameHandler = (e) => {
+    setUserLastSchoolDept(e.target.value);
+  }
+
+  const saveUserProfile = (e) => {
+    console.log(userDesiredJobGroup);
+    console.log(userDesiredJob);
+    console.log(userDesiredJobGroupCareer);
+    console.log(userJobSkill);
+    console.log(userLastCompany);
+    console.log(userLastJobGroup);
+    console.log(userLastJobGroupCareer);
+    console.log(userLastSchoolName);
+    console.log(userLastSchoolStatus);
+    console.log(userLastSchoolDept);
+  }
+
    return(
-    <MypageLayout>
+    <MypageLayout remove_height="profile">
       <div className={classes.account}>
-        <InputComponent onChange={{first : currPwdHandler, second : changePwdHandler, third : changeCheckPwdHandler}} value={{first : '' , second :'', third : '', fourth : ''}} placeholder={{first : "********", second : "********", third : "********"}} use="isNotReadOnly" type="password" label="비밀번호" inputTitle={{first : '현재 비밀번호', second : '변경할 비밀번호', third : '비밀번호 확인'}}  />
-        <div className={classes.line}></div>
+        <div className={classes.firstSection}>
+          <div className={classes.leftInner}>
+            <p className={classes.leftInnerTopText}>희망 직무</p>
+            <p className={classes.leftInnerBotText}>지원할 직무와 관련 경력을 입력해 주세요.</p>
+          </div>
+          <div className={classes.rightInner}>
+            <InputUpdateBox label="직군" menuList={humanResourcesCategory} settingCategory={settingCategoryHandler} />
+            <InputUpdateBox label="직무" menuList={changeMenuList} settingCategory={settingCategoryHandler} />
+            <InputUpdateBox label="직무 경력" menuList={humanResourcesCareer} settingCategory={settingCategoryHandler} />
+            <InputSkillBox label="주요 스킬" settingSkills={settingSkills} />
+            <p className={classes.infoText}>*선택 사항이며, 최대 3개까지 입력 가능합니다.</p>
+          </div>
+        </div>
 
-        {/* 자식 컴포넌트에서 드롭다운 메뉴를 고를때 나오는 값을 여기(부모컴포넌트)로 보내줘야함 */}
-        {/* props 넘겨줄때 값이면 보통 부모에서 자식으로 주고 넘겨줄때 함수면 보통 자식에서 부모로 뭔가 보내주고 있는거임 (값 = 파란색, 함수 = 노란색) */}
+        <div className={classes.line2}></div>
 
-        <SelectBox menuList={humanResourcesCategory} settingCategory={settingCategoryHandler} />
+        <div className={classes.firstSection}>
+          <div className={classes.leftInner}>
+            <p className={classes.leftInnerTopText}>최종 경력</p>
+          </div>
+          <div className={classes.rightInner}>
+            <div className={classes.selectSection}>
+              <div className={classes.selectText}>
+                <p>최종 경력</p>
+              </div>
+              <div className={classes.choiceBtn}>
+                <div className={classes.choiceBtnWrap}>
+                  <button style={{backgroundColor : userCareerYn ? '#6E50FF' : '#fff', color : userCareerYn ? '#fff' : '#5F666B', border : userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.leftBtn} onClick={userCareerYnBtnChange} >
+                    <p>신입</p>
+                  </button>
+                  <button style={{backgroundColor : !userCareerYn ? '#6E50FF' : '#fff', color : !userCareerYn ? '#fff' : '#5F666B', border : !userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.rightBtn} onClick={userNotCareerYnBtnChange}>
+                    <p>경력</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {!userCareerYn && <div className={classes.careerSection}>
+              <InputUpdateInputBox onChange={companyNameHandler} label="회사명" />
+              <InputUpdateInputBox onChange={careerJonHandler} label="직무" />
+              <InputUpdateInputBox onChange={careerYearHandler} label="재직 기간" placeholder="예) 1년 2개월" />
+            </div>}
+          </div>
+        </div>
 
-        <SelectBox menuList={changeMenuList} settingCategory={settingCategoryHandler} />
+        <div className={classes.line2}></div>
 
+        <div className={classes.firstSection}>
+          <div className={classes.leftInner}>
+            <p className={classes.leftInnerTopText}>희망 직무</p>
+          </div>
+          <div className={classes.rightInner}>
+            <InputUpdateInputBox onChange={schoolNameHandler} label="학교명" />
+            <InputUpdateBox label="이수 상태" menuList={humanResourcesSchoolStatus} settingCategory={settingCategoryHandler} />
+            <InputUpdateInputBox onChange={deptNameHandler} label="학과명" />
+          </div>
+        </div>
+
+        <div className={classes.line2}></div>
+
+        <div className={classes.firstSection}>
+          <div className={classes.leftInner}>
+            <p className={classes.leftInnerTopText}>이력서</p>
+            <p className={classes.leftInnerBotText}>다른 사이트에서 작성한 이력서, 자유 이력서 모두 좋아요!</p>
+          </div>
+          <div className={classes.rightInner}>
+            <InputUpdateInputBox onChange={companyNameHandler} />
+          </div>
+        </div>
       </div>
       <div className={classes.edit_profile}>
-         <div className={classes.title_container}>
-            <div className={classes.title_h2}>프로필수정</div>
-            <div className={classes.title_p}>수정한 내용을 저장할까요?</div>
-         </div>
-         <div className={classes.button_container}>
-            <button className={classes.save_btn}></button>
-            <button className={classes.cancel_btn}></button>
-         </div>
+        <div className={classes.edit_profile_wrap}>
+          <div className={classes.textArea}>
+            <p className={classes.topText}>프로필 수정</p>
+            <p className={classes.botText}>수정한 내용을 저장할까요?</p>
+          </div>
+          <div className={classes.btnArea}>
+            <Button btn={{
+              type : '',
+              value : '저장하기',
+              onClick : saveUserProfile
+            }} />
+            <div className={classes.cancelBtn}>
+              <p>취소하기</p>
+            </div>
+          </div>
+        </div>
       </div>
     </MypageLayout>
    );
