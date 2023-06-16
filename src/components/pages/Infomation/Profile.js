@@ -8,6 +8,7 @@ import InputBox from "../../blocks/InputBox";
 import Button from "../../atoms/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import InputDivBox from "../../blocks/InputDivBox";
 
 
 const Profile = () => {
@@ -27,8 +28,6 @@ const Profile = () => {
     }
 
   }, []);
-
-  console.log(isLogin);
 
   const currPwdHandler = (e) => {
     //
@@ -55,8 +54,6 @@ const Profile = () => {
                                                                           <InputDivComponent value={{first :isLogin.userLastCompany, second :isLogin.userLastJobGroup, third : isLogin.userDesiredJobGroupCareer, fourth : ''}} label="최종 경력" inputTitle={{first : '회사명', second : '직무', third : '재직기간', fourth :''}} />
                                                                           <div className={classes.line}></div>
                                                                       </div>
-
-
 
   return (
     <MypageLayout remove_height="profile" >
@@ -94,7 +91,7 @@ const Profile = () => {
          <div className={classes.input_layout}>
             <div>이력서</div>
             <div> 
-               <InputBox isReadOnly={true} />
+               <InputDivBox type="file" />
             </div>
          </div>
       </div>
