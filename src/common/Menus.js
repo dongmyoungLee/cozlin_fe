@@ -341,6 +341,8 @@ export const skillSet = [
   },
   {
     menuName : 'TypeScript'
+  },{
+    menuName : 'C++'
   },
   {
     menuName : 'React'
@@ -392,8 +394,6 @@ export const skillSet = [
     menuName : 'Django'
   },{
     menuName : 'Flask'
-  },{
-    menuName : 'MySQL'
-  },
+  }
 ]
 

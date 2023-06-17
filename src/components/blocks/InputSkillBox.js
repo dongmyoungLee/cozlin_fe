@@ -11,9 +11,11 @@ const InputSkillBox = (props) => {
   const myMenuRef2 = useRef(null);
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
   const tmpArr = [];
+
   for (let i = 0; i < isLogin.userJobSkill.split(",").length; i++) {
     tmpArr.push(isLogin.userJobSkill.split(",")[i])
   }
+
   const [skillItems, setSkillItems] = useState(tmpArr);
 
   useEffect(() => {
@@ -86,7 +88,7 @@ const InputSkillBox = (props) => {
             {/*))}*/}
             {skillSet.map((item, idx) => {
 
-              const isSelected = skillItems.includes(item.menuName) || (item.menuName === skillItems[0].split(",")[0]) || (item.menuName === skillItems[0].split(",")[1]) || (item.menuName === skillItems[0].split(",")[2]);// 항목이 선택되었는지 확인
+              const isSelected = skillItems.includes(item.menuName) || (item.menuName === skillItems[0]) || (item.menuName === skillItems[1]) || (item.menuName === skillItems[2]);// 항목이 선택되었는지 확인
 
               return (
                 <div
