@@ -1,6 +1,6 @@
 import MypageLayout from "../../blocks/MypageLayout";
 import classes from '../../../styles/pages/layout/mypage.module.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Button from "../../atoms/Button";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
@@ -17,9 +17,26 @@ import {
 import InputUpdateBox from "../../blocks/InputUpdateBox";
 import InputSkillBox from "../../blocks/InputSkillBox";
 import InputUpdateInputBox from "../../blocks/InputUpdateInputBox";
+import {updateUserJobProfile} from "../../../common/api/ApiPostService";
+import PopupDom from "../../blocks/PopupDom";
+import MsgPopup from "../../blocks/MsgPopup";
+import {loginCheckAction} from "../../../ducks/loginCheck";
 
 const ProfileUpdate = () => {
-  const isLogin = useSelector(state => state.loginCheck.loginInfo);
+  const isLogin = useSelector(state => {
+    const loginInfo = state.loginCheck.loginInfo;
+    return {
+      ...loginInfo,
+      // 필요한 경우 값을 복사하고 수정
+      userLastCompany: loginInfo.userLastCompany || "",
+      userLastJobGroup: loginInfo.userLastJobGroup || "",
+      userLastJobGroupCareer: loginInfo.userLastJobGroupCareer || "",
+      userLastSchoolDept: loginInfo.userLastSchoolDept || "",
+      userLastSchoolName: loginInfo.userLastSchoolName || "",
+      userLastSchoolStatus: loginInfo.userLastSchoolStatus || "",
+    };
+  });
+
   const navigate = useNavigate();
   const [changeMenuList, setChangeMenuList] = useState([{menuName : '선택'}]);
   const [userCareerYn, setUserCareerYn] = useState(true);
@@ -29,13 +46,14 @@ const ProfileUpdate = () => {
   const [userDesiredJob, setUserDesiredJob] = useState(isLogin.userDesiredJob);
   const [userDesiredJobGroupCareer, setUserDesiredJobGroupCareer] = useState(isLogin.userDesiredJobGroupCareer);
   const [userJobSkill, setUserJobSkill] = useState([]);
-  const [userLastCompany, setUserLastCompany] = useState('');
-  const [userLastJobGroup, setUserLastJobGroup] = useState('');
-  const [userLastJobGroupCareer, setUserLastJobGroupCareer]= useState('');
-  const [userLastSchoolName, setUserLastSchoolName] = useState('');
+  const [userLastCompany, setUserLastCompany] = useState(isLogin.userLastCompany);
+  const [userLastJobGroup, setUserLastJobGroup] = useState(isLogin.userLastJobGroup);
+  const [userLastJobGroupCareer, setUserLastJobGroupCareer]= useState(isLogin.userLastJobGroupCareer);
+  const [userLastSchoolName, setUserLastSchoolName] = useState(isLogin.userLastSchoolName);
   const [userLastSchoolStatus, setUserLastSchoolStatus]= useState(isLogin.userLastSchoolStatus);
-  const [userLastSchoolDept, setUserLastSchoolDept] = useState('');
-
+  const [userLastSchoolDept, setUserLastSchoolDept] = useState(isLogin.userLastSchoolDept);
+  const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
+  const dispatch = useDispatch();
   const settingCategoryHandler = (data) => {
     // data -> e.target.querySelector("li").innerText
     // 자식태그에서 드롭다운 메뉴 하나를 선택하면 실행되는 함수.
@@ -115,109 +133,148 @@ const ProfileUpdate = () => {
   }
 
   const saveUserProfile = (e) => {
-    console.log(userDesiredJobGroup);
-    console.log(userDesiredJob);
-    console.log(userDesiredJobGroupCareer);
-    console.log(userJobSkill);
-    console.log(userLastCompany);
-    console.log(userLastJobGroup);
-    console.log(userLastJobGroupCareer);
-    console.log(userLastSchoolName);
-    console.log(userLastSchoolStatus);
-    console.log(userLastSchoolDept);
+
+    updateUserJobProfile(isLogin.userId, isLogin.userName, isLogin.userPhone, userDesiredJobGroup, userDesiredJob, userDesiredJobGroupCareer, userJobSkill, userLastCompany, userLastJobGroup, userLastJobGroupCareer, userLastSchoolName, userLastSchoolStatus, userLastSchoolDept, userCareerYn ? 'N' : 'Y')
+      .then((res) => {
+        if (res.status === 200) {
+          setIsMsgPopupOpen({show: true, msg: '프로필 작성이 완료 되었습니다. 다시 로그인 해주세요.'});
+        }
+    }).catch((err) => {
+      console.log(err)
+    })
+
+  }
+
+  const cancelBtn = () => {
+
+  }
+  const closeMsgPopup = () => {
+    const res = {
+      isLogin : false,
+      token : null,
+      loginEnteredTime : Date.now(),
+      userId : null,
+      userName : null,
+      userPhone : null,
+      userBirth : null,
+      userAddr : null,
+      userJobEnterdYn : null,
+      userDesiredJobGroupCareer : null,
+      userDesiredJobGroup : null,
+      userDesiredJob : null,
+      userJobSkill : null,
+      userLastCompany : null,
+      userLastJobGroup : null,
+      userLastJobGroupCareer : null,
+      userLastSchoolName : null,
+      userLastSchoolStatus : null,
+      userLastSchoolDept : null,
+      userJobCareerYn : null
+    }
+
+    dispatch(loginCheckAction.logout(res));
+    setIsMsgPopupOpen({show: false, msg: ''});
+    navigate('/member/login');
   }
 
    return(
-    <MypageLayout remove_height="profile">
-      <div className={classes.account}>
-        <div className={classes.firstSection}>
-          <div className={classes.leftInner}>
-            <p className={classes.leftInnerTopText}>희망 직무</p>
-            <p className={classes.leftInnerBotText}>지원할 직무와 관련 경력을 입력해 주세요.</p>
-          </div>
-          <div className={classes.rightInner}>
-            <InputUpdateBox label="직군" menuList={humanResourcesCategory} settingCategory={settingCategoryHandler} />
-            <InputUpdateBox label="직무" menuList={changeMenuList} settingCategory={settingCategoryHandler} />
-            <InputUpdateBox label="직무 경력" menuList={humanResourcesCareer} settingCategory={settingCategoryHandler} />
-            <InputSkillBox label="주요 스킬" settingSkills={settingSkills} />
-            <p className={classes.infoText}>*선택 사항이며, 최대 3개까지 입력 가능합니다.</p>
-          </div>
-        </div>
+     <>
+       <MypageLayout remove_height="profile">
+         <div className={classes.account}>
+           <div className={classes.firstSection}>
+             <div className={classes.leftInner}>
+               <p className={classes.leftInnerTopText}>희망 직무</p>
+               <p className={classes.leftInnerBotText}>지원할 직무와 관련 경력을 입력해 주세요.</p>
+             </div>
+             <div className={classes.rightInner}>
+               <InputUpdateBox label="직군" menuList={humanResourcesCategory} settingCategory={settingCategoryHandler} />
+               <InputUpdateBox label="직무" menuList={changeMenuList} settingCategory={settingCategoryHandler} />
+               <InputUpdateBox label="직무 경력" menuList={humanResourcesCareer} settingCategory={settingCategoryHandler} />
+               <InputSkillBox label="주요 스킬" settingSkills={settingSkills} />
+               <p className={classes.infoText}>*선택 사항이며, 최대 3개까지 입력 가능합니다.</p>
+             </div>
+           </div>
 
-        <div className={classes.line2}></div>
+           <div className={classes.line2}></div>
 
-        <div className={classes.firstSection}>
-          <div className={classes.leftInner}>
-            <p className={classes.leftInnerTopText}>최종 경력</p>
-          </div>
-          <div className={classes.rightInner}>
-            <div className={classes.selectSection}>
-              <div className={classes.selectText}>
-                <p>최종 경력</p>
-              </div>
-              <div className={classes.choiceBtn}>
-                <div className={classes.choiceBtnWrap}>
-                  <button style={{backgroundColor : userCareerYn ? '#6E50FF' : '#fff', color : userCareerYn ? '#fff' : '#5F666B', border : userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.leftBtn} onClick={userCareerYnBtnChange} >
-                    <p>신입</p>
-                  </button>
-                  <button style={{backgroundColor : !userCareerYn ? '#6E50FF' : '#fff', color : !userCareerYn ? '#fff' : '#5F666B', border : !userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.rightBtn} onClick={userNotCareerYnBtnChange}>
-                    <p>경력</p>
-                  </button>
-                </div>
-              </div>
-            </div>
-            {!userCareerYn && <div className={classes.careerSection}>
-              <InputUpdateInputBox onChange={companyNameHandler} label="회사명" />
-              <InputUpdateInputBox onChange={careerJonHandler} label="직무" />
-              <InputUpdateInputBox onChange={careerYearHandler} label="재직 기간" placeholder="예) 1년 2개월" />
-            </div>}
-          </div>
-        </div>
+           <div className={classes.firstSection}>
+             <div className={classes.leftInner}>
+               <p className={classes.leftInnerTopText}>최종 경력</p>
+             </div>
+             <div className={classes.rightInner}>
+               <div className={classes.selectSection}>
+                 <div className={classes.selectText}>
+                   <p>최종 경력</p>
+                 </div>
+                 <div className={classes.choiceBtn}>
+                   <div className={classes.choiceBtnWrap}>
+                     <button style={{backgroundColor : userCareerYn ? '#0062df' : '#fff', color : userCareerYn ? '#fff' : '#5F666B', border : userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.leftBtn} onClick={userCareerYnBtnChange} >
+                       <p>신입</p>
+                     </button>
+                     <button style={{backgroundColor : !userCareerYn ? '#0062df' : '#fff', color : !userCareerYn ? '#fff' : '#5F666B', border : !userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.rightBtn} onClick={userNotCareerYnBtnChange}>
+                       <p>경력</p>
+                     </button>
+                   </div>
+                 </div>
+               </div>
+               {!userCareerYn && <div className={classes.careerSection}>
+                 <InputUpdateInputBox value={userLastCompany} onChange={companyNameHandler} label="회사명" />
+                 <InputUpdateInputBox value={userLastJobGroup} onChange={careerJonHandler} label="직무" />
+                 <InputUpdateInputBox value={userLastJobGroupCareer} onChange={careerYearHandler} label="재직 기간" placeholder="예) 1년 2개월" />
+               </div>}
+             </div>
+           </div>
 
-        <div className={classes.line2}></div>
+           <div className={classes.line2}></div>
 
-        <div className={classes.firstSection}>
-          <div className={classes.leftInner}>
-            <p className={classes.leftInnerTopText}>희망 직무</p>
-          </div>
-          <div className={classes.rightInner}>
-            <InputUpdateInputBox onChange={schoolNameHandler} label="학교명" />
-            <InputUpdateBox label="이수 상태" menuList={humanResourcesSchoolStatus} settingCategory={settingCategoryHandler} />
-            <InputUpdateInputBox onChange={deptNameHandler} label="학과명" />
-          </div>
-        </div>
+           <div className={classes.firstSection}>
+             <div className={classes.leftInner}>
+               <p className={classes.leftInnerTopText}>최종 학력</p>
+             </div>
+             <div className={classes.rightInner}>
+               <InputUpdateInputBox value={userLastSchoolName} onChange={schoolNameHandler} label="학교명" />
+               <InputUpdateBox label="이수 상태" menuList={humanResourcesSchoolStatus} settingCategory={settingCategoryHandler} />
+               <InputUpdateInputBox value={userLastSchoolDept} onChange={deptNameHandler} label="학과명" />
+             </div>
+           </div>
 
-        <div className={classes.line2}></div>
+           <div className={classes.line2}></div>
 
-        <div className={classes.firstSection}>
-          <div className={classes.leftInner}>
-            <p className={classes.leftInnerTopText}>이력서</p>
-            <p className={classes.leftInnerBotText}>다른 사이트에서 작성한 이력서, 자유 이력서 모두 좋아요!</p>
-          </div>
-          <div className={classes.rightInner}>
-            <InputUpdateInputBox onChange={companyNameHandler} />
-          </div>
-        </div>
-      </div>
-      <div className={classes.edit_profile}>
-        <div className={classes.edit_profile_wrap}>
-          <div className={classes.textArea}>
-            <p className={classes.topText}>프로필 수정</p>
-            <p className={classes.botText}>수정한 내용을 저장할까요?</p>
-          </div>
-          <div className={classes.btnArea}>
-            <Button btn={{
-              type : '',
-              value : '저장하기',
-              onClick : saveUserProfile
-            }} />
-            <div className={classes.cancelBtn}>
-              <p>취소하기</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </MypageLayout>
+           <div className={classes.firstSection}>
+             <div className={classes.leftInner}>
+               <p className={classes.leftInnerTopText}>이력서</p>
+               <p className={classes.leftInnerBotText}>다른 사이트에서 작성한 이력서, 자유 이력서 모두 좋아요!</p>
+             </div>
+             <div className={classes.rightInner}>
+               <InputUpdateInputBox onChange={companyNameHandler} />
+             </div>
+           </div>
+         </div>
+         <div className={classes.edit_profile}>
+           <div className={classes.edit_profile_wrap}>
+             <div className={classes.textArea}>
+               <p className={classes.topText}>프로필 수정</p>
+               <p className={classes.botText}>수정한 내용을 저장할까요?</p>
+             </div>
+             <div className={classes.btnArea}>
+               <Button btn={{
+                 type : '',
+                 value : '저장하기',
+                 onClick : saveUserProfile
+               }} />
+               <div onClick={cancelBtn} className={classes.cancelBtn}>
+                 <p>취소하기</p>
+               </div>
+             </div>
+           </div>
+         </div>
+       </MypageLayout>
+       <div id='popupDom'>
+         {isMsgPopupOpen.show && <PopupDom>
+           <MsgPopup onClick={closeMsgPopup} msg={isMsgPopupOpen.msg} />
+         </PopupDom>}
+       </div>
+     </>
    );
 }
 

@@ -19,13 +19,32 @@ const MobileMenu = (props) => {
     }, []);
 
     const mobileLogOutHandler = () => {
-        const logout = {
+
+        const res = {
             isLogin : false,
             token : null,
+            loginEnteredTime : Date.now(),
             userId : null,
-            loginEnteredTime : null,
+            userName : null,
+            userPhone : null,
+            userBirth : null,
+            userAddr : null,
+            userJobEnterdYn : null,
+            userDesiredJobGroupCareer : null,
+            userDesiredJobGroup : null,
+            userDesiredJob : null,
+            userJobSkill : null,
+            userLastCompany : null,
+            userLastJobGroup : null,
+            userLastJobGroupCareer : null,
+            userLastSchoolName : null,
+            userLastSchoolStatus : null,
+            userLastSchoolDept : null,
+            userJobCareerYn : null
         }
-        dispatch(loginCheckAction.logout(logout));
+
+        dispatch(loginCheckAction.logout(res));
+
         setIsMobileMenuPage(false);
     }
 

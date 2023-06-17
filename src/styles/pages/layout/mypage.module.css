@@ -583,3 +583,7 @@
 .choiceBtn {
 
 }
+
+.selected {
+    background-color: red;
+}

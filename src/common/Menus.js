@@ -341,9 +341,15 @@ export const skillSet = [
   },
   {
     menuName : 'TypeScript'
+  },{
+    menuName : 'C++'
   },
   {
     menuName : 'React'
+  },{
+    menuName : 'Java'
+  },{
+    menuName : 'Mysql'
   },
   {
     menuName : 'Vue.js'
@@ -355,7 +361,7 @@ export const skillSet = [
   },{
     menuName : 'Svelte'
   },{
-    menuName : 'React Native'
+    menuName : 'React native'
   },{
     menuName : 'Flutter'
   },{
@@ -388,8 +394,6 @@ export const skillSet = [
     menuName : 'Django'
   },{
     menuName : 'Flask'
-  },{
-    menuName : 'MySQL'
-  },
+  }
 ]
 

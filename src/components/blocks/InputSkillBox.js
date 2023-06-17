@@ -10,7 +10,13 @@ const InputSkillBox = (props) => {
   const myMenuRef = useRef(null);
   const myMenuRef2 = useRef(null);
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
-  const [skillItems, setSkillItems] = useState([isLogin.userJobSkill]);
+  const tmpArr = [];
+
+  for (let i = 0; i < isLogin.userJobSkill.split(",").length; i++) {
+    tmpArr.push(isLogin.userJobSkill.split(",")[i])
+  }
+
+  const [skillItems, setSkillItems] = useState(tmpArr);
 
   useEffect(() => {
 
@@ -77,9 +83,27 @@ const InputSkillBox = (props) => {
         {isOpenDropDown && <div className={classes.dropDownMenu} ref={myMenuRef}>
           <div className={classes.itemWrap}>
 
-            {skillSet.map((item, idx) => (
-              <div key={idx} onClick={skillItemClick} className={classes.skillSelect}>{item.menuName}</div>
-            ))}
+            {/*{skillSet.map((item, idx) => (*/}
+            {/*  <div key={idx} onClick={skillItemClick} className={classes.skillSelect}>{item.menuName}</div>*/}
+            {/*))}*/}
+            {skillSet.map((item, idx) => {
+
+              const isSelected = skillItems.includes(item.menuName) || (item.menuName === skillItems[0]) || (item.menuName === skillItems[1]) || (item.menuName === skillItems[2]);// 항목이 선택되었는지 확인
+
+              return (
+                <div
+                  key={idx}
+                  onClick={skillItemClick}
+                  className={`${classes.skillSelect} ${isSelected ? 'selected' : ''}`} // 선택된 항목에 'selected' 클래스 추가
+                  style={{
+                    backgroundColor: isSelected ? '#0062df' : '', // 선택된 항목에 배경색 적용
+                    color: isSelected ? '#fff' : '#3A3E41', // 선택된 항목에 글자색 적용
+                  }}
+                >
+                  {item.menuName}
+                </div>
+              );
+            })}
 
 
           </div>
