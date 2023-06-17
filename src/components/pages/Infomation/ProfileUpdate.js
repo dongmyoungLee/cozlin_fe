@@ -157,10 +157,10 @@ const ProfileUpdate = () => {
               </div>
               <div className={classes.choiceBtn}>
                 <div className={classes.choiceBtnWrap}>
-                  <button style={{backgroundColor : userCareerYn ? '#6E50FF' : '#fff', color : userCareerYn ? '#fff' : '#5F666B', border : userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.leftBtn} onClick={userCareerYnBtnChange} >
+                  <button style={{backgroundColor : userCareerYn ? '#0062df' : '#fff', color : userCareerYn ? '#fff' : '#5F666B', border : userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.leftBtn} onClick={userCareerYnBtnChange} >
                     <p>신입</p>
                   </button>
-                  <button style={{backgroundColor : !userCareerYn ? '#6E50FF' : '#fff', color : !userCareerYn ? '#fff' : '#5F666B', border : !userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.rightBtn} onClick={userNotCareerYnBtnChange}>
+                  <button style={{backgroundColor : !userCareerYn ? '#0062df' : '#fff', color : !userCareerYn ? '#fff' : '#5F666B', border : !userCareerYn ? '1px solid #6E50FF' : '1px solid #E4EBF0'}} className={classes.rightBtn} onClick={userNotCareerYnBtnChange}>
                     <p>경력</p>
                   </button>
                 </div>

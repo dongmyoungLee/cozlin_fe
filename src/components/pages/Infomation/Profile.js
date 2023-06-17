@@ -12,8 +12,21 @@ import InputDivBox from "../../blocks/InputDivBox";
 
 
 const Profile = () => {
-  const isLogin = useSelector(state => state.loginCheck.loginInfo);
-  
+  const isLogin = useSelector(state => {
+    const loginInfo = state.loginCheck.loginInfo;
+    return {
+      ...loginInfo,
+      // 필요한 경우 값을 복사하고 수정
+      userLastCompany: loginInfo.userLastCompany || "",
+      userLastJobGroup: loginInfo.userLastJobGroup || "",
+      userLastJobGroupCareer: loginInfo.userLastJobGroupCareer || "",
+      userLastSchoolDept: loginInfo.userLastSchoolDept || "",
+      userLastSchoolName: loginInfo.userLastSchoolName || "",
+      userLastSchoolStatus: loginInfo.userLastSchoolStatus || "",
+    };
+  });
+
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,8 +63,8 @@ const Profile = () => {
 
   }
 
-  const inputComponent_carrerYn = isLogin.userJobCareerYn === "Y"  && <div> 
-                                                                          <InputDivComponent value={{first :isLogin.userLastCompany, second :isLogin.userLastJobGroup, third : isLogin.userDesiredJobGroupCareer, fourth : ''}} label="최종 경력" inputTitle={{first : '회사명', second : '직무', third : '재직기간', fourth :''}} />
+  const inputComponent_carrerYn = isLogin.userJobCareerYn === "Y"  && <div>
+                                                                          <InputDivComponent value={{first :isLogin.userLastCompany, second :isLogin.userLastJobGroup, third : isLogin.userLastJobGroupCareer, fourth : ''}} label="최종 경력" inputTitle={{first : '회사명', second : '직무', third : '재직기간', fourth :''}} />
                                                                           <div className={classes.line}></div>
                                                                       </div>
 

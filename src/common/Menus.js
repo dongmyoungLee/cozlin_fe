@@ -344,6 +344,10 @@ export const skillSet = [
   },
   {
     menuName : 'React'
+  },{
+    menuName : 'Java'
+  },{
+    menuName : 'Mysql'
   },
   {
     menuName : 'Vue.js'
@@ -355,7 +359,7 @@ export const skillSet = [
   },{
     menuName : 'Svelte'
   },{
-    menuName : 'React Native'
+    menuName : 'React native'
   },{
     menuName : 'Flutter'
   },{
