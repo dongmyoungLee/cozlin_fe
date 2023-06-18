@@ -16,7 +16,8 @@ const WelcomeInfo = (props) => {
               <Button btn={{
                 type : '',
                 value : '프로필 작성',
-                height : '40px'
+                height : '40px',
+                onClick : props.onClick
               }} />
             </div>
           </article>

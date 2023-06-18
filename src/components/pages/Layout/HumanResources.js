@@ -18,6 +18,7 @@ import {userGet} from "../../../common/api/ApiGetService";
 import {useSelector} from "react-redux";
 import userDefaultImg from "../../../asset/images/defaultuser.jpg";
 import bannerImg from "../../../asset/images/ai_compare_banner.webp";
+import {useNavigate} from "react-router-dom";
 
 const HumanResources = () => {
   const [category, setCategory] = useState('개발');
@@ -36,8 +37,9 @@ const HumanResources = () => {
   const [filterBlock, setFilterBlock] = useState([]);
   const [devUser, setDevUser] = useState([]);
   const [addMoreDataCount, setAddMoreDataCount] = useState(1);
-
+  const navigate = useNavigate();
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
+
 
 
 
@@ -226,6 +228,10 @@ const HumanResources = () => {
     }
   }
 
+  const profileUpdate = () => {
+    navigate('/member/profile');
+  }
+
   const userTopList = userTopListData.length !== 0 ? userTopListData.map((item, idx) => (
                                                     <div key={idx} className={classes.mainCard}>
                                                       <div className={classes.imgArea}>
@@ -278,7 +284,7 @@ const HumanResources = () => {
   return (
       <>
         <Layout >
-          {(isLogin.isLogin && isLogin.userJobEnterdYn === 'N') && <WelcomeInfo />}
+          {(isLogin.isLogin && isLogin.userJobEnterdYn === 'N') && <WelcomeInfo onClick={profileUpdate} />}
           <CategorySection setCategory={setCategory} />
           <section className={classes.filterSection}>
             <article className={classes.filterArticle}>
