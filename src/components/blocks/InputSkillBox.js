@@ -12,9 +12,12 @@ const InputSkillBox = (props) => {
   const isLogin = useSelector(state => state.loginCheck.loginInfo);
   const tmpArr = [];
 
-  for (let i = 0; i < isLogin.userJobSkill.split(",").length; i++) {
-    tmpArr.push(isLogin.userJobSkill.split(",")[i])
+  if(isLogin.userJobSkill != null) {
+    for (let i = 0; i < isLogin.userJobSkill.split(",").length; i++) {
+      tmpArr.push(isLogin.userJobSkill.split(",")[i])
+    }
   }
+
 
   const [skillItems, setSkillItems] = useState(tmpArr);
 
