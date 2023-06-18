@@ -15,21 +15,46 @@ const SelectBox = (props) => {
 
    useEffect(() => {
 
+      const defaultCategoryText = '선택';
+
       switch (props.label) {
-         case '직군' :
-            setBtnCategoryText(isLogin.userDesiredJobGroup);
+         case '직군':
+            if (isLogin.userDesiredJobGroup) {
+               setBtnCategoryText(isLogin.userDesiredJobGroup);
+            } else {
+               setBtnCategoryText(defaultCategoryText);
+            }
             break;
-         case '직무' :
-            setBtnCategoryText(isLogin.userDesiredJob);
+         case '직무':
+            if (isLogin.userDesiredJob) {
+               setBtnCategoryText(isLogin.userDesiredJob);
+            } else {
+               setBtnCategoryText(defaultCategoryText);
+            }
             break;
-         case '직무 경력' :
-            setBtnCategoryText(isLogin.userDesiredJobGroupCareer);
+         case '직무 경력':
+            if (isLogin.userDesiredJobGroupCareer) {
+               setBtnCategoryText(isLogin.userDesiredJobGroupCareer);
+            } else {
+               setBtnCategoryText(defaultCategoryText);
+            }
             break;
-         case '주요 스킬' :
-            setBtnCategoryText(isLogin.userDesiredJobGroup);
+         case '주요 스킬':
+            if (isLogin.userDesiredJobGroup) {
+               setBtnCategoryText(isLogin.userDesiredJobGroup);
+            } else {
+               setBtnCategoryText(defaultCategoryText);
+            }
             break;
-         case '이수 상태' :
-            setBtnCategoryText(isLogin.userLastSchoolStatus);
+         case '이수 상태':
+            if (isLogin.userLastSchoolStatus) {
+               setBtnCategoryText(isLogin.userLastSchoolStatus);
+            } else {
+               setBtnCategoryText(defaultCategoryText);
+            }
+            break;
+         default:
+            setBtnCategoryText(defaultCategoryText);
             break;
       }
       const handleClickOutside = (e) => {
@@ -50,21 +75,22 @@ const SelectBox = (props) => {
    }
 
    const btnSelectMenu = (e) => {
-      // 내가 누른 메뉴의 텍스트가 버튼의 텍스트로 가야함.
-      // e.target -> 내 이벤트가 발생한 지점의 타겟
-      setBtnCategoryText(e.target.querySelector("li").innerText);
+      e.preventDefault();
+      const liElement = e.currentTarget.querySelector("li");
+      if (liElement) {
+         setBtnCategoryText(liElement.innerText);
 
-      // 부모 컴포넌트에 있는 settingCategory 를 실행함 e.target.querySelector("li").innerText 이걸 가지고
-      const sendData = {
-         text : e.target.querySelector("li").innerText,
-         label : props.label
+         const sendData = {
+            text: liElement.innerText,
+            label: props.label
+         }
+
+         props.settingCategory(sendData);
+
+         setIsOpenDropDown(false);
       }
-
-      props.settingCategory(sendData);
-
-      // 메뉴 닫아줌..
-      setIsOpenDropDown(false);
    }
+
    return (
       <div className={classes.sbWrap}>
          <div className={classes.btnWrap} onClick={btnClickDropDown} ref={myMenuRef2}>

@@ -3,7 +3,7 @@ import classes2 from '../../../styles/pages/login/signup.module.css';
 import {useState} from "react";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
-import {Mobile, PC, Tablet} from "../../config/Responsive";
+import {Mobile, PC} from "../../config/Responsive";
 import PopupDom from "../../blocks/PopupDom";
 import PopupPostCode from "../../blocks/PopupPostCode";
 import MsgPopup from "../../blocks/MsgPopup";
@@ -12,7 +12,6 @@ import MailValidPopup from "../../blocks/MailValidPopup";
 import {emailValidService, signUp} from "../../../common/api/ApiPostService";
 import {emailCheck, numberCheck, passCheck} from "../../../common/Reg";
 import {useSelector} from "react-redux";
-import axios from "axios";
 
 
 const Login = () => {

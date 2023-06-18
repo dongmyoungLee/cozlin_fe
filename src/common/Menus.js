@@ -310,10 +310,10 @@ export const humanResourcesSchoolStatus = [
     menuName : '졸업'
   },
   {
-    menuName : '재학중'
+    menuName : '재학'
   },
   {
-    menuName : '휴학중'
+    menuName : '휴학'
   },
   {
     menuName : '수료'

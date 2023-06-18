@@ -39,7 +39,7 @@ const ProfileUpdate = () => {
 
   const navigate = useNavigate();
   const [changeMenuList, setChangeMenuList] = useState([{menuName : '선택'}]);
-  const [userCareerYn, setUserCareerYn] = useState(true);
+  const [userCareerYn, setUserCareerYn] = useState(isLogin.userJobCareerYn === 'N' ? true : false);
 
   // profile저장용 변수
   const [userDesiredJobGroup, setUserDesiredJobGroup] = useState(isLogin.userDesiredJobGroup);
@@ -146,7 +146,7 @@ const ProfileUpdate = () => {
   }
 
   const cancelBtn = () => {
-
+    navigate('/member/profile');
   }
   const closeMsgPopup = () => {
     const res = {

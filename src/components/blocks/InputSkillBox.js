@@ -71,7 +71,7 @@ const InputSkillBox = (props) => {
       <div className={classes.dropSkillMenuWrap}>
         <div className={classes.skillsWrap} onClick={dropDownMenuShow} ref={myMenuRef2}>
           <div className={classes.skillsWrap2}>
-            {skillItems.length == 0 && <p className={classes.skillPlaceHolde}>선택</p>}
+            {skillItems.length === 0 && <p className={classes.skillPlaceHolde}>선택</p>}
             {skillItems.map((item, idx) => (
               <div key={idx} className={classes.skill}>
                 {item}
