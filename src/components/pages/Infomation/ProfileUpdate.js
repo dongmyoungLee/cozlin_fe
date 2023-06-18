@@ -17,10 +17,11 @@ import {
 import InputUpdateBox from "../../blocks/InputUpdateBox";
 import InputSkillBox from "../../blocks/InputSkillBox";
 import InputUpdateInputBox from "../../blocks/InputUpdateInputBox";
-import {updateUserJobProfile} from "../../../common/api/ApiPostService";
+import {fileUpload, updateUserJobProfile} from "../../../common/api/ApiPostService";
 import PopupDom from "../../blocks/PopupDom";
 import MsgPopup from "../../blocks/MsgPopup";
 import {loginCheckAction} from "../../../ducks/loginCheck";
+import axios from "axios";
 
 const ProfileUpdate = () => {
   const isLogin = useSelector(state => {
@@ -53,6 +54,7 @@ const ProfileUpdate = () => {
   const [userLastSchoolStatus, setUserLastSchoolStatus]= useState(isLogin.userLastSchoolStatus);
   const [userLastSchoolDept, setUserLastSchoolDept] = useState(isLogin.userLastSchoolDept);
   const [isMsgPopupOpen, setIsMsgPopupOpen] = useState({show : false, msg: ''});
+  const [userFile, setUserFile] = useState('');
   const dispatch = useDispatch();
   const settingCategoryHandler = (data) => {
     // data -> e.target.querySelector("li").innerText
@@ -137,7 +139,19 @@ const ProfileUpdate = () => {
     updateUserJobProfile(isLogin.userId, isLogin.userName, isLogin.userPhone, userDesiredJobGroup, userDesiredJob, userDesiredJobGroupCareer, userJobSkill, userLastCompany, userLastJobGroup, userLastJobGroupCareer, userLastSchoolName, userLastSchoolStatus, userLastSchoolDept, userCareerYn ? 'N' : 'Y')
       .then((res) => {
         if (res.status === 200) {
-          setIsMsgPopupOpen({show: true, msg: '프로필 작성이 완료 되었습니다. 다시 로그인 해주세요.'});
+
+          const formData = new FormData();
+          formData.append('file', userFile);
+
+          // 0618
+          fileUpload(formData)
+          .then((res) => {
+
+          }).catch((err) => {
+
+          })
+
+          // setIsMsgPopupOpen({show: true, msg: '프로필 작성이 완료 되었습니다. 다시 로그인 해주세요.'});
         }
     }).catch((err) => {
       console.log(err)
@@ -176,6 +190,19 @@ const ProfileUpdate = () => {
     setIsMsgPopupOpen({show: false, msg: ''});
     navigate('/member/login');
   }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    setUserFile(file);
+
+    const fileArea = document.querySelector(`.${classes.fileArea}`);
+    if (file) {
+      fileArea.textContent = file.name;
+    } else {
+      fileArea.textContent = '';
+    }
+  };
 
    return(
      <>
@@ -245,8 +272,14 @@ const ProfileUpdate = () => {
                <p className={classes.leftInnerTopText}>이력서</p>
                <p className={classes.leftInnerBotText}>다른 사이트에서 작성한 이력서, 자유 이력서 모두 좋아요!</p>
              </div>
-             <div className={classes.rightInner}>
-               <InputUpdateInputBox onChange={companyNameHandler} />
+             <div className={classes.rightInner2}>
+               <div className={classes.fileArea}></div>
+               <div className={classes.fileSearch}>
+                 <label htmlFor="resumeUpdate" className={classes.fileLabel}>
+                   <div>찾기</div>
+                 </label>
+                 <input onChange={handleFileChange} id="resumeUpdate" type="file" className={classes.displayNone} />
+               </div>
              </div>
            </div>
          </div>

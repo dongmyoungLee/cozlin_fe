@@ -394,6 +394,12 @@
     gap: 20px;
 }
 
+.rightInner2 {
+    width: 60%;
+    display: flex;
+    gap: 20px;
+}
+
 .selectSection {
     display: flex;
     align-content: center;
@@ -585,4 +591,48 @@
 
 .selected {
     background-color: red;
+}
+
+.fileArea {
+    width: 326px;
+    height: 58px;
+    border: 1px solid #d7e0e6;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 16px;
+    margin-left: auto;
+    color: #5F666B;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+.displayNone {
+    display: none;
+}
+
+.fileSearch {
+    width: 108px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #3A3E41;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    color: #FFFFFF;
+}
+
+.fileLabel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
