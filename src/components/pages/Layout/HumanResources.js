@@ -51,8 +51,8 @@ const HumanResources = () => {
 
         userGet().then((res) => {
           if (res.status === 200) {
-            setUserTopListData(res.data.listData.slice(0, 8));
-            setUserBotListData(res.data.listData.slice(8, 20));
+            setUserTopListData(res.data.data.slice(0, 8));
+            setUserBotListData(res.data.data.slice(8, 20));
           }
         })
         .catch((err) => {
@@ -115,7 +115,7 @@ const HumanResources = () => {
     userGet().then((res) => {
       if (res.status === 200) {
 
-        const newData = res.data.listData;
+        const newData = res.data.data;
         setUserBotListData(prevData => [...prevData, ...newData]);
 
         setAddMoreDataCount(addMoreDataCount + 1);
