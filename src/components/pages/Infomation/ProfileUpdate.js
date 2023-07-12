@@ -139,19 +139,19 @@ const ProfileUpdate = () => {
     updateUserJobProfile(isLogin.userId, isLogin.userName, isLogin.userPhone, userDesiredJobGroup, userDesiredJob, userDesiredJobGroupCareer, userJobSkill, userLastCompany, userLastJobGroup, userLastJobGroupCareer, userLastSchoolName, userLastSchoolStatus, userLastSchoolDept, userCareerYn ? 'N' : 'Y')
       .then((res) => {
         if (res.status === 200) {
-
+        debugger
           const formData = new FormData();
           formData.append('file', userFile);
 
           // 0618
-          fileUpload(formData)
-          .then((res) => {
+          // fileUpload(formData)
+          // .then((res) => {
+          //
+          // }).catch((err) => {
+          //
+          // })
 
-          }).catch((err) => {
-
-          })
-
-          // setIsMsgPopupOpen({show: true, msg: '프로필 작성이 완료 되었습니다. 다시 로그인 해주세요.'});
+          setIsMsgPopupOpen({show: true, msg: res.data.data});
         }
     }).catch((err) => {
       console.log(err)
