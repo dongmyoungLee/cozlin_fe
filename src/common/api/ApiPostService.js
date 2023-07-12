@@ -67,5 +67,4 @@ export const updateUserJobProfile = (userid, userName, userPhone, userDesiredJob
   userJobCareerYn: setUserJobCareerYn
 })
 
-
-
+export const fileUpload = (formData) => apiClient.post('/api/v1/user/uploadFile', formData, {headers: {'Content-Type': 'multipart/form-data'}})

@@ -1,13 +1,12 @@
 import Applicant from "../../blocks/Applicant";
 // import classes from "../../../styles/pages/layout/mypage.module.css";
 import MypageLayout from "../../blocks/MypageLayout";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import classes from '../../../styles/pages/layout/mypage.module.css';
 import InputDivComponent from "../../blocks/InputDivComponent";
-import InputBox from "../../blocks/InputBox";
 import Button from "../../atoms/Button";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 import InputDivBox from "../../blocks/InputDivBox";
 
 

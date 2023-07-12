@@ -1,4 +1,4 @@
-import {Mobile, PC, Tablet} from "../../config/Responsive";
+import {Mobile, PC} from "../../config/Responsive";
 import classes from "../../../styles/pages/login/login.module.css";
 import RadioGroup from "../../atoms/RadioGroup";
 import Radio from "../../atoms/Radio";
@@ -54,12 +54,12 @@ const FindUserInfo = () => {
           .then((res) => {
 
             if (res.status === 200) {
-              setIsMsgPopupOpen({show: true, msg: res.data.message});
+              setIsMsgPopupOpen({show: true, msg: res.data.data});
             }
 
           })
           .catch((error) => {
-            setIsMsgPopupOpen({show: true, msg: error.response.data.message});
+            setIsMsgPopupOpen({show: true, msg: error.response.data.data});
           })
 
         return ;
@@ -71,10 +71,10 @@ const FindUserInfo = () => {
 
       findIdService(phoneInput)
         .then((res) => {
-          setIsMsgPopupOpen({show: true, msg: `회원님의 아이디는 ${res.data.message} 입니다.`});
+          setIsMsgPopupOpen({show: true, msg: `회원님의 아이디는 ${res.data.data} 입니다.`});
         })
         .catch((error) => {
-          setIsMsgPopupOpen({show: true, msg: error.response.data.message});
+          setIsMsgPopupOpen({show: true, msg: error.response.data.data.message});
         })
 
     }
