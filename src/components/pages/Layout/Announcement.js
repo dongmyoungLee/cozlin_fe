@@ -37,7 +37,7 @@ const Announcement = () => {
       <>
         <Layout >
           <p>채용 공고 페이지</p>
-          <button onClick={testM}>test1</button>
+          <button onClick={testM}>test111111111111111</button>
           <img src={s1} />
           <img src={s2} />
           <img src={s3} />
