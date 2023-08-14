@@ -36,7 +36,7 @@ const Announcement = () => {
   return (
       <>
         <Layout >
-          <p>채용 공고 페이지</p>
+          <p>채용 공고 페이지12121212</p>
           <button onClick={testM}>test111111111111111</button>
           <img src={s1} />
           <img src={s2} />
